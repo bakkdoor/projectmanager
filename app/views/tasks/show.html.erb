@@ -1,0 +1,33 @@
+<p>
+  <b>Project:</b>
+  <%=h @task.project_id %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @task.parent_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @task.name %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @task.comment %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @task.status %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @task.due_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

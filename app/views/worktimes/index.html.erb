@@ -1,0 +1,26 @@
+<h1>Listing worktimes</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Comment</th>
+  </tr>
+
+<% for worktime in @worktimes %>
+  <tr>
+    <td><%=h worktime.user_id %></td>
+    <td><%=h worktime.start_time %></td>
+    <td><%=h worktime.end_time %></td>
+    <td><%=h worktime.comment %></td>
+    <td><%= link_to 'Show', worktime %></td>
+    <td><%= link_to 'Edit', edit_worktime_path(worktime) %></td>
+    <td><%= link_to 'Destroy', worktime, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New worktime', new_worktime_path %>

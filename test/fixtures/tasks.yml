@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  parent_id: 1
+  name: MyString
+  comment: MyText
+  status: 1
+  due_date: 2008-10-08
+
+two:
+  project_id: 1
+  parent_id: 1
+  name: MyString
+  comment: MyText
+  status: 1
+  due_date: 2008-10-08

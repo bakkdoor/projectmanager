@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @worktime.user_id %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%=h @worktime.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%=h @worktime.end_time %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @worktime.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_worktime_path(@worktime) %> |
+<%= link_to 'Back', worktimes_path %>

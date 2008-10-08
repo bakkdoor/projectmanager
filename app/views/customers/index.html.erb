@@ -1,0 +1,36 @@
+<h1>Listing customers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Street</th>
+    <th>House nr</th>
+    <th>Zip code</th>
+    <th>City</th>
+    <th>Telephone</th>
+    <th>Email</th>
+    <th>Contact</th>
+    <th>Comment</th>
+  </tr>
+
+<% for customer in @customers %>
+  <tr>
+    <td><%=h customer.name %></td>
+    <td><%=h customer.street %></td>
+    <td><%=h customer.house_nr %></td>
+    <td><%=h customer.zip_code %></td>
+    <td><%=h customer.city %></td>
+    <td><%=h customer.telephone %></td>
+    <td><%=h customer.email %></td>
+    <td><%=h customer.contact %></td>
+    <td><%=h customer.comment %></td>
+    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+    <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New customer', new_customer_path %>

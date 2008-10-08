@@ -1,0 +1,23 @@
+<p>
+  <b>Customer:</b>
+  <%=h @project.customer_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @project.name %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @project.due_date %>
+</p>
+
+<p>
+  <b>Finished:</b>
+  <%=h @project.finished %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
