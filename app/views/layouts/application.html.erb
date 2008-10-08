@@ -10,8 +10,8 @@
 <body>
 
 <div class="menu">
-  <% menu_items.each_pair do |title, controller| %>
-    <%= link_to title, :controller => controller, :action => :index %> | 
+  <% menu_items.each do |item|  %>
+    <%= link_to item[:title], :controller => item[:controller], :action => :index %> | 
   <% end %>
 </div>
 
