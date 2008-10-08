@@ -5,7 +5,7 @@ class Task < ActiveRecord::Base
   def parent
     if self.parent_id
       begin
-        Task.find(self.parent_id))
+        Task.find(self.parent_id)
       rescue ActiveRecord::RecordNotFound => ex
         nil
       end

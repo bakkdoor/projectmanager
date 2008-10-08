@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<div class="menu">
+  <% menu_items.each_pair do |title, controller| %>
+    <%= link_to title, :controller => controller, :action => :index %> | 
+  <% end %>
+</div>
+
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield  %>
