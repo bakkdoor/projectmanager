@@ -41,7 +41,14 @@ class WorktimesController < ApplicationController
   # POST /worktimes.xml
   def create
     @worktime = Worktime.new(params[:worktime])
-
+    @worktime.user = current_user
+    
+    # falls länge angegeben, end_date entsprechend überschreiben via @worktime.length=()
+    length = params[:worktime][:length].to_f
+    if(length > 0.0)
+      @worktime.length = length
+    end
+    
     respond_to do |format|
       if @worktime.save
         flash[:notice] = 'Worktime was successfully created.'

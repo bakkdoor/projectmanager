@@ -1,16 +1,21 @@
 <p>
-  <b>User:</b>
-  <%=h @worktime.user_id %>
+  <b>Mitarbeiter:</b>
+  <%=h @worktime.user.name %>
 </p>
 
 <p>
-  <b>Start time:</b>
+  <b>Startzeit:</b>
   <%=h @worktime.start_time %>
 </p>
 
 <p>
-  <b>End time:</b>
+  <b>Endzeit:</b>
   <%=h @worktime.end_time %>
+</p>
+
+<p>
+  <b>Dauer:</b>
+  <%=h @worktime.length %> h
 </p>
 
 <p>

@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :tasks
   has_and_belongs_to_many :projects
-
+  has_many :worktimes
+  
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.

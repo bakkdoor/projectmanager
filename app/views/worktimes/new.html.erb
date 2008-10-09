@@ -1,18 +1,18 @@
-<h1>New worktime</h1>
+<h1>Neue Arbeitszeit</h1>
 
 <% form_for(@worktime) do |f| %>
   <%= f.error_messages %>
-
+  
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label "Startzeit" %><br />
+    <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months, :default => 1.hour.ago %>
   </p>
   <p>
-    <%= f.label :start_time %><br />
-    <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months %>
+    <%= f.label "Dauer" %><br />
+    <%= collection_select(:worktime, :length , (0..10).to_a, :to_i, :to_s) %> h
   </p>
   <p>
-    <%= f.label :end_time %><br />
+    <%= f.label "Endzeit" %><br />
     <%= f.datetime_select :end_time, :order => [:day, :month, :year], :use_month_names => german_months %>
   </p>
   <p>
