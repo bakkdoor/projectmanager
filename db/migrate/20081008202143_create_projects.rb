@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :customer_id
       t.string :name
       t.date :due_date
-      t.boolean :finished
+      t.boolean :finished, :default => false
 
       t.timestamps
     end

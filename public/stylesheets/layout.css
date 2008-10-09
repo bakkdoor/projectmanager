@@ -72,11 +72,15 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 .menu a:hover{
-  color: #f0f;
+  color: #eee;
 }
 
 .menu .active_link{
-  color: #f0f;
+  color: #eee;
   background-color: #000;
+}
+
+.menu .active_link:hover{
+  color:#fff;
 }
 

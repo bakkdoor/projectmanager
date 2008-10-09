@@ -1,3 +1,18 @@
-<h1>Mitarbeiter</h1>
+<div class="title">
+  <h1>Mitarbeiter</h1>
+</div>
 
-(Muss noch hier hin kommen, wahrscheinlich gesperrt außer für admin.)
+<div class="content_table">
+  <table class="profile_table">
+    <th>Name</th>
+    <th>Email</th>
+    <th>Admin?</th>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to h(user.name), user %></td>
+        <td><%= mail_to h(user.email), user.email %></td>
+        <td><%= h user.is_admin.german %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

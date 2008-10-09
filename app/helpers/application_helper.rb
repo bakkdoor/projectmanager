@@ -28,3 +28,8 @@ module ApplicationHelper
     hours += (1.0..10.0).step(0.5).to_a
   end
 end
+
+# mixing in RubyEnhancements-module
+class Object
+	include ObjectEnhancement # see /lib
+end

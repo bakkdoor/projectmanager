@@ -1,0 +1,52 @@
+<div class="content_table">
+  <table class="profile_table">
+    <tr>
+      <td class="content_title"><%= label_tag :login, "Username" %>:</td>
+      <td class="content_value"><%= @user.login %></td>
+    </tr>
+    <tr>
+      <td class="content_title"><%= label_tag :name %>:</td>
+      <td class="content_value"><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td class="content_title"><%= label_tag :email %>:</td>
+      <td class="content_value"><%= @user.email %></td>
+    </tr>                                            
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Geburtsdatum" %>:</td>
+      <td class="content_value"><%= @user.birthdate %></td>
+    </tr>  
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Tel." %>:</td>
+      <td class="content_value"><%= @user.telephone %></td>
+    </tr>                                              
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Straße" %>:</td>
+      <td class="content_value"><%= @user.street %></td>
+    </tr>
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Hausnr." %>:</td>
+      <td class="content_value"><%= @user.house_nr %></td>
+    </tr>
+    <tr>                                               
+      <td class="content_title"><%= label_tag "PLZ" %>:</td>
+      <td class="content_value"><%= @user.street %></td>
+    </tr>
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Stadt" %>:</td>
+      <td class="content_value"><%= @user.street %></td>
+    </tr>
+    <tr>                                               
+      <td class="content_title"><%= label_tag "ICQ" %>:</td>
+      <td class="content_value"><%= @user.icq_im %></td>
+    </tr>
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Jabber" %>:</td>
+      <td class="content_value"><%= @user.jabber %></td>
+    </tr>
+    <tr>                                               
+      <td class="content_title"><%= label_tag "Kommentar / Beschreibung" %>:</td>
+      <td class="content_value"><%= @user.comment %></td>
+    </tr>
+  </table>
+</div>
