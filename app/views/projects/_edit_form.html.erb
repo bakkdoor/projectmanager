@@ -11,7 +11,7 @@
   </p>
   <p>
     <%= f.label :due_date, "Fällig am" %><br />
-    <%= f.date_select :due_date %>
+    <%= f.date_select :due_date, :start_year => Time.now.year, :end_year => Time.now.year + 10, :order => [:day, :month, :year], :use_month_names => german_months %>
   </p>
   <p>
     <%= f.label :finished, "Projekt beendet?" %><br />

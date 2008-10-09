@@ -19,7 +19,7 @@ pre {
 }
 
 a { color: #000; }
-a:visited { color: #666; }
+a:visited { color: #000; }
 a:hover { color: #fff; background-color:#000; }
 
 .fieldWithErrors {
@@ -73,5 +73,10 @@ a:hover { color: #fff; background-color:#000; }
 
 .menu a:hover{
   color: #f0f;
+}
+
+.menu .active_link{
+  color: #f0f;
+  background-color: #000;
 }
 
