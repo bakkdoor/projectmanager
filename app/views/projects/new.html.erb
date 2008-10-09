@@ -5,7 +5,7 @@
 
   <p>
     <%= f.label :customer_id %><br />
-    <%= f.text_field :customer_id %>
+    <%= collection_select(:project, :customer_id , @customers, :id, :name) %>
   </p>
   <p>
     <%= f.label :name %><br />

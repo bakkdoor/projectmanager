@@ -1,6 +1,6 @@
 <p>
   <b>Customer:</b>
-  <%=h @project.customer_id %>
+  <%= link_to @project.customer.name, @project.customer %>
 </p>
 
 <p>
@@ -16,6 +16,11 @@
 <p>
   <b>Finished:</b>
   <%=h @project.finished %>
+</p>
+
+<p>
+  <b>Aufgaben:</b>
+  <%= @project.tasks.collect{|t| link_to h(t.name), t}.join(", ") %>
 </p>
 
 

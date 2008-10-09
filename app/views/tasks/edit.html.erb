@@ -5,11 +5,11 @@
 
   <p>
     <%= f.label :project_id %><br />
-    <%= f.text_field :project_id %>
+    <%= collection_select(:task, :project_id , @projects, :id, :name) %>
   </p>
   <p>
     <%= f.label :parent_id %><br />
-    <%= f.text_field :parent_id %>
+    <%= collection_select(:task, :parent_id , @tasks, :id, :name) %>
   </p>
   <p>
     <%= f.label :name %><br />
@@ -21,7 +21,7 @@
   </p>
   <p>
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= collection_select(:task, :status , Status.find(:all), :percentage, :to_s) %>
   </p>
   <p>
     <%= f.label :due_date %><br />

@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_filter :create_parent_tasks_list, :only => [:new, :edit]
+  
   # GET /tasks
   # GET /tasks.xml
   def index
@@ -25,7 +27,8 @@ class TasksController < ApplicationController
   # GET /tasks/new.xml
   def new
     @task = Task.new
-
+    @projects = Project.active
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @task }
@@ -35,6 +38,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
+    @projects = Project.active
   end
 
   # POST /tasks
@@ -80,6 +84,17 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  protected
+  
+  def create_parent_tasks_list
+    @tasks = [Task.new(:name => "Kein Parent-Task", :id => nil)]
+    @tasks += Task.find(:all)
+    
+    if params[:id]
+      @tasks -= [Task.find(params[:id])] # alle tasks ausser aktuellem
     end
   end
 end

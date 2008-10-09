@@ -12,11 +12,11 @@
 
 <% for task in @tasks %>
   <tr>
-    <td><%=h task.project_id %></td>
-    <td><%=h task.parent_id %></td>
+    <td><%= link_to h(task.project.name), task.project %></td>
+    <td><%= link_to h(task.parent.name), task.parent if task.parent %></td>
     <td><%=h task.name %></td>
     <td><%=h task.comment %></td>
-    <td><%=h task.status %></td>
+    <td><%=h Status.find(task.status) %></td>
     <td><%=h task.due_date %></td>
     <td><%= link_to 'Show', task %></td>
     <td><%= link_to 'Edit', edit_task_path(task) %></td>

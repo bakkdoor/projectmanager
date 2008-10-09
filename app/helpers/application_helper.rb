@@ -7,6 +7,6 @@ module ApplicationHelper
     menu_items << {:title => "Projekte", :controller => :projects}
     menu_items << {:title => "Aufgaben", :controller => :tasks}
     menu_items << {:title => "Arbeitszeiten", :controller => :worktimes}
-    
+    menu_items << {:title => "Mitarbeiter", :controller => :users}
   end
 end

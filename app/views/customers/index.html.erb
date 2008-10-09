@@ -11,6 +11,7 @@
     <th>Email</th>
     <th>Contact</th>
     <th>Comment</th>
+    <th>Projekte</th>
   </tr>
 
 <% for customer in @customers %>
@@ -24,6 +25,7 @@
     <td><%=h customer.email %></td>
     <td><%=h customer.contact %></td>
     <td><%=h customer.comment %></td>
+    <td><%= customer.projects.collect{|p| link_to h(p.name), p}.join(",<br>") %></td>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
     <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
