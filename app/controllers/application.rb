@@ -15,4 +15,16 @@ class ApplicationController < ActionController::Base
   
   # authentication system überall verfügbar machen
   include AuthenticatedSystem
+  
+  def admin_required
+    unless current_user.is_admin
+      not_authorized
+    end
+  end
+  
+  def not_authorized(message = nil)
+    flash[:error] = message || "Sie haben leider keine Zugriffsrechte."
+    redirect_back_or_default("/")
+  end
+  
 end

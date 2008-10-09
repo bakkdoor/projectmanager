@@ -19,13 +19,13 @@ class User < ActiveRecord::Base
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
   validates_presence_of     :name
-  validates_presence_of     :telephone
-  validates_presence_of     :street
-  validates_presence_of     :house_nr
-  validates_presence_of     :zip_code
-  validates_presence_of     :city
-  validates_presence_of     :birthdate
-  validates_presence_of     :is_admin
+  #validates_presence_of     :telephone
+  #validates_presence_of     :street
+  #validates_presence_of     :house_nr
+  #validates_presence_of     :zip_code
+  #validates_presence_of     :city
+  #validates_presence_of     :birthdate
+  #validates_presence_of     :is_admin
   
   
   has_and_belongs_to_many :tasks

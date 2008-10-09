@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  before_filter :login_required, :except => [:new, :create]
+  before_filter :admin_required, :except => [:new, :create, :show] # muss später geändert werden
   
-
   # render new.rhtml
   def new
     @user = User.new
@@ -23,6 +22,17 @@ class UsersController < ApplicationController
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
+    end
+  end
+  
+  def show
+    if(User.exists?(params[:id]))
+      @user = User.find(params[:id])
+      unless (@user == current_user) || current_user.is_admin
+        not_authorized
+      end
+    else
+      not_authorized
     end
   end
 end

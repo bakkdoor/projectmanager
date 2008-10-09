@@ -18,7 +18,7 @@ module ApplicationHelper
   end
   
   def login_logout_link
-    logged_in? ? link_to("Logout", logout_url) : link_to("Login", login_url)
+    logged_in? ? "Eingeloggt als #{link_to current_user.login, current_user} #{link_to("Logout", logout_url)}" : link_to("Login", login_url)
   end
   
   def german_months

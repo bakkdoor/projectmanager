@@ -1,4 +1,6 @@
 class WorktimesController < ApplicationController
+  before_filter :login_required
+  
   # GET /worktimes
   # GET /worktimes.xml
   def index
