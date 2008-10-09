@@ -28,11 +28,8 @@ class UsersController < ApplicationController
   def show
     if(User.exists?(params[:id]))
       @user = User.find(params[:id])
-      unless (@user == current_user) || current_user.is_admin
-        not_authorized
-      end
     else
-      not_authorized
+      not_authorized("Zugriff nicht möglich.")
     end
   end
 end

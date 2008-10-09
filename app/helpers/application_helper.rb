@@ -17,10 +17,6 @@ module ApplicationHelper
     menu_items
   end
   
-  def login_logout_link
-    logged_in? ? "Eingeloggt als #{link_to current_user.login, current_user} #{link_to("Logout", logout_url)}" : link_to("Login", login_url)
-  end
-  
   def german_months
     %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember)
   end

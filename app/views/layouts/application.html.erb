@@ -14,7 +14,7 @@
   <% menu_items.each do |item|  %>
     <%= link_to item[:title], :controller => item[:controller], :action => :index %> | 
   <% end %>
-  <%= login_logout_link %>
+  <%= render :partial => "users/user_bar" %>
 </div>
 
 <p style="color: green"><%= flash[:notice] %></p>
