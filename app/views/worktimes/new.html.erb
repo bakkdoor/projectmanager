@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label "Dauer" %><br />
-    <%= collection_select(:worktime, :length , (0..10).to_a, :to_i, :to_s) %> h
+    <%= collection_select(:worktime, :length , work_hours, :to_f, :to_s) %> h
   </p>
   <p>
     <%= f.label "Endzeit" %><br />
@@ -20,8 +20,8 @@
     <%= f.text_area :comment %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Speichern" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', worktimes_path %>
+<%= link_to 'Zurück', worktimes_path %>

@@ -24,4 +24,11 @@ module ApplicationHelper
   def german_months
     %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember)
   end
+  
+  def work_hours
+    #(0..10).to_a
+    hours = []
+    hours << 0.0
+    hours += (1.0..10.0).step(0.5).to_a
+  end
 end
