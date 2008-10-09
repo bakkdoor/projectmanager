@@ -1,0 +1,8 @@
+.content_table table{
+  padding-top: 2em;
+  width: 100%;
+}
+
+.content_table td{
+  padding-top: 0.5em;
+}

@@ -5,7 +5,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>ProjectManager <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'layout' %>
+  <%= stylesheet_link_tag 'table' %>
 </head>
 <body>
 
@@ -13,6 +14,7 @@
   <% menu_items.each do |item|  %>
     <%= link_to item[:title], :controller => item[:controller], :action => :index %> | 
   <% end %>
+  <%= login_logout_link %>
 </div>
 
 <p style="color: green"><%= flash[:notice] %></p>

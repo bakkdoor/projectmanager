@@ -1,26 +1,32 @@
-<h1>Listing worktimes</h1>
+<div class="title">
+  <h1>Arbeitszeiten</h1>
+</div>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Comment</th>
-  </tr>
+<div class="sub_menu">
+  <%= link_to 'Neue Arbeitszeit eintragen', new_worktime_path %>
+</div>
 
-<% for worktime in @worktimes %>
-  <tr>
-    <td><%=h worktime.user_id %></td>
-    <td><%=h worktime.start_time %></td>
-    <td><%=h worktime.end_time %></td>
-    <td><%=h worktime.comment %></td>
-    <td><%= link_to 'Show', worktime %></td>
-    <td><%= link_to 'Edit', edit_worktime_path(worktime) %></td>
-    <td><%= link_to 'Destroy', worktime, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div class="content_table">
+  <table>
+    <tr>
+      <th>Mitarbeiter</th>
+      <th>Startzeit</th>
+      <th>Endzeit</th>
+      <th>Kommentar</th>
+    </tr>
+
+  <% for worktime in @worktimes %>
+    <tr>
+      <td><%= link_to h(worktime.user.name), worktime.user %></td>
+      <td><%=h worktime.start_time %></td>
+      <td><%=h worktime.end_time %></td>
+      <td><%=h worktime.comment %></td>
+      <td><%= link_to 'Show', worktime %></td>
+      <td><%= link_to 'Edit', edit_worktime_path(worktime) %></td>
+      <td><%= link_to 'Destroy', worktime, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
 
 <br />
-
-<%= link_to 'New worktime', new_worktime_path %>

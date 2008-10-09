@@ -23,7 +23,7 @@ class CreateUsers < ActiveRecord::Migration
       
       t.column :birthdate, :date
       t.column :comment, :text
-      t.column :is_admin, :boolean      
+      t.column :is_admin, :boolean, :default => false      
 
     end
     add_index :users, :login, :unique => true
