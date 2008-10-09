@@ -1,0 +1,31 @@
+<% form_for(@task) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :project_id, "Projekt" %><br />
+    <%= collection_select(:task, :project_id , @projects, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label :parent_id, "Übergeordnete Aufgabe" %><br />
+    <%= collection_select(:task, :parent_id , @tasks, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= collection_select(:task, :status , Status.find(:all), :percentage, :to_s) %>
+  </p>
+  <p>
+    <%= f.label :due_date, "Fällig am" %><br />
+    <%= f.date_select :due_date %>
+  </p>
+  <p>
+    <%= f.label :comment, "Kommentar / Beschreibung" %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit "Speichern" %>
+  </p>
+<% end %>

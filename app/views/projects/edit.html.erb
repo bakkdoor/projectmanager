@@ -1,28 +1,4 @@
 <h1>Editing project</h1>
-
-<% form_for(@project) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :customer_id %><br />
-    <%= collection_select(:project, :customer_id , @customers, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :due_date %><br />
-    <%= f.date_select :due_date %>
-  </p>
-  <p>
-    <%= f.label :finished %><br />
-    <%= f.check_box :finished %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
+<%= render :partial => "edit_form", :object => @project %>
 <%= link_to 'Anzeigen', @project %> |
 <%= link_to 'Zur&uuml;ck', projects_path %>

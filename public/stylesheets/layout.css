@@ -61,8 +61,10 @@ a:hover { color: #fff; background-color:#000; }
 .menu{
   font-size: 15px;
   font-weight: bold;
-  padding-bottom: 1em;
+  padding: 0.5em;
+  margin-bottom: 1.5em;
   text-align: left;
+  background-color: #eee;
 }
 
 .menu a{

@@ -1,36 +1,4 @@
 <h1>Editing task</h1>
-
-<% form_for(@task) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :project_id %><br />
-    <%= collection_select(:task, :project_id , @projects, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :parent_id %><br />
-    <%= collection_select(:task, :parent_id , @tasks, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= collection_select(:task, :status , Status.find(:all), :percentage, :to_s) %>
-  </p>
-  <p>
-    <%= f.label :due_date %><br />
-    <%= f.date_select :due_date %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
+<%= render :partial => "edit_form", :object => @task %>
 <%= link_to 'Anzeigen', @task %> |
 <%= link_to 'Zur&uuml;ck', tasks_path %>
