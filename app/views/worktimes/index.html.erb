@@ -23,9 +23,9 @@
       <td><%=h worktime.end_time %></td>
       <td><%=h worktime.length %> h</td>
       <td><%=h worktime.comment %></td>
-      <td><%= link_to 'Show', worktime %></td>
-      <td><%= link_to 'Edit', edit_worktime_path(worktime) %></td>
-      <td><%= link_to 'Destroy', worktime, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Anzeigen', worktime %></td>
+      <td><%= link_to 'Bearbeiten', edit_worktime_path(worktime) %></td>
+      <td><%= link_to 'L&ouml;schen', worktime, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>
   <% end %>
   </table>

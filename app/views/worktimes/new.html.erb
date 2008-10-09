@@ -4,19 +4,19 @@
   <%= f.error_messages %>
   
   <p>
-    <%= f.label "Startzeit" %><br />
+    <%= f.label :start_time, "Startzeit" %><br />
     <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months, :default => 1.hour.ago %>
   </p>
   <p>
-    <%= f.label "Dauer" %><br />
+    <%= f.label :length, "Dauer" %><br />
     <%= collection_select(:worktime, :length , work_hours, :to_f, :to_s) %> h
   </p>
   <p>
-    <%= f.label "Endzeit" %><br />
+    <%= f.label :end_time, "Endzeit" %><br />
     <%= f.datetime_select :end_time, :order => [:day, :month, :year], :use_month_names => german_months %>
   </p>
   <p>
-    <%= f.label :comment %><br />
+    <%= f.label :comment, "Kommentar / Beschreibung" %><br />
     <%= f.text_area :comment %>
   </p>
   <p>

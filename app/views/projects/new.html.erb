@@ -4,7 +4,7 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :customer_id %><br />
+    <%= f.label :customer_id, "Kunde" %><br />
     <%= collection_select(:project, :customer_id , @customers, :id, :name) %>
   </p>
   <p>
@@ -12,16 +12,16 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :due_date %><br />
+    <%= f.label :due_date, "Fällig am" %><br />
     <%= f.date_select :due_date %>
   </p>
   <p>
-    <%= f.label :finished %><br />
+    <%= f.label :finished, "Projekt beendet?" %><br />
     <%= f.check_box :finished %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Speichern" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Zur&uuml;ck', projects_path %>

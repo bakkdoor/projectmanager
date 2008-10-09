@@ -1,28 +1,30 @@
-<h1>Listing projects</h1>
+<h1>Projekte</h1>
 
-<table>
-  <tr>
-    <th>Customer</th>
-    <th>Name</th>
-    <th>Due date</th>
-    <th>Finished</th>
-    <th>Aufgaben</th>
-  </tr>
+<div class="sub_menu">
+  <%= link_to 'Neues Projekt anlegen', new_project_path %>
+</div>
 
-<% for project in @projects %>
-  <tr>
-    <td><%= link_to h(project.customer.name), project.customer %></td>
-    <td><%=h project.name %></td>
-    <td><%=h project.due_date %></td>
-    <td><%=h project.finished %></td>
-    <td><%= project.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div class="content_table">
+  <table>
+    <tr>
+      <th>Kunde</th>
+      <th>Name</th>
+      <th>Fällig am</th>
+      <th>Beendet?</th>
+      <th>Aufgaben</th>
+    </tr>
 
-<br />
-
-<%= link_to 'New project', new_project_path %>
+  <% for project in @projects %>
+    <tr>
+      <td><%= link_to h(project.customer.name), project.customer %></td>
+      <td><%=h project.name %></td>
+      <td><%=h project.due_date %></td>
+      <td><%=h project.finished %></td>
+      <td><%= project.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>
+      <td><%= link_to 'Anzeigen', project %></td>
+      <td><%= link_to 'Bearbeiten', edit_project_path(project) %></td>
+      <td><%= link_to 'L&ouml;schen', project, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

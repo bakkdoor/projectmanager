@@ -90,7 +90,7 @@ class TasksController < ApplicationController
   protected
   
   def create_parent_tasks_list
-    @tasks = [Task.new(:name => "Kein Parent-Task", :id => nil)]
+    @tasks = [Task.new(:name => "Keine", :id => nil)]
     @tasks += Task.find(:all)
     
     if params[:id]
