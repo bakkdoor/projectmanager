@@ -3,6 +3,12 @@
     <tr>
       <td class="content_title"><%= label_tag :login, "Username" %>:</td>
       <td class="content_value"><%= @user.login %></td>
+      <td><%= link_to icon_tag('user_edit'), edit_user_path(@user) %>
+       <% if @user.is_admin %>
+         <td>
+         <%= link_to icon_tag('delete'), @user, :confirm => "Sind Sie sicher, dass der Mitarbeiter '#{@user.name}' gelöscht werden soll?", :method => :delete %>
+         </td>
+       <% end %>
     </tr>
     <tr>
       <td class="content_title"><%= label_tag :name %>:</td>
@@ -10,7 +16,7 @@
     </tr>
     <tr>
       <td class="content_title"><%= label_tag :email %>:</td>
-      <td class="content_value"><%= @user.email %></td>
+      <td class="content_value"><%= mail_to @user.email, @user.email %></td>
     </tr>                                            
     <tr>                                               
       <td class="content_title"><%= label_tag "Geburtsdatum" %>:</td>

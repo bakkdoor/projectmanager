@@ -8,9 +8,16 @@
   padding-right: 5em;
 }
 
+.content_table tr{
+  background-color: #eee;
+}
+
+.content_table tr:hover{
+  background-color: #ddd;
+}
+
 .content_table td{
   padding: 0.5em;
-  background-color: #eee;
 }
 
 .content_table .content_title{
