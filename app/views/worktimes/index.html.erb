@@ -26,7 +26,7 @@
       <td><%=h worktime.end_time %></td>
       <td><%=h worktime.length %> h</td>
       <td><%= link_to icon_tag('clock_edit'), edit_worktime_path(worktime) %></td>
-      <td><%= link_to icon_tag('clock_delete'), worktime, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+      <td><%= link_to icon_tag('clock_delete'), worktime, :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3) + '...'}')?", :method => :delete %></td>
     </tr>
   <% end %>
   </table>

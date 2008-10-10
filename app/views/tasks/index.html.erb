@@ -28,7 +28,7 @@
       <td><%=h Status.find(task.status) %></td>
       <td><%=h task.due_date %></td>
       <td><%= link_to icon_tag('table_edit'), edit_task_path(task) %></td>
-      <td><%= link_to icon_tag('table_delete'), task, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+      <td><%= link_to icon_tag('table_delete'), task, :confirm => "Sind Sie sicher, dass Sie die Aufgabe '#{task.name}' löschen wollen?", :method => :delete %></td>
     </tr>
   <% end %>
   </table>
