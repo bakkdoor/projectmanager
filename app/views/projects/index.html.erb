@@ -7,17 +7,17 @@
 <div class="content_table">
   <table>
     <tr>
-      <th>Kunde</th>
       <th>Name</th>
-      <th>Fällig am</th>
-      <th>Beendet?</th>
-      <th>Aufgaben</th>
+      <th><%= icon_tag 'user_suit' %> Kunde</th>
+      <th><%= icon_tag 'clock_red' %> Fällig am</th>
+      <th><%= icon_tag 'tick' %> Beendet?</th>
+      <th><%= icon_tag 'table' %> Aufgaben</th>
     </tr>
 
   <% for project in @projects %>
     <tr>
-      <td><%= link_to h(project.customer.name), project.customer %></td>
       <td><%= link_to h(project.name), project %></td>
+      <td><%= link_to h(project.customer.name), project.customer %></td>
       <td><%=h project.due_date %></td>
       <td><%=h project.finished %></td>
       <td><%= project.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>

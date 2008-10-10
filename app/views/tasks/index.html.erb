@@ -7,24 +7,26 @@
 <div class="content_table">
   <table>
     <tr>
-      <th>Projekt</th>
-      <th>Vater</th>
       <th>Name</th>
-      <th>Kommentar / Beschreibung</th>
-      <th>Status</th>
-      <th>Fällig am</th>
+      <th><%= icon_tag 'layout_content' %> Projekt</th>
+      <th><%= icon_tag 'note' %> Kommentar / Beschreibung</th>
+      <th width="80px"><%= icon_tag 'tick' %> Status</th>
+      <th><%= icon_tag 'clock_red' %> Fällig am</th>
     </tr>
 
   <% for task in @tasks %>
+  <% 
+    amount_children = task.children.size
+    children_info = amount_children > 0 ? "(#{amount_children})" : "" 
+  %>
     <tr>
+      <td><%= link_to h("#{task.name} #{children_info}"), task %></td>
       <td><%= link_to h(task.project.name), task.project %></td>
-      <td><%= task.parent ? (link_to h(task.parent.name), task.parent) : "N/A" %></td>
-      <td><%= link_to h(task.name), task %></td>
       <td><%=h task.comment %></td>
       <td><%=h Status.find(task.status) %></td>
       <td><%=h task.due_date %></td>
-      <td><%= link_to 'Bearbeiten', edit_task_path(task) %></td>
-      <td><%= link_to 'L&ouml;schen', task, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+      <td><%= link_to icon_tag('table_edit'), edit_task_path(task) %></td>
+      <td><%= link_to icon_tag('table_delete'), task, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>
   <% end %>
   </table>

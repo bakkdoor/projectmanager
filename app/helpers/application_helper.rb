@@ -7,7 +7,7 @@ module ApplicationHelper
       menu_items << {:title => "Kunden", :icon => "user_suit", :controller => :customers}
       menu_items << {:title => "Projekte", :icon => "layout_content", :controller => :projects}
       menu_items << {:title => "Aufgaben", :icon => "table", :controller => :tasks}
-      menu_items << {:title => "Arbeitszeiten", :icon => "clock", :controller => :worktimes}
+      menu_items << {:title => "Arbeitszeiten", :icon => "time", :controller => :worktimes}
       
       if current_user.admin?
         menu_items << {:title => "Mitarbeiter", :icon => "group", :controller => :users}
