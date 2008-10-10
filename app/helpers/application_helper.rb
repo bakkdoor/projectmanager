@@ -44,6 +44,11 @@ module ApplicationHelper
     hours << 0.0
     hours += (1.0..10.0).step(0.5).to_a
   end
+  
+  def icon_tag(icon_name)
+    icon_name += icon_name.include?('png') ? "" : ".png"
+    image_tag("icons/#{icon_name}", :border => 0)
+  end
 end
 
 # mixing in RubyEnhancements-module
