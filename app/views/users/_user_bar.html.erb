@@ -1,5 +1,7 @@
+<% link_style = params[:controller].to_s == "profile" ? "active_link" : "" %>
+
 | <% if logged_in? -%>
-  Eingeloggt als <%= link_to current_user.login, profile_url %>
+  Eingeloggt als <%= link_to current_user.login, profile_url, {:class => link_style} %>
   (<%= link_to "#{icon_tag('door_out')} Log out", logout_path, { :title => "Log out" }    %>)
 <% else -%>
   <%= link_to "#{icon_tag('door_in')} Log in",  login_path,  { :title => "Log in" } %>
