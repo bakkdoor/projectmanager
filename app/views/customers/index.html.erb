@@ -8,30 +8,24 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>Straße</th>
-      <th>Hausnr.</th>
-      <th>PLZ</th>
-      <th>Stadt</th>
-      <th>Tel.</th>
-      <th>Email</th>
       <th>Kontaktperson</th>
-      <th>Kommentar / Beschreibung</th>
+      <th>Email</th>
+      <th>Adresse</th>
+      <th>Tel.</th>
       <th>Projekte</th>
     </tr>
 
   <% for customer in @customers %>
     <tr>
-      <td><%=h customer.name %></td>
-      <td><%=h customer.street %></td>
-      <td><%=h customer.house_nr %></td>
-      <td><%=h customer.zip_code %></td>
-      <td><%=h customer.city %></td>
-      <td><%=h customer.telephone %></td>
-      <td><%=h customer.email %></td>
+      <td><%= link_to h(customer.name), customer %></td>
       <td><%=h customer.contact %></td>
-      <td><%=h customer.comment %></td>
+      <td><%= mail_to h(customer.email), customer.email %></td>
+      <td>
+        <%=h customer.street %> <%=h customer.house_nr %><br/>
+        <%=h customer.zip_code %> <%=h customer.city %>
+      </td>
+      <td><%=h customer.telephone %></td>
       <td><%= customer.projects.collect{|p| link_to h(p.name), p}.join(",<br>") %></td>
-      <td><%= link_to 'Anzeigen', customer %></td>
       <td><%= link_to 'Bearbeiten', edit_customer_path(customer) %></td>
       <td><%= link_to 'L&ouml;schen', customer, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>

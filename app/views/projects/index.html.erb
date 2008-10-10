@@ -17,11 +17,10 @@
   <% for project in @projects %>
     <tr>
       <td><%= link_to h(project.customer.name), project.customer %></td>
-      <td><%=h project.name %></td>
+      <td><%= link_to h(project.name), project %></td>
       <td><%=h project.due_date %></td>
       <td><%=h project.finished %></td>
       <td><%= project.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>
-      <td><%= link_to 'Anzeigen', project %></td>
       <td><%= link_to 'Bearbeiten', edit_project_path(project) %></td>
       <td><%= link_to 'L&ouml;schen', project, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>

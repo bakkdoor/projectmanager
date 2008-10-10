@@ -27,6 +27,7 @@ class WorktimesController < ApplicationController
   # GET /worktimes/new.xml
   def new
     @worktime = Worktime.new
+    @tasks = Task.children
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,6 +1,9 @@
 <% form_for(@worktime) do |f| %>
   <%= f.error_messages %>
-  
+  <p>
+    <%= f.label :tasks, "Aufgaben" %><br />
+    <%= collection_select(:worktime, :tasks, @tasks, :id, :name) %>
+  </p>
   <p>
     <%= f.label :start_time, "Startzeit" %><br />
     <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months, :default => 1.hour.ago %>

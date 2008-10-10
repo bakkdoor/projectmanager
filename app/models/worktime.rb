@@ -1,6 +1,8 @@
 class Worktime < ActiveRecord::Base
   belongs_to :user
   
+  has_and_belongs_to_many :tasks
+  
   validates_presence_of :user_id
   validates_presence_of :start_time
   validates_presence_of :end_time
