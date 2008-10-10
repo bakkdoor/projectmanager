@@ -9,21 +9,20 @@
 <div class="content_table">
   <table>
     <tr>
+      <th>Beschreibung</th>
       <th>Mitarbeiter</th>
       <th>Startzeit</th>
       <th>Endzeit</th>
       <th>Dauer</th>
-      <th>Kommentar</th>
     </tr>
 
   <% for worktime in @worktimes %>
     <tr>
+      <td><%= link_to h(worktime.comment), worktime %></td>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
       <td><%=h worktime.start_time %></td>
       <td><%=h worktime.end_time %></td>
       <td><%=h worktime.length %> h</td>
-      <td><%=h worktime.comment %></td>
-      <td><%= link_to 'Anzeigen', worktime %></td>
       <td><%= link_to 'Bearbeiten', edit_worktime_path(worktime) %></td>
       <td><%= link_to 'L&ouml;schen', worktime, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>
