@@ -26,8 +26,8 @@
       </td>
       <td><%=h customer.telephone %></td>
       <td><%= customer.projects.collect{|p| link_to h(p.name), p}.join(",<br>") %></td>
-      <td><%= link_to 'Bearbeiten', edit_customer_path(customer) %></td>
-      <td><%= link_to 'L&ouml;schen', customer, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+      <td><%= link_to icon_tag('user_edit'), edit_customer_path(customer) %></td>
+      <td><%= link_to icon_tag('user_delete'), customer, :confirm => "Sind Sie sicher, dass Sie den Kunden '#{customer.name}' löschen wollen?", :method => :delete %></td>
     </tr>
   <% end %>
   </table>
