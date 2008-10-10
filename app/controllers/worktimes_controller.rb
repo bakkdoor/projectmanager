@@ -43,8 +43,18 @@ class WorktimesController < ApplicationController
   # POST /worktimes
   # POST /worktimes.xml
   def create
+    # gucken ob tasks angegeben wurden, falls ja, diese merken und anschließend eintragen
+    @tasks = []
+    if(params[:worktime][:tasks])
+      params[:worktime][:tasks].split(" ").each do |task_id|
+        @tasks << Task.find(task_id)
+      end
+      params[:worktime][:tasks] = ""
+    end
+    
     @worktime = Worktime.new(params[:worktime])
     @worktime.user = current_user
+    @worktime.tasks += @tasks # ausgewählte tasks zuordnen
     
     # falls länge angegeben, end_date entsprechend überschreiben via @worktime.length=()
     length = params[:worktime][:length].to_f

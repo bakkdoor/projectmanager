@@ -9,22 +9,24 @@
 <div class="content_table">
   <table>
     <tr>
-      <th>Beschreibung</th>
-      <th>Mitarbeiter</th>
-      <th>Startzeit</th>
-      <th>Endzeit</th>
-      <th>Dauer</th>
+      <th><%= icon_tag 'note' %> Beschreibung</th>
+      <th><%= icon_tag 'table' %> Aufgaben</th>
+      <th><%= icon_tag 'group' %> Mitarbeiter</th>
+      <th><%= icon_tag 'clock_play' %> Startzeit</th>
+      <th><%= icon_tag 'clock_stop' %> Endzeit</th>
+      <th><%= icon_tag 'time' %> Dauer</th>
     </tr>
 
   <% for worktime in @worktimes %>
     <tr>
       <td><%= link_to h(worktime.comment), worktime %></td>
+      <td><%= worktime.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
       <td><%=h worktime.start_time %></td>
       <td><%=h worktime.end_time %></td>
       <td><%=h worktime.length %> h</td>
-      <td><%= link_to 'Bearbeiten', edit_worktime_path(worktime) %></td>
-      <td><%= link_to 'L&ouml;schen', worktime, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+      <td><%= link_to icon_tag('clock_edit'), edit_worktime_path(worktime) %></td>
+      <td><%= link_to icon_tag('clock_delete'), worktime, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>
   <% end %>
   </table>

@@ -5,13 +5,13 @@
 <div class="content_table">
   <table class="profile_table">
     <th>Name</th>
-    <th>Email</th>
-    <th>Admin?</th>
+    <th><%= icon_tag 'email' %> Email</th>
+    <th><%= icon_tag 'user_red' %> Admin?</th>
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to h(user.name), user %></td>
         <td><%= mail_to h(user.email), user.email %></td>
-        <td><%= h user.is_admin.german %></td>
+        <td><%= user.is_admin ? icon_tag('tick') : icon_tag('cancel') %></td>
       </tr>
     <% end %>
   </table>
