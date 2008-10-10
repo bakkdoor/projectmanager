@@ -31,4 +31,10 @@ class Task < ActiveRecord::Base
     Task.find(:all, :conditions => ["parent_id = ?", self.id])
   end
   
+  def total_worktime
+    self.worktimes.inject(0.0) do |total, worktime|
+      total + worktime.length
+    end
+  end
+  
 end

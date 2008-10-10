@@ -10,6 +10,7 @@
       <th>Name</th>
       <th><%= icon_tag 'layout_content' %> Projekt</th>
       <th><%= icon_tag 'note' %> Kommentar / Beschreibung</th>
+      <th width="130px"><%= icon_tag 'time' %> Arbeitszeit</th>
       <th width="80px"><%= icon_tag 'tick' %> Status</th>
       <th><%= icon_tag 'clock_red' %> Fällig am</th>
     </tr>
@@ -23,6 +24,7 @@
       <td><%= link_to h("#{task.name} #{children_info}"), task %></td>
       <td><%= link_to h(task.project.name), task.project %></td>
       <td><%=h task.comment %></td>
+      <td><%= task.total_worktime %> h (<%= task.worktimes.size %>)</td>
       <td><%=h Status.find(task.status) %></td>
       <td><%=h task.due_date %></td>
       <td><%= link_to icon_tag('table_edit'), edit_task_path(task) %></td>

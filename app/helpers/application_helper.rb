@@ -55,3 +55,7 @@ end
 class Object
 	include ObjectEnhancement # see /lib
 end
+
+class String
+  include StringEnhancement # see /lib
+end
