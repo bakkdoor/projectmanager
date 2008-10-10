@@ -11,10 +11,7 @@
 <body>
 
 <div class="menu">
-  <% menu_items.each do |item|  %>
-    <% link_style = params[:controller].to_s == item[:controller].to_s ? "active_link" : "" %>
-    <%= link_to item[:title], {:controller => item[:controller], :action => :index}, {:class => link_style} %> | 
-  <% end %>
+  <%= menu_links %>
   <%= render :partial => "users/user_bar" %>
 </div>
 

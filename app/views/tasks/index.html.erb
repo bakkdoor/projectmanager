@@ -18,12 +18,11 @@
   <% for task in @tasks %>
     <tr>
       <td><%= link_to h(task.project.name), task.project %></td>
-      <td><%= link_to h(task.parent.name), task.parent if task.parent %></td>
-      <td><%=h task.name %></td>
+      <td><%= task.parent ? (link_to h(task.parent.name), task.parent) : "N/A" %></td>
+      <td><%= link_to h(task.name), task %></td>
       <td><%=h task.comment %></td>
       <td><%=h Status.find(task.status) %></td>
       <td><%=h task.due_date %></td>
-      <td><%= link_to 'Anzeigen', task %></td>
       <td><%= link_to 'Bearbeiten', edit_task_path(task) %></td>
       <td><%= link_to 'L&ouml;schen', task, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
     </tr>

@@ -2,19 +2,36 @@
 module ApplicationHelper
   def menu_items
     menu_items = []
-    menu_items << {:title => "Home", :controller => :home}
+    menu_items << {:title => "Home", :icon => "house.png", :controller => :home}
     if logged_in?
-      menu_items << {:title => "Kunden", :controller => :customers}
-      menu_items << {:title => "Projekte", :controller => :projects}
-      menu_items << {:title => "Aufgaben", :controller => :tasks}
-      menu_items << {:title => "Arbeitszeiten", :controller => :worktimes}
+      menu_items << {:title => "Kunden", :icon => "user_suit.png", :controller => :customers}
+      menu_items << {:title => "Projekte", :icon => "layout_content.png", :controller => :projects}
+      menu_items << {:title => "Aufgaben", :icon => "table.png", :controller => :tasks}
+      menu_items << {:title => "Arbeitszeiten", :icon => "clock.png", :controller => :worktimes}
       
       if current_user.admin?
-        menu_items << {:title => "Mitarbeiter", :controller => :users}
+        menu_items << {:title => "Mitarbeiter", :icon => "group.png", :controller => :users}
       end
     end
     
     menu_items
+  end
+  
+  def menu_links
+    @output = []
+    menu_items.each do |item|
+      link_style = params[:controller].to_s == item[:controller].to_s ? "active_link" : ""
+      
+      title = item[:title]
+      if(item[:icon])
+        title = image_tag("icons/#{item[:icon]}")
+        title += " #{item[:title]}"
+      end
+      
+      @output << (link_to title, {:controller => item[:controller], :action => :index}, {:class => link_style})
+      #@output << " | "
+    end
+    @output.join(" | ")
   end
   
   def german_months

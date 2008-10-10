@@ -69,6 +69,7 @@ a:hover { color: #fff; background-color:#000; }
 
 .menu a{
   text-decoration: none;
+  padding: 0.25ex;
 }
 
 .menu a:hover{

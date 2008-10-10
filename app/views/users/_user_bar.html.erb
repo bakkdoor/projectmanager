@@ -1,6 +1,7 @@
-<% if logged_in? -%>
+| <% if logged_in? -%>
   Eingeloggt als <%= link_to current_user.login, profile_url %>
-  (<%= link_to "Log out", logout_path, { :title => "Log out" }    %>)
+  (<%= link_to "#{image_tag('icons/door_out.png')} Log out", logout_path, { :title => "Log out" }    %>)
 <% else -%>
-  <%= link_to "Log in",  login_path,  { :title => "Log in" } %> / <%= link_to "Sign up", signup_path, { :title => "Create an account" } %>
+  <%= link_to "#{image_tag('icons/door_in.png')} Log in",  login_path,  { :title => "Log in" } %>
+   / <%= link_to "#{image_tag('icons/user_add.png')} Sign up", signup_path, { :title => "Create an account" } %>
 <% end -%>
