@@ -2,7 +2,11 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :tasks, "Aufgaben" %><br />
-    <%= collection_select(:worktime, :tasks, @tasks, :id, :name) %>
+    <% if @tasks.size > 0 %>
+      <%= collection_select(:worktime, :tasks, @tasks, :id, :name) %>
+    <% else %>
+      <span class="edit_info">Keine weiteren vorhanden.</div>
+    <% end %>
   </p>
   <p>
     <%= f.label :start_time, "Startzeit" %><br />
