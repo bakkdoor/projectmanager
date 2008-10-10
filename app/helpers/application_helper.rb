@@ -2,15 +2,15 @@
 module ApplicationHelper
   def menu_items
     menu_items = []
-    menu_items << {:title => "Home", :icon => "house.png", :controller => :home}
+    menu_items << {:title => "Home", :icon => "house", :controller => :home}
     if logged_in?
-      menu_items << {:title => "Kunden", :icon => "user_suit.png", :controller => :customers}
-      menu_items << {:title => "Projekte", :icon => "layout_content.png", :controller => :projects}
-      menu_items << {:title => "Aufgaben", :icon => "table.png", :controller => :tasks}
-      menu_items << {:title => "Arbeitszeiten", :icon => "clock.png", :controller => :worktimes}
+      menu_items << {:title => "Kunden", :icon => "user_suit", :controller => :customers}
+      menu_items << {:title => "Projekte", :icon => "layout_content", :controller => :projects}
+      menu_items << {:title => "Aufgaben", :icon => "table", :controller => :tasks}
+      menu_items << {:title => "Arbeitszeiten", :icon => "clock", :controller => :worktimes}
       
       if current_user.admin?
-        menu_items << {:title => "Mitarbeiter", :icon => "group.png", :controller => :users}
+        menu_items << {:title => "Mitarbeiter", :icon => "group", :controller => :users}
       end
     end
     
@@ -24,7 +24,7 @@ module ApplicationHelper
       
       title = item[:title]
       if(item[:icon])
-        title = image_tag("icons/#{item[:icon]}", :border => 0)
+        title = icon_tag(item[:icon])
         title += " #{item[:title]}"
       end
       
