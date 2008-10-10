@@ -1,9 +1,10 @@
 module StringEnhancement
   def words(n = nil)
     @words = self.split(" ")
-    
     if n
-      @words[0..(n-1)].join(" ")
+      @rest = self.split(" ").size > @words[0..(n-1)].size ? "..." : ""
+      
+      @words[0..(n-1)].join(" ") + @rest
     else
       @words
     end
