@@ -24,7 +24,7 @@ module ApplicationHelper
       
       title = item[:title]
       if(item[:icon])
-        title = image_tag("icons/#{item[:icon]}")
+        title = image_tag("icons/#{item[:icon]}", :border => 0)
         title += " #{item[:title]}"
       end
       
