@@ -85,3 +85,11 @@ a:hover { color: #fff; background-color:#000; }
   color:#fff;
 }
 
+.footer{
+  position: absolute; 
+  bottom: 0px;
+  left: 30%;
+  right: 30%;
+  font-size: 11px;
+}
+
