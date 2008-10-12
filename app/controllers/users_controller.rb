@@ -16,7 +16,14 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
-            # Protects against session fixation attacks, causes request forgery
+      
+      # falls erster angemeldeter user => admin rechte.
+      if User.count == 1
+        @user.is_admin = true
+        @user.save
+      end
+      
+      # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
