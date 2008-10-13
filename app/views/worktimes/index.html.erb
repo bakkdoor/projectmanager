@@ -20,7 +20,7 @@
   <% for worktime in @worktimes %>
     <tr>
       <td><%= link_to h(worktime.comment.words(10)), worktime %></td>
-      <td><%= worktime.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %>
+      <td><%= worktime.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
       <td><%=h worktime.start_time %></td>
       <td><%=h worktime.end_time %></td>
@@ -29,6 +29,14 @@
       <td><%= link_to icon_tag('delete'), worktime, :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?", :method => :delete %></td>
     </tr>
   <% end %>
+    <tr class="totals">
+      <td>SUMME</td>
+      <td></td>
+      <td><%= User.all.collect{|u| "#{u.short_name}: #{u.worktimes.size}"}.join("<br/>") %></td>
+      <td></td>
+      <td></td>
+      <td><%=h @worktimes.sum{|wt| wt.length} %> h</td>
+    </tr>
   </table>
 </div>
 

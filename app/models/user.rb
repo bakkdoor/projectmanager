@@ -77,6 +77,18 @@ class User < ActiveRecord::Base
     user == self || user.is_admin
   end
   
+  def first_name
+    self.name.words[0]
+  end
+  
+  def last_name
+    self.name.gsub(self.first_name, "")
+  end
+  
+  def short_name
+    "#{self.first_name[0..0]}. #{self.last_name}"
+  end
+  
   protected
 
 end

@@ -27,3 +27,8 @@
 .content_table .content_value{
   width:60%;
 }
+
+.content_table .totals{
+  background-color: #afa;
+  font-weight: bold;
+}
