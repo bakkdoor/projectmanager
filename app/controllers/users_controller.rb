@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_required, :except => [:new, :create]
-  before_filter :admin_required, :except => [:new, :create, :show] # muss später geändert werden
+  before_filter :admin_required, :except => [:new, :create, :show, :edit, :update] # muss später geändert werden
   
   def index
     @users = User.all
