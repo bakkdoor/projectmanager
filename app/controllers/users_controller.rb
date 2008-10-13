@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
  
   def create
-    logout_keeping_session!
+    #logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
@@ -44,9 +44,9 @@ class UsersController < ApplicationController
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
-      self.current_user = @user # !! now logged in
+      #self.current_user = @user # !! now logged in
       redirect_back_or_default('/')
-      flash[:notice] = "Danke für die Anmeldung."
+      flash[:notice] = "Neuer Mitarbeiter mit namen '#{@user.name}' angelegt."
     else
       flash[:error]  = "Nutzer-registrierung fehlgeschlagen. Bitte nochmal versuchen oder ggf. Admin kontaktieren."
       render :action => 'new'
@@ -65,6 +65,21 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    
+    if current_user.can_edit?(@user)
+      @user.destroy
+
+      respond_to do |format|
+        format.html { redirect_to(users_url) }
+        format.xml  { head :ok }
+      end
+    else
+      not_authorized
     end
   end
 end
