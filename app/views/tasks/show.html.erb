@@ -3,12 +3,12 @@
 </div>
 
 <p>
-  <b>Project:</b>
+  <b>Projekt:</b>
   <%= link_to h(@task.project.name), @task.project %>
 </p>
 <% if @task.parent %>
   <p>
-    <b>Parent:</b>
+    <b>Übergeordnete Aufgabe:</b>
     <%= link_to h(@task.parent.name), @task.parent %>
   </p>
 <% end %>
@@ -18,20 +18,36 @@
 </p>
 
 <p>
-  <b>Comment:</b>
-  <%=h @task.comment %>
-</p>
-
-<p>
   <b>Status:</b>
   <%= Status.find(@task.status) %>
 </p>
 
 <p>
-  <b>Due date:</b>
+  <b>F&auml;llig am:</b>
   <%=h @task.due_date %>
 </p>
 
+<p>
+  <b>Kommentar / Beschreibung:</b>
+  <%=h @task.comment %>
+</p>
+
+<% if @task.children.size > 0 %>
+  <p>
+    <b>Untergeordnete Aufgaben:</b><br/>
+    <%= @task.children.collect{|t| link_to h(t.name), t}.join("<br/>") %>
+  </p>
+<% end %>
+
+<% if @task.worktimes.size > 0 %>
+  <p>
+    <b>Arbeitszeiten:</b><br/>
+    <%= @task.worktimes.sort_by{|wt| wt.user.name}.collect do |wt| 
+          link_to "#{wt.user.name}: #{wt.comment.words(3)}", wt
+        end.join("<br/>") 
+    %>
+  </p>
+<% end %>
 
 <%= link_to 'Bearbeiten', edit_task_path(@task) %> |
 <%= link_to 'Zur&uuml;ck', tasks_path %>
