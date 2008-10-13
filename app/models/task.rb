@@ -37,4 +37,11 @@ class Task < ActiveRecord::Base
     end
   end
   
+  def editable_by?(user)
+    user.is_admin || self.users.include?(user) 
+  end
+  
+  def viewable_by?(user)
+    user.is_admin || self.users.include?(user)
+  end
 end

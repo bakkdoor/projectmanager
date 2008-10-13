@@ -64,13 +64,19 @@ class User < ActiveRecord::Base
   def admin?()
     self.is_admin
   end
-
-  def can_edit?(user)
-    self == user || self.is_admin
+  
+  def can_view?(entry)
+    entry.viewable_by?(self)
+  end
+  
+  def can_edit?(entry)
+    entry.editable_by?(self)
+  end
+  
+  def editable_by?(user)
+    user == self || user.is_admin
   end
   
   protected
-    
-
 
 end

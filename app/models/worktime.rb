@@ -25,4 +25,12 @@ class Worktime < ActiveRecord::Base
       1 # fall noch nichts angegeben, standardmäßig 1 stunde
     end
   end
+  
+  def viewable_by?(user)
+    true # erstmal für alle einsehbar
+  end
+  
+  def editable_by?(user)
+    user.is_admin || self.user == user
+  end
 end

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def edit
     if User.exists?(params[:id])
       @user = User.find(params[:id])
-      not_authorized unless current_user.can_edit?(@user)
+      not_authorized unless current_user.can_edit? @user
     else
       not_authorized
     end
