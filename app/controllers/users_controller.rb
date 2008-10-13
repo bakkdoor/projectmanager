@@ -12,7 +12,14 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      unless(current_user == @user || current_user.is_admin)
+        not_authorized
+      end
+    else
+      not_authorized
+    end
   end
  
   def create
