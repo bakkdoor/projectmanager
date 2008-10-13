@@ -51,6 +51,14 @@
     <%= f.text_area :comment %>
   </p>
   <p>
+    <%= label_tag 'password', "Passwort" %><br/>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= label_tag 'password_confirmation', 'Passwort bestätigen' %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
     <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
   </p>
 <% end %>

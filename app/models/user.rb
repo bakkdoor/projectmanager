@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     self.is_admin
   end
 
+  def can_edit?(user)
+    self == user || self.is_admin
+  end
+  
   protected
     
 

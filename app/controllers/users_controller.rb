@@ -1,9 +1,17 @@
 class UsersController < ApplicationController
   before_filter :login_required, :except => [:new, :create]
-  before_filter :admin_required, :except => [:new, :create, :show, :edit, :update] # muss später geändert werden
+  before_filter :admin_required, :only => [:index] # muss später geändert werden
   
   def index
     @users = User.all
+  end
+  
+  def show
+    if(User.exists?(params[:id]))
+      @user = User.find(params[:id])
+    else
+      not_authorized("Zugriff nicht möglich.")
+    end
   end
   
   # render new.rhtml
@@ -14,9 +22,7 @@ class UsersController < ApplicationController
   def edit
     if User.exists?(params[:id])
       @user = User.find(params[:id])
-      unless(current_user == @user || current_user.is_admin)
-        not_authorized
-      end
+      not_authorized unless current_user.can_edit?(@user)
     else
       not_authorized
     end
@@ -59,14 +65,6 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
-    end
-  end
-  
-  def show
-    if(User.exists?(params[:id]))
-      @user = User.find(params[:id])
-    else
-      not_authorized("Zugriff nicht möglich.")
     end
   end
 end
