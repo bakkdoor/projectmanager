@@ -4,7 +4,7 @@
 
 <p>
   <b>Project:</b>
-  <%=h @task.project_id %>
+  <%= link_to h(@task.project.name), @task.project %>
 </p>
 <% if @task.parent %>
   <p>

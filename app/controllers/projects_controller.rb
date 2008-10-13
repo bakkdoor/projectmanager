@@ -23,6 +23,26 @@ class ProjectsController < ApplicationController
       format.xml  { render :xml => @project }
     end
   end
+  
+  # GET /projects/active
+  # Zeigt alle aktiven Projekte an 
+  def active
+    @projects = Project.active
+    
+    respond_to do |format|
+      format.html # show active.html.erb
+      format.xml { render :xml => @projects }
+    end
+  end
+  
+  def finished
+    @projects = Project.finished
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @project }
+    end
+  end
 
   # GET /projects/new
   # GET /projects/new.xml

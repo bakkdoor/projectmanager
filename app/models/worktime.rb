@@ -7,6 +7,10 @@ class Worktime < ActiveRecord::Base
   validates_presence_of :start_time
   validates_presence_of :end_time
   
+  def validate()
+     errors.add_to_base("Dauer muss größer 0 Minuten sein.") if self.start_time >= self.end_time
+  end
+  
   def length=(amount_hours)
     # nur setzen, falls positiver wert übergeben.
     if(amount_hours.to_f > 0.0 && self.start_time)

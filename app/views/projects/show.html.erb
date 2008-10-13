@@ -24,7 +24,8 @@
 
 <p>
   <b>Aufgaben:</b>
-  <%= @project.tasks.collect{|t| link_to h(t.name), t}.join(", ") %>
+  <br />
+  <%= @project.tasks.collect{|t| link_to h(t.name), t}.join("<br/>") %>
 </p>
 
 

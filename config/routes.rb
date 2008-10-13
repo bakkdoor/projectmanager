@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tasks
 
-  map.resources :projects
+  map.resources :projects, :collection => { :active => :get, :finished => :get }
 
   map.resources :customers
 

@@ -29,7 +29,8 @@ class WorktimesController < ApplicationController
   # GET /worktimes/new.xml
   def new
     @worktime = Worktime.new
-    @tasks = Task.children
+    @tasks = [Task.new(:name => "Keine", :id => nil)]
+    @tasks += Task.children
 
     respond_to do |format|
       format.html # new.html.erb
