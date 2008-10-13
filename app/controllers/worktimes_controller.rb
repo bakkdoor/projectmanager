@@ -53,7 +53,7 @@ class WorktimesController < ApplicationController
     
     respond_to do |format|
       if @worktime.save
-        flash[:notice] = 'Worktime was successfully created.'
+        flash[:notice] = 'Arbeitszeit erfolgreich erstellt.'
         format.html { redirect_to(@worktime) }
         format.xml  { render :xml => @worktime, :status => :created, :location => @worktime }
       else
@@ -71,7 +71,7 @@ class WorktimesController < ApplicationController
         #@worktime.tasks += @tasks # ausgewählte tasks zuordnen
         check_length # evtl. laenge anpassen
         
-        flash[:notice] = 'Worktime was successfully updated.'
+        flash[:notice] = 'Arbeitszeit erfolgreich aktualisiert.'
         format.html { redirect_to(@worktime) }
         format.xml  { head :ok }
       else

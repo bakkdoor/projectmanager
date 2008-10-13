@@ -48,7 +48,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        flash[:notice] = 'Task was successfully created.'
+        flash[:notice] = 'Aufgabe wurde erfolgreich erstellt.'
         format.html { redirect_to(tasks_url) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        flash[:notice] = 'Task was successfully updated.'
+        flash[:notice] = 'Aufgabe wurde erfolgreich aktualisiert.'
         format.html { redirect_to(@task) }
         format.xml  { head :ok }
       else

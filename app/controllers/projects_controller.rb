@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        flash[:notice] = 'Project was successfully created.'
+        flash[:notice] = 'Projekt wurde erfolgreich erstellt.'
         format.html { redirect_to(@project) }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        flash[:notice] = 'Project was successfully updated.'
+        flash[:notice] = 'Project wurde erfolgreich aktualisiert.'
         format.html { redirect_to(@project) }
         format.xml  { head :ok }
       else
