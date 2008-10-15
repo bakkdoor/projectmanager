@@ -1,0 +1,11 @@
+<div class="title">
+  <h1>
+    Alle Arbeitszeiten
+  </h1>
+</div>
+
+<% Project.all.each do |project| %>
+  <strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
+  <%= render :partial => "worktimes_list", :locals => {:worktimes => project.worktimes} %>
+<% end %>
+<br />

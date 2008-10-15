@@ -1,5 +1,9 @@
-<% form_for(@worktime) do |f| %>
+<% form_for(@worktime, :url => project_worktimes_path(@project)) do |f| %>
   <%= f.error_messages %>
+  <p>
+    <%= f.label :project, "Projekt" %><br/>
+    <strong><%= @worktime.project.name %></strong>
+  </p>
   <p>
     <%= f.label :tasks, "Aufgaben" %><br />
     <% if @tasks.size > 0 %>

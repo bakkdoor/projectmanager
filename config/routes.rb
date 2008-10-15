@@ -1,12 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :worktimes
+  map.resources :worktimes, :collection => {:all => :get}
 
-  map.resources :tasks
+  map.resources :tasks, :collection => {:all => :get}
 
   map.resources :projects, :collection => { :active => :get, :finished => :get } do |project|
     project.resources :tasks do |task|
       task.resources :worktimes
     end
+    project.resources :worktimes
   end
 
   map.resources :customers, :has_many => [:projects]

@@ -1,0 +1,37 @@
+<div class="content_table">
+  <table>
+    <tr>
+      <th width="25%"><%= icon_tag 'note' %> Beschreibung</th>
+      <th width="15%"><%= icon_tag 'table' %> Aufgaben</th>
+      <th width="20%"><%= icon_tag 'group' %> Mitarbeiter</th>
+      <th width="15%"><%= icon_tag 'clock_play' %> Startzeit</th>
+      <th width="15%"><%= icon_tag 'clock_stop' %> Endzeit</th>
+      <th width="10%"><%= icon_tag 'time' %> Dauer</th>
+    </tr>
+
+  <% for worktime in @worktimes %>
+    <tr>
+      <td><%= link_to h(worktime.comment.words(10)), project_worktimes_path(worktime.project) %></td>
+      <td><%= worktime.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>
+      <td><%= link_to h(worktime.user.name), worktime.user %></td>
+      <td><%=h worktime.start_time %></td>
+      <td><%=h worktime.end_time %></td>
+      <td><%=h worktime.length %> h</td>
+      <% if @project %>
+        <td><%= link_to icon_tag('clock_edit'), edit_worktime_path(worktime) %></td>
+        <td><%= link_to icon_tag('delete'), worktime, :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?", :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  <% if @worktimes.size > 0 %>
+    <tr class="totals">
+      <td>SUMME</td>
+      <td></td>
+      <td><%= User.all.collect{|u| "#{u.short_name}: #{u.worktimes.size}"}.join("<br/>") %></td>
+      <td></td>
+      <td></td>
+      <td><%=h @worktimes.collect{|wt| wt.length}.sum %> h</td>
+    </tr>
+  <% end %>
+  </table>
+</div>

@@ -7,12 +7,21 @@ class WorktimesController < ApplicationController
   # GET /worktimes
   # GET /worktimes.xml
   def index
-    @worktimes = Worktime.find(:all)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @worktimes }
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @worktimes = @project.worktimes
+      
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @worktimes }
+      end
+    else
+      redirect_to :action => "all"      
     end
+  end
+  
+  def all
+    @worktimes = Worktime.all
   end
 
   # GET /worktimes/1
@@ -29,7 +38,8 @@ class WorktimesController < ApplicationController
   # GET /worktimes/new
   # GET /worktimes/new.xml
   def new
-    @worktime = Worktime.new
+    @project = Project.find(params[:project_id])
+    @worktime = Worktime.new(:project_id => @project.id)
     @tasks = [Task.new(:name => "Keine", :id => nil)]
     @tasks += Task.children
 
@@ -41,6 +51,7 @@ class WorktimesController < ApplicationController
 
   # GET /worktimes/1/edit
   def edit
+    @project = Project.find(params[:project_id])
     @worktime = Worktime.find(params[:id])
     @tasks = Task.children - @worktime.tasks
   end
@@ -50,6 +61,7 @@ class WorktimesController < ApplicationController
   def create
     @worktime = Worktime.new(params[:worktime])
     @worktime.user = current_user
+    @worktime.project = Project.find(params[:project_id])
     #@worktime.tasks += @tasks # ausgewählte tasks zuordnen
     check_length # evtl. laenge anpassen
     
