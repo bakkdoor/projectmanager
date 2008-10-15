@@ -32,3 +32,7 @@
   background-color: #afa;
   font-weight: bold;
 }
+
+.content_table .totals:hover{
+  background-color: #8f8;
+}
