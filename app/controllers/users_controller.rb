@@ -4,11 +4,28 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml do 
+        render :xml => @users.to_xml(
+          :except => [:salt, :is_admin, :password, :crypted_password, :remember_token, :remember_token_expires_at, :created_at, :updated_at]
+        )
+      end
+    end
   end
   
   def show
     if(User.exists?(params[:id]))
       @user = User.find(params[:id])
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml do 
+          render :xml => @user.to_xml(
+            :except => [:salt, :is_admin, :password, :crypted_password, :remember_token, :remember_token_expires_at, :created_at, :updated_at]
+          )
+        end
+      end
     else
       not_authorized("Zugriff nicht möglich.")
     end
