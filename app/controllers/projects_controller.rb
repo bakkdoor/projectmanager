@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :login_required
   before_filter :admin_required, :except => [:index, :show]
+  before_filter :customer_required, :only => [:new, :create]
   
   # GET /projects
   # GET /projects.xml

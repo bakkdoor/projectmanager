@@ -29,6 +29,7 @@
       <td><%= link_to icon_tag('delete'), worktime, :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?", :method => :delete %></td>
     </tr>
   <% end %>
+  <% if @worktimes.size > 0 %>
     <tr class="totals">
       <td>SUMME</td>
       <td></td>
@@ -37,6 +38,7 @@
       <td></td>
       <td><%=h @worktimes.sum{|wt| wt.length} %> h</td>
     </tr>
+  <% end %>
   </table>
 </div>
 

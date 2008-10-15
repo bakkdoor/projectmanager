@@ -27,4 +27,18 @@ class ApplicationController < ActionController::Base
     redirect_back_or_default("/")
   end
   
+  def project_required
+    unless Project.count > 0
+      flash[:error] = "Keine Projekte vorhanden. Bitte erst eins anlegen."
+      redirect_to new_project_path
+    end
+  end
+  
+  def customer_required
+    unless Customer.count > 0
+      flash[:error] = "Keine Kunden vorhanden. Bitte erst einen Kunden anlegen."
+      redirect_to new_customer_path
+    end
+  end
+  
 end

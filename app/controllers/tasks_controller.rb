@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
+  before_filter :login_required
   before_filter :create_parent_tasks_list, :only => [:new, :edit]
+  before_filter :project_required, :only => [:new, :create]
   
   # GET /tasks
   # GET /tasks.xml

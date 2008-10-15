@@ -2,6 +2,7 @@ class WorktimesController < ApplicationController
   before_filter :login_required
   before_filter :pre_update, :only => [:update]
   before_filter :pre_create, :only => [:create]
+  before_filter :project_required, :only => [:new, :create]
   
   # GET /worktimes
   # GET /worktimes.xml

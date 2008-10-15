@@ -3,9 +3,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tasks
 
-  map.resources :projects, :collection => { :active => :get, :finished => :get }
+  map.resources :projects, :collection => { :active => :get, :finished => :get } do |project|
+    project.resources :tasks do |task|
+      task.resources :worktimes
+    end
+  end
 
-  map.resources :customers
+  map.resources :customers, :has_many => [:projects]
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
