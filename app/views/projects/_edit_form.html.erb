@@ -27,8 +27,10 @@
             <fieldset>
               <legend>Zuständige Mitarbeiter</legend>
               <% User.find(:all, :order => "name ASC").each do |user| %>
-                <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
-                <%= user.name %>
+                <div>
+                  <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
+                  <%= user.name %>
+                </div>
               <% end %>
           	</fieldset>
           </p>
