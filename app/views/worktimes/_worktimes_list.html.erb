@@ -12,7 +12,7 @@
   <% for worktime in @worktimes %>
     <tr>
       <td><%= link_to h(worktime.comment.words(10)), project_worktimes_path(worktime.project) %></td>
-      <td><%= worktime.tasks.collect{|t| link_to h(t.name), t}.join(",<br>") %></td>
+      <td><%= worktime.tasks.collect{|t| link_to h(t.name), project_task_path(t.project, t)}.join(",<br>") %></td>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
       <td><%=h worktime.start_time %></td>
       <td><%=h worktime.end_time %></td>
