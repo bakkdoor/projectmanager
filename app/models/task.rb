@@ -60,4 +60,8 @@ class Task < ActiveRecord::Base
       end
     end
   end
+  
+  def finished?
+    self.status == 100
+  end
 end

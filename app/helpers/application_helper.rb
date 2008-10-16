@@ -60,3 +60,12 @@ end
 class String
   include StringEnhancement # see /lib
 end
+
+class Time
+  include TimeEnhancement # see /lib
+end
+
+class Date
+  include TimeEnhancement # see /lib
+end
+

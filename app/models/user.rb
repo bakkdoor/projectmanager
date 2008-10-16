@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     "#{self.first_name[0..0]}. #{self.last_name}"
   end
   
+  def tasks_by_project(project)
+    self.tasks.select{|t| t.project == project}.sort_by(&:due_date)
+  end
+  
   protected
 
 end

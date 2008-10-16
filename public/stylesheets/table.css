@@ -36,3 +36,24 @@
 .content_table .totals:hover{
   background-color: #8f8;
 }
+
+.info_table table{
+  padding-top: 1em;
+  width: 100%;
+}
+
+.info_table tr{
+  background-color: #eee;
+}
+
+.info_table .table_header:hover{
+  background-color: #ddd;
+}
+
+.info_table tr:hover{
+  background-color: lightblue;
+}
+
+.info_table td{
+  padding: 0.5em;
+}

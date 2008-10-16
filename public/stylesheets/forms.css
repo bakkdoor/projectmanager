@@ -10,3 +10,11 @@
 .data_form textarea{
   font-size: 100%;
 }
+
+.edit_form label{
+  font-weight: bold;
+}
+
+.edit_form legend{
+  font-weight: bold;
+}

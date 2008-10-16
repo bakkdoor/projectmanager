@@ -1,23 +1,43 @@
-<% form_for(@project) do |f| %>
-  <%= f.error_messages %>
+<div class="edit_form">
+  <% form_for(@project) do |f| %>
+    <%= f.error_messages %>
+    <table>
+      <tr>
+        <td width="50%" style="padding-right: 5em">
+          <p>
+            <%= f.label :customer_id, "Kunde" %><br />
+            <%= collection_select(:project, :customer_id , @customers, :id, :name) %>
+          </p>
 
-  <p>
-    <%= f.label :customer_id, "Kunde" %><br />
-    <%= collection_select(:project, :customer_id , @customers, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :due_date, "Fällig am" %><br />
-    <%= f.date_select :due_date, :start_year => Time.now.year, :end_year => Time.now.year + 10, :order => [:day, :month, :year], :use_month_names => german_months %>
-  </p>
-  <p>
-    <%= f.label :finished, "Projekt beendet?" %><br />
-    <%= f.check_box :finished %>
-  </p>
-  <p>
-    <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
-  </p>
-<% end %>
+          <p>
+            <%= f.label :name %><br />
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.label :due_date, "Fällig am" %><br />
+            <%= f.date_select :due_date, :start_year => Time.now.year, :end_year => Time.now.year + 10, :order => [:day, :month, :year], :use_month_names => german_months %>
+          </p>
+          <p>
+            <%= f.label :finished, "Projekt beendet?" %><br />
+            <%= f.check_box :finished %>
+          </p>
+        </td>
+        <td valign="top">
+          <p>
+            <fieldset>
+              <legend>Zuständige Mitarbeiter</legend>
+              <% User.find(:all, :order => "name ASC").each do |user| %>
+                <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
+                <%= user.name %>
+              <% end %>
+          	</fieldset>
+          </p>
+        </td>
+      </tr>
+    </table>
+    
+    <p>
+      <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
+    </p>
+  <% end %>
+</div>

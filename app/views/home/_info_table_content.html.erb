@@ -1,0 +1,27 @@
+<% projects.sort_by(&:due_date).each do |project| %>
+  <tr style="<%= status_background(project) %>">
+    <td id="user_projects">
+      <%= project.finished ? icon_tag('tick') : "" %>
+      <%= link_to project.name, project %> - <%= project.due_date.german_time %>
+
+    </td>
+
+    <td id="user_tasks">
+      <% @user.tasks_by_project(project).each do |task| %>
+        <div <%= "style=background-color:red" if task.due_date == 1.day.from_now %>>
+          <%= task.finished? ? icon_tag('tick') : "" %>
+          <%= link_to task.name, project_task_path(project, task) %> <%= "(#{Status.find(task.status)})" unless task.finished? %>
+          - <%= task.due_date.german_time %>
+        </div>
+      <% end %>
+    </td>
+
+    <td id="user_last_worktimes">
+      <% project.recent_worktimes_by(@user).each do |wt| %>
+        <div>
+          <%= wt.end_time.german_time(:long) %> : <%= link_to wt.comment.words(3), project_worktime_path(project, wt) %>
+        </div>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

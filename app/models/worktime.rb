@@ -8,7 +8,7 @@ class Worktime < ActiveRecord::Base
   validates_presence_of :start_time
   validates_presence_of :end_time
   
-  named_scope :recent, lambda { |date| {:conditions => ["updated_at > ?", date]} }
+  named_scope :new, lambda { |date| {:conditions => ["updated_at > ?", date]} }
   
   def validate()
      errors.add_to_base("Dauer muss größer 0 Minuten sein.") if self.start_time >= self.end_time

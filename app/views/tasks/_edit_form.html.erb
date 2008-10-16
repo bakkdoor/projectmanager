@@ -1,32 +1,53 @@
-<% form_for(@task, :url => project_task_path(@task.project, @task)) do |f| %>
-  <%= f.error_messages %>
+<div class="edit_form">
+  <% form_for(@task, :url => project_task_path(@task.project, @task)) do |f| %>
+    <%= f.error_messages %>
+    <table>
+      <tr>
+        <td width="50%" style="padding-right: 5em">
+          <p>
+            <%= f.label :project_id, "Projekt" %><br />
+            <%= f.hidden_field :project_id %>
+            <strong><%= @task.project.name %></strong>
+          </p>
+          <p>
+            <%= f.label :parent_id, "Übergeordnete Aufgabe" %><br />
+            <%= collection_select(:task, :parent_id , @tasks, :id, :name) %>
+          </p>
+          <p>
+            <%= f.label :name %><br />
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.label :status %><br />
+            <%= collection_select(:task, :status , Status.find(:all), :percentage, :to_s) %>
+          </p>
+          <p>
+            <%= f.label :due_date, "Fällig am" %><br />
+            <%= f.date_select :due_date %>
+          </p>
+        </td>
+          
+        <td valign="top">
+          <p>
+            <fieldset>
+              <legend>Zuständige Mitarbeiter</legend>  
+              <% User.find(:all, :order => "name ASC").each do |user| %>
+                <%= check_box_tag "task[user_ids][]", user.id, @task.users.include?(user) %>
+                <%= user.name %>
+              <% end %>
+          	</fieldset>
+          </p>
+          <p>
+            <%= f.label :comment, "Kommentar / Beschreibung" %><br />
+            <%= f.text_area :comment, :rows => 13 %>
+          </p>
+        </td>
+      </tr>
+    </table>
+    
 
-  <p>
-    <%= f.label :project_id, "Projekt" %><br />
-    <%= f.hidden_field :project_id %>
-    <strong><%= @task.project.name %></strong>
-  </p>
-  <p>
-    <%= f.label :parent_id, "Übergeordnete Aufgabe" %><br />
-    <%= collection_select(:task, :parent_id , @tasks, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= collection_select(:task, :status , Status.find(:all), :percentage, :to_s) %>
-  </p>
-  <p>
-    <%= f.label :due_date, "Fällig am" %><br />
-    <%= f.date_select :due_date %>
-  </p>
-  <p>
-    <%= f.label :comment, "Kommentar / Beschreibung" %><br />
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
-  </p>
-<% end %>
+    <p>
+      <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
+    </p>
+  <% end %>
+</div>

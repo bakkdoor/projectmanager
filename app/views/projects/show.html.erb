@@ -1,7 +1,7 @@
 <div class="project_stats">
   <div class="subtitle">Neue Arbeitszeiten seit letztem Login:</div>
   <div class="project_stats_content">
-    <% @project.worktimes.recent.each do |wt| %>
+    <% @project.worktimes.new.each do |wt| %>
       <%= link_to h(wt.comment.words(3)), project_worktime_path(@project, wt) %>
     <% end %>
   </div>
