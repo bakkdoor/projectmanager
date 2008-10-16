@@ -39,19 +39,24 @@ class WorktimesController < ApplicationController
   # GET /worktimes/new.xml
   def new
     @project = Project.find(params[:project_id])
-    @worktime = Worktime.new(:project_id => @project.id)
-    @tasks = [Task.new(:name => "Keine", :id => nil)]
-    @tasks += Task.children
+    unless @project.finished
+      @worktime = Worktime.new(:project_id => @project.id)
+      @tasks = [Task.new(:name => "Keine", :id => nil)]
+      @tasks += Task.children
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @worktime }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @worktime }
+      end
+    else
+      flash[:error] = "Projekt wurde beendet. Ist derzeit nicht aktiv."
+      redirect_to project_worktimes_path(@project)
     end
   end
 
   # GET /worktimes/1/edit
   def edit
-    @worktime = Worktime.find(params[:worktime_id])
+    @worktime = Worktime.find(params[:id])
     @tasks = Task.children - @worktime.tasks
   end
 
@@ -67,7 +72,7 @@ class WorktimesController < ApplicationController
     respond_to do |format|
       if @worktime.save
         flash[:notice] = 'Arbeitszeit erfolgreich erstellt.'
-        format.html { redirect_to(@worktime) }
+        format.html { redirect_to(project_worktime_path(@worktime.project, @worktime)) }
         format.xml  { render :xml => @worktime, :status => :created, :location => @worktime }
       else
         format.html { render :action => "new" }

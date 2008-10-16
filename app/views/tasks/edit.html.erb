@@ -1,4 +1,4 @@
 <h1>Aufgabe bearbeiten</h1>
 <%= render :partial => "edit_form", :object => @task %>
 <%= link_to 'Anzeigen', project_task_path(@task.project, @task) %> |
-<%= link_to 'Zur&uuml;ck', project_tasks_path %>
+<%= link_to 'Zur&uuml;ck', :back %>

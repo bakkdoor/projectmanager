@@ -1,5 +1,9 @@
 <div class="title">
-  <h1>Projekt: <%= h @project.name %></h1>
+  <h1>
+    Projekt: <%= h @project.name %>
+    <%= link_to icon_tag('layout_edit'), edit_project_path(@project) %>
+    <%= link_to icon_tag('delete'), @project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{@project.name}' löschen wollen?", :method => :delete %>
+  </h1>  
 </div>
 
 <p>
@@ -30,4 +34,4 @@
 
 
 <%= link_to 'Bearbeiten', edit_project_path(@project) %> |
-<%= link_to 'Zur&uuml;ck', projects_path %>
+<%= link_to 'Zur&uuml;ck', :back %>

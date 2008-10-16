@@ -1,4 +1,4 @@
 <h1>Arbeitszeit bearbeiten</h1>
 <%= render :partial => "edit_form", :object => @worktime %>
-<%= link_to 'Anzeigen', @worktime %> |
-<%= link_to 'Zur&uuml;ck', project_worktimes_path(@project) %>
+<%= link_to 'Anzeigen', project_worktime_path(@worktime.project, @worktime) %> |
+<%= link_to 'Zur&uuml;ck', :back %>

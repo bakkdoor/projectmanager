@@ -27,7 +27,5 @@
   <%=h @worktime.comment %>
 </p>
 
-<% if @project %>
-  <%= link_to 'Bearbeiten', edit_worktime_path(@worktime) %> |
-<% end %>
-<%= link_to 'Zur&uuml;ck', worktimes_path %>
+<%= link_to 'Bearbeiten', edit_project_worktime_path(@worktime.project, @worktime) %> |
+<%= link_to 'Zur&uuml;ck', :back %>

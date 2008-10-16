@@ -2,3 +2,11 @@
   color: blue;
   font-style: italic;
 }
+
+.data_form input{
+  font-size: 100%;
+}
+
+.data_form textarea{
+  font-size: 100%;
+}
