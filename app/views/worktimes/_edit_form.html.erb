@@ -6,10 +6,9 @@
   </p>
   <p>
     <%= f.label :tasks, "Aufgaben" %><br />
-    <% if @tasks.size > 0 %>
-      <%= collection_select(:worktime, :tasks, @tasks, :id, :name) %>
-    <% else %>
-      <span class="edit_info">Keine weiteren vorhanden.</div>
+    <% Task.all.each do |task| %>
+    	<%= f.check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
+    	<%= task.name %>
     <% end %>
   </p>
   <p>
