@@ -43,7 +43,7 @@
   <p>
     <b>Arbeitszeiten:</b><br/>
     <%= @task.worktimes.sort_by{|wt| wt.user.name}.collect do |wt| 
-          link_to "#{wt.user.name}: #{wt.comment.words(3)}", wt
+          link_to "#{wt.user.name}: #{wt.comment.words(3)}", project_worktime_path wt.project, wt
         end.join("<br/>") 
     %>
   </p>
