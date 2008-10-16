@@ -6,12 +6,21 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = Task.find(:all)
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @tasks = @project.tasks
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @tasks }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @tasks }
+      end
+    else
+      redirect_to :action => :all
     end
+  end
+  
+  def all
+    @tasks = Task.all
   end
 
   # GET /tasks/1
@@ -28,8 +37,8 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @task = Task.new
-    @projects = Project.active
+    @project = Project.find(params[:project_id])
+    @task = Task.new(:project_id => @project.id)
     
     respond_to do |format|
       format.html # new.html.erb
@@ -68,7 +77,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
         flash[:notice] = 'Aufgabe wurde erfolgreich aktualisiert.'
-        format.html { redirect_to(@task) }
+        format.html { redirect_to(project_task_path(@task.project, @task)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,7 +93,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tasks_url) }
+      format.html { redirect_to(project_tasks_url(@task.project)) }
       format.xml  { head :ok }
     end
   end

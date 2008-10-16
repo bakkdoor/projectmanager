@@ -51,8 +51,7 @@ class WorktimesController < ApplicationController
 
   # GET /worktimes/1/edit
   def edit
-    @project = Project.find(params[:project_id])
-    @worktime = Worktime.find(params[:id])
+    @worktime = Worktime.find(params[:worktime_id])
     @tasks = Task.children - @worktime.tasks
   end
 
@@ -102,7 +101,7 @@ class WorktimesController < ApplicationController
     @worktime.destroy
 
     respond_to do |format|
-      format.html { redirect_to(worktimes_url) }
+      format.html { redirect_to(project_worktimes_url) }
       format.xml  { head :ok }
     end
   end

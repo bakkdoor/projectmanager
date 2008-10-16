@@ -2,12 +2,12 @@
 module ApplicationHelper
   def menu_items
     menu_items = []
-    menu_items << {:title => "Home", :icon => "house", :controller => :home}
+    menu_items << {:title => "Home", :icon => "house", :url => root_path}
     if logged_in?
-      menu_items << {:title => "Kunden", :icon => "user_suit", :controller => :customers}
-      menu_items << {:title => "Projekte", :icon => "layout_content", :controller => :projects}
-      menu_items << {:title => "Aufgaben", :icon => "table", :controller => :tasks}
-      menu_items << {:title => "Arbeitszeiten", :icon => "time", :controller => :worktimes}
+      menu_items << {:title => "Kunden", :icon => "user_suit", :url => customers_path}
+      menu_items << {:title => "Projekte", :icon => "layout_content", :url => projects_path}
+      menu_items << {:title => "Aufgaben", :icon => "table", :url => all_tasks_path}
+      menu_items << {:title => "Arbeitszeiten", :icon => "time", :url => all_worktimes_path}
       
       if current_user.admin?
         menu_items << {:title => "Mitarbeiter", :icon => "group", :controller => :users}
@@ -28,7 +28,7 @@ module ApplicationHelper
         title += " #{item[:title]}"
       end
       
-      @output << (link_to title, {:controller => item[:controller], :action => :index}, {:class => link_style})
+      @output << (link_to title, item[:url], {:class => link_style})
       #@output << " | "
     end
     @output.join(" | ")

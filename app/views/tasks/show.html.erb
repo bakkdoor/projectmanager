@@ -9,7 +9,7 @@
 <% if @task.parent %>
   <p>
     <b>Übergeordnete Aufgabe:</b>
-    <%= link_to h(@task.parent.name), @task.parent %>
+    <%= link_to h(@task.parent.name), project_task_path(@task.parent.project, @task.parent) %>
   </p>
 <% end %>
 <p>
@@ -35,7 +35,7 @@
 <% if @task.children.size > 0 %>
   <p>
     <b>Untergeordnete Aufgaben:</b><br/>
-    <%= @task.children.collect{|t| link_to h(t.name), t}.join("<br/>") %>
+    <%= @task.children.collect{|t| link_to h(t.name), project_task_path(t.project, t)}.join("<br/>") %>
   </p>
 <% end %>
 
@@ -49,5 +49,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Bearbeiten', edit_task_path(@task) %> |
-<%= link_to 'Zur&uuml;ck', tasks_path %>
+<%= link_to 'Bearbeiten', edit_project_task_path(@task.project, @task) %> |
+<%= link_to 'Zur&uuml;ck', project_tasks_path %>
