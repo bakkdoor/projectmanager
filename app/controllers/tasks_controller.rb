@@ -60,7 +60,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         flash[:notice] = 'Aufgabe wurde erfolgreich erstellt.'
-        format.html { redirect_to(tasks_url) }
+        format.html { redirect_to(project_tasks_url) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }

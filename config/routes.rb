@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     project.resources :worktimes
   end
-
+  
   map.resources :customers, :has_many => [:projects]
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

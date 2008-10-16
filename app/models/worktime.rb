@@ -34,4 +34,8 @@ class Worktime < ActiveRecord::Base
   def editable_by?(user)
     user.is_admin || self.user == user
   end
+  
+  def remove_from_task(task)
+    self.tasks.remove(task)
+  end
 end
