@@ -14,7 +14,15 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   # authentication system überall verfügbar machen
-  include AuthenticatedSystem
+  include AuthenticatedSystem  
+  
+  def current_project
+    if params[:project_id]
+      Project.find(params[:project_id])
+    else
+      nil
+    end
+  end
   
   def admin_required
     unless current_user.is_admin

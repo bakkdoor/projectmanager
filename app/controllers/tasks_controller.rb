@@ -3,11 +3,13 @@ class TasksController < ApplicationController
   before_filter :create_parent_tasks_list, :only => [:new, :edit]
   before_filter :project_required, :only => [:new, :create]
   
+  layout 'projects'
+  
   # GET /tasks
   # GET /tasks.xml
   def index
     if params[:project_id]
-      @project = Project.find(params[:project_id])
+      @project = current_project
       @tasks = @project.tasks
 
       respond_to do |format|
@@ -37,7 +39,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @project = Project.find(params[:project_id])
+    @project = current_project
     @task = Task.new(:project_id => @project.id)
     
     respond_to do |format|

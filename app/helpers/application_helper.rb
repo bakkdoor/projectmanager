@@ -1,16 +1,17 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  
   def menu_items
     menu_items = []
     menu_items << {:title => "Home", :icon => "house", :url => root_path}
     if logged_in?
-      menu_items << {:title => "Kunden", :icon => "user_suit", :url => customers_path}
-      menu_items << {:title => "Projekte", :icon => "layout_content", :url => projects_path}
-      menu_items << {:title => "Aufgaben", :icon => "table", :url => all_tasks_path}
-      menu_items << {:title => "Arbeitszeiten", :icon => "time", :url => all_worktimes_path}
+      menu_items << {:title => "Kunden", :icon => "user_suit", :url => customers_path, :controller => :customers}
+      menu_items << {:title => "Projekte", :icon => "layout_content", :url => projects_path, :controller => :projects}
+      menu_items << {:title => "Aufgaben", :icon => "table", :url => all_tasks_path, :controller => :tasks}
+      menu_items << {:title => "Arbeitszeiten", :icon => "time", :url => all_worktimes_path, :controller => :worktimes}
       
       if current_user.admin?
-        menu_items << {:title => "Mitarbeiter", :icon => "group", :controller => :users}
+        menu_items << {:title => "Mitarbeiter", :icon => "group", :url => users_path, :controller => :users}
       end
     end
     
@@ -20,7 +21,7 @@ module ApplicationHelper
   def menu_links
     @output = []
     menu_items.each do |item|
-      link_style = params[:controller].to_s == item[:controller].to_s ? "active_link" : ""
+      link_style =  params[:controller].to_s == item[:controller].to_s ? "active_link" : ""
       
       title = item[:title]
       if(item[:icon])

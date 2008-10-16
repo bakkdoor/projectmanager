@@ -85,6 +85,22 @@ a:hover { color: #fff; background-color:#000; }
   color:#fff;
 }
 
+.sub_menu{
+  background-color: #cfc;
+  text-align: left;
+  padding-left: 0.5em;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.project_stats{
+  padding-top: 2em;
+}
+
+.project_stats_content{
+  
+}
+
 .footer{
   bottom: 10px;
   left: 30%;

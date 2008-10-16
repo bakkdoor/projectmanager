@@ -4,11 +4,13 @@ class WorktimesController < ApplicationController
   before_filter :pre_create, :only => [:create]
   before_filter :project_required, :only => [:new, :create]
   
+  layout 'projects'
+  
   # GET /worktimes
   # GET /worktimes.xml
   def index
     if params[:project_id]
-      @project = Project.find(params[:project_id])
+      @project = current_project
       @worktimes = @project.worktimes
       
       respond_to do |format|
@@ -38,7 +40,7 @@ class WorktimesController < ApplicationController
   # GET /worktimes/new
   # GET /worktimes/new.xml
   def new
-    @project = Project.find(params[:project_id])
+    @project = current_project
     unless @project.finished
       @worktime = Worktime.new(:project_id => @project.id)
       @tasks = [Task.new(:name => "Keine", :id => nil)]
@@ -65,14 +67,14 @@ class WorktimesController < ApplicationController
   def create
     @worktime = Worktime.new(params[:worktime])
     @worktime.user = current_user
-    @worktime.project = Project.find(params[:project_id])
+    @worktime.project = current_project
     #@worktime.tasks += @tasks # ausgewählte tasks zuordnen
     check_length # evtl. laenge anpassen
     
     respond_to do |format|
       if @worktime.save
         flash[:notice] = 'Arbeitszeit erfolgreich erstellt.'
-        format.html { redirect_to(project_worktime_path(@worktime.project, @worktime)) }
+        format.html { redirect_to(project_worktimes_path(@worktime.project)) }
         format.xml  { render :xml => @worktime, :status => :created, :location => @worktime }
       else
         format.html { render :action => "new" }

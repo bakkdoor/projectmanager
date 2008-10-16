@@ -19,6 +19,18 @@
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
+<% if @project %>
+  <div class="title">
+    <h1>
+      Projekt: <%= h @project.name %>
+      <%= link_to icon_tag('layout_edit'), edit_project_path(@project) %>
+      <%= link_to icon_tag('delete'), @project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{@project.name}' löschen wollen?", :method => :delete %>
+    </h1>  
+  </div>
+  
+  <%= render :partial => "projects/sub_menu" %>
+<% end %>
+
 <%= yield  %>
 
 <div class="footer">
