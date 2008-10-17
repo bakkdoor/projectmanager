@@ -22,7 +22,7 @@
 <% if current_project # nur falls projekt vorhanden und in db gespeichert %>
   <div class="title">
     <h1>
-      Projekt: <%= h current_project.name %>
+      Projekt: <%= link_to h(current_project.name), current_project %>
       <%= link_to icon_tag('layout_edit'), edit_project_path(current_project) %>
       <%= link_to icon_tag('delete'), current_project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{current_project.name}' löschen wollen?", :method => :delete %>
     </h1>  

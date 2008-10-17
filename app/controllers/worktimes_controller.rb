@@ -119,7 +119,7 @@ class WorktimesController < ApplicationController
     @project = current_project
     if request.post?
       @worktime = Worktime.new(:start_time => Time.now,
-                                :end_time => 1.minute.from_now,
+                                :end_time => Time.now,
                                 :comment => "")
       @worktime.project = @project
       @worktime.user = current_user
