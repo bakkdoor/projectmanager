@@ -41,7 +41,7 @@
       <td>
         <% if current_project %>
           <%= 
-            User.all.collect do |u| 
+            current_project.users.collect do |u| 
               "#{link_to u.short_name, u} : #{u.worktimes_by_project(current_project).size} AZ"
             end.join("<br/>") 
           %>
