@@ -7,8 +7,10 @@
   <p>
     <%= f.label :tasks, "Aufgaben" %><br />
     <% @worktime.project.tasks.each do |task| %>
-    	<%= check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
-    	<%= task.name %>
+      <div>
+      	<%= check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
+      	<%= task.name %>
+      </div>
     <% end %>
   </p>
   <p>
