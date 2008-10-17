@@ -8,7 +8,7 @@
   <div class="subtitle">
     <strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
   </div>
-  <%= render :partial => "worktimes_list", :locals => {:worktimes => project.worktimes} %>
+  <%= render :partial => "worktimes_list", :locals => {:worktimes => project.worktimes, :project => project} %>
   <br/>
 <% end %>
 <br />

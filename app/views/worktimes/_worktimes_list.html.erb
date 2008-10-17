@@ -47,8 +47,8 @@
           %>
         <% else %>
           <%= 
-            User.all.collect do |u|
-              "#{link_to u.short_name, u} : #{u.worktimes_by_project(worktimes.first.project).size} AZ"
+            project.users.collect do |u|
+              "#{link_to u.short_name, u} : #{u.worktimes_by_project(project).size} AZ"
             end
            %>
         <% end %>
