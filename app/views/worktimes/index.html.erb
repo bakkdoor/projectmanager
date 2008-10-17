@@ -9,8 +9,6 @@
     <span id="play_pause_button">
       <%= play_pause_button(@project) %>
     </span>
-    
-    ID:<%= session[:new_worktime_id] %>
 </div>
 
 <%= render :partial => "worktimes_list", :locals => {:worktimes => @project.worktimes} %>
