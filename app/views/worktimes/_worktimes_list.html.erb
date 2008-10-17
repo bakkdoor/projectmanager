@@ -9,28 +9,54 @@
       <th width="10%"><%= icon_tag 'time' %> Dauer</th>
     </tr>
 
-  <% for worktime in @worktimes %>
+  <% for worktime in worktimes %>
     <tr>
       <td><%= link_to h(worktime.comment.words(10)), project_worktime_path(worktime.project, worktime) %></td>
       <td><%= worktime.tasks.collect{|t| link_to h(t.name), project_task_path(t.project, t)}.join(",<br>") %></td>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
-      <td><%=h worktime.start_time %></td>
-      <td><%=h worktime.end_time %></td>
-      <td><%=h worktime.length %> h</td>
+      <td><%=h worktime.start_time.german_time(:long) %></td>
+      <td><%=h worktime.end_time.german_time(:long) %></td>
+      <td>
+        <%= worktime.length < 1.0 ? "#{worktime.length_in_minutes} min" : "#{worktime.length} h" %>
+      </td>
+      
       <% if @project %>
-        <td><%= link_to icon_tag('clock_edit'), edit_project_worktime_path(worktime.project, worktime) %></td>
-        <td><%= link_to icon_tag('delete'), project_worktime_path(worktime.project, worktime), :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?", :method => :delete %></td>
+        <td>
+          <%= link_to icon_tag('clock_edit'), edit_project_worktime_path(worktime.project, worktime) %>
+        </td>
+        <td>
+          <%= link_to icon_tag('delete'), 
+                      project_worktime_path(worktime.project, worktime), 
+                      :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?",
+                      :method => :delete %>
+        </td>
       <% end %>
+      
     </tr>
   <% end %>
-  <% if @worktimes.size > 0 %>
+  <% if worktimes.size > 0 %>
     <tr class="totals">
       <td>SUMME</td>
       <td></td>
-      <td><%= User.all.collect{|u| "#{u.short_name}: #{u.worktimes.size}"}.join("<br/>") %></td>
+      <td>
+        <% if current_project %>
+          <%= 
+            User.all.collect do |u| 
+              "#{link_to u.short_name, u} : #{u.worktimes_by_project(current_project).size} AZ"
+            end.join("<br/>") 
+          %>
+        <% else %>
+          <%= 
+            User.all.collect do |u|
+              "#{link_to u.short_name, u} : #{u.worktimes_by_project(worktimes.first.project).size} AZ"
+            end
+           %>
+        <% end %>
+        
+      </td>
       <td></td>
       <td></td>
-      <td><%=h @worktimes.collect{|wt| wt.length}.sum %> h</td>
+      <td><%=h worktimes.collect{|wt| wt.length}.sum %> h</td>
     </tr>
   <% end %>
   </table>

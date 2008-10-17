@@ -80,3 +80,6 @@ class Date
   include TimeEnhancement # see /lib
 end
 
+class Float
+  include FloatEnhancement # see /lib
+end

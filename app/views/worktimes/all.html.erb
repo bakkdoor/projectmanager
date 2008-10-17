@@ -5,7 +5,10 @@
 </div>
 
 <% Project.all.each do |project| %>
-  <strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
+  <div class="subtitle">
+    <strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
+  </div>
   <%= render :partial => "worktimes_list", :locals => {:worktimes => project.worktimes} %>
+  <br/>
 <% end %>
 <br />

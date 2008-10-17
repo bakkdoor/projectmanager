@@ -23,7 +23,6 @@ class WorktimesController < ApplicationController
   end
   
   def all
-    @worktimes = Worktime.all
   end
 
   # GET /worktimes/1
@@ -93,7 +92,7 @@ class WorktimesController < ApplicationController
         check_length # evtl. laenge anpassen
         
         flash[:notice] = 'Arbeitszeit erfolgreich aktualisiert.'
-        format.html { redirect_to(project_worktime_path(@worktime.project, @worktime)) }
+        format.html { redirect_to(project_worktimes_path(@worktime.project)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -109,7 +108,7 @@ class WorktimesController < ApplicationController
     @worktime.destroy
 
     respond_to do |format|
-      format.html { redirect_to(project_worktimes_url) }
+      format.html { redirect_to(project_worktimes_path(@worktime.project)) }
       format.xml  { head :ok }
     end
   end

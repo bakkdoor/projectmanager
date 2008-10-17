@@ -23,10 +23,14 @@ class Worktime < ActiveRecord::Base
   
   def length
     if self.end_time && self.start_time
-      ((self.end_time - self.start_time) / 3600)
+      (((self.end_time - self.start_time) / 3600)).precision(2)
     else
       1 # fall noch nichts angegeben, standardmäßig 1 stunde
     end
+  end
+  
+  def length_in_minutes
+    ((self.end_time - self.start_time) / 60).precision(2)
   end
   
   def viewable_by?(user)

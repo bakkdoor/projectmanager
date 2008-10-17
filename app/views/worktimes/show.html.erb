@@ -9,12 +9,12 @@
 
 <p>
   <b>Startzeit:</b>
-  <%=h @worktime.start_time %>
+  <%=h @worktime.start_time.german_time(:long) %>
 </p>
 
 <p>
   <b>Endzeit:</b>
-  <%=h @worktime.end_time %>
+  <%=h @worktime.end_time.german_time(:long) %>
 </p>
 
 <p>

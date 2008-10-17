@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
     self.tasks.select{|t| t.project == project}.sort_by(&:due_date)
   end
   
+  def worktimes_by_project(project)
+    self.worktimes.select{|wt| wt.project == project}
+  end
+  
   protected
 
 end
