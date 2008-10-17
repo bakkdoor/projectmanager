@@ -7,7 +7,7 @@
           <p>
             <%= f.label :project_id, "Projekt" %><br />
             <%= f.hidden_field :project_id %>
-            <strong><%= @task.project.name %></strong>
+            <%= link_to @task.project.name, @task.project %>
           </p>
           <p>
             <%= f.label :parent_id, "Übergeordnete Aufgabe" %><br />
@@ -23,11 +23,11 @@
           </p>
           <p>
             <%= f.label :due_date, "Fällig am" %><br />
-            <%= f.date_select :due_date %>
+            <%= f.date_select :due_date, :order => [:day, :month, :year], :use_month_names => german_months %>
           </p>
         </td>
           
-        <td valign="top">
+        <td>
           <p>
             <fieldset>
               <legend>Zuständige Mitarbeiter</legend>  

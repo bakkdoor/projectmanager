@@ -15,7 +15,7 @@
       <tr>
         <td><%= link_to h(user.name), user %></td>
         <td><%= mail_to h(user.email), user.email %></td>
-        <td><%= user.is_admin ? icon_tag('tick') : icon_tag('cancel') %></td>
+        <td><%= user.is_admin ? icon_tag('tick') : icon_tag('cross') %></td>
       </tr>
     <% end %>
   </table>

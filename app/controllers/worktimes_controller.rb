@@ -42,7 +42,8 @@ class WorktimesController < ApplicationController
   def new
     @project = current_project
     unless @project.finished
-      @worktime = Worktime.new(:project_id => @project.id)
+      @worktime = Worktime.new
+      @worktime.project = @project
       @tasks = [Task.new(:name => "Keine", :id => nil)]
       @tasks += Task.children
 
@@ -92,7 +93,7 @@ class WorktimesController < ApplicationController
         check_length # evtl. laenge anpassen
         
         flash[:notice] = 'Arbeitszeit erfolgreich aktualisiert.'
-        format.html { redirect_to(@worktime) }
+        format.html { redirect_to(project_worktime_path(@worktime.project, @worktime)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -113,8 +114,53 @@ class WorktimesController < ApplicationController
     end
   end
   
+  # neue arbeitszeit starten (via play-button)
+  def start
+    @project = current_project
+    if request.post?
+      @worktime = Worktime.new(:start_time => Time.now,
+                                :end_time => 1.minute.from_now,
+                                :comment => "")
+      @worktime.project = @project
+      @worktime.user = current_user
+      
+      if @worktime.save
+        session[:new_worktime_id] = @worktime.id
+        flash[:notice] = "Neue Arbeitszeit wurde gestartet."
+      else
+        flash[:error] = "Fehler beim erstellen der Neuen Arbeitszeit."
+      end
+    end
+    
+    redirect_to project_worktimes_path(@project)
+  end
   
+  def stop
+    if request.post?
+      if session[:new_worktime_id]
+        if Worktime.exists?(session[:new_worktime_id])
+          wt = Worktime.find(session[:new_worktime_id])
+          if wt
+            clear_session(:new_worktime_id)
+            wt.end_time = Time.now # aktuelle zeit als endzeit setzen
+            wt.save
+            flash[:notice] = "Arbeitszeit wurde beendet. Bitte eine Beschreibung angeben."
+            redirect_to edit_project_worktime_url(wt.project, wt)
+          end
+        else
+          clear_session(:new_worktime_id)
+          flash[:error] = "Es scheint keine Arbeitszeit am laufen zu sein."
+          redirect_to project_worktimes_path(current_project)
+        end
+      end
+    end
+  end
+    
   protected
+  
+  def clear_session(session_key)
+    session[session_key] = nil
+  end
   
   def pre_update
     @worktime = Worktime.find(params[:id])

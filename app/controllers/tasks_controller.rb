@@ -79,7 +79,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
         flash[:notice] = 'Aufgabe wurde erfolgreich aktualisiert.'
-        format.html { redirect_to(project_task_path(@task.project, @task)) }
+        format.html { redirect_to(project_tasks_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -104,7 +104,7 @@ class TasksController < ApplicationController
   
   def create_parent_tasks_list
     @tasks = [Task.new(:name => "Keine", :id => nil)]
-    @tasks += Task.find(:all)
+    @tasks += current_project.tasks
     
     if params[:id]
       @tasks -= [Task.find(params[:id])] # alle tasks ausser aktuellem

@@ -19,12 +19,12 @@
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
-<% if @project %>
+<% if current_project # nur falls projekt vorhanden und in db gespeichert %>
   <div class="title">
     <h1>
-      Projekt: <%= h @project.name %>
-      <%= link_to icon_tag('layout_edit'), edit_project_path(@project) %>
-      <%= link_to icon_tag('delete'), @project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{@project.name}' löschen wollen?", :method => :delete %>
+      Projekt: <%= h current_project.name %>
+      <%= link_to icon_tag('layout_edit'), edit_project_path(current_project) %>
+      <%= link_to icon_tag('delete'), current_project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{current_project.name}' löschen wollen?", :method => :delete %>
     </h1>  
   </div>
   

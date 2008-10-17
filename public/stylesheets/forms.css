@@ -18,3 +18,7 @@
 .edit_form legend{
   font-weight: bold;
 }
+
+.edit_form td{
+  vertical-align: top;
+}

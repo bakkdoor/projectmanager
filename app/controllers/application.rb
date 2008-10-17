@@ -15,14 +15,7 @@ class ApplicationController < ActionController::Base
   
   # authentication system überall verfügbar machen
   include AuthenticatedSystem  
-  
-  def current_project
-    if params[:project_id]
-      Project.find(params[:project_id])
-    else
-      nil
-    end
-  end
+  include ApplicationHelper # u.a. für current_project
   
   def admin_required
     unless current_user.is_admin

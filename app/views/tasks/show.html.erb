@@ -23,6 +23,11 @@
 </p>
 
 <p>
+  <b>Zuständige Mitarbeiter:</b>
+  <%= @task.users.collect{|u| link_to h(u.name), u}.join(", ") %>
+</p>
+
+<p>
   <b>F&auml;llig am:</b>
   <%=h @task.due_date %>
 </p>

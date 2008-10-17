@@ -1,6 +1,17 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  # gibt das aktuelle projekt oder (falls nicht vorhanden) nil zurück.
+  def current_project
+    if params[:project_id]
+      Project.find(params[:project_id])
+    elsif params[:controller].to_s == "projects" && params[:id]
+      Project.find(params[:id])
+    else
+      nil
+    end
+  end
+    
   def menu_items
     menu_items = []
     menu_items << {:title => "Home", :icon => "house", :url => root_path}
