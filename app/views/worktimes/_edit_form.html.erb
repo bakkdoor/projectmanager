@@ -1,47 +1,55 @@
 <div class="edit_form">
   <% form_for(@worktime, :url => project_worktime_path(@worktime.project, @worktime)) do |f| %>
     <%= f.error_messages %>
-    <p>
-      <%= f.label :project, "Projekt" %><br/>
-      <%= @worktime.project.name %>
-    </p>
-    <p>
-      <%= f.label :tasks, "Aufgaben" %><br />
-      <% @worktime.project.tasks.each do |task| %>
-        <div>
-        	<%= check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
-        	<%= task.name %>
-        </div>
-      <% end %>
-    </p>
-    <p>
-      <%= f.label :start_time, "Startzeit" %><br />
-      <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months, :default => 1.hour.ago %>
-    </p>
-    <p id="length">
-      <%= f.label :length, "Dauer" %><br />
-      <%= collection_select(:worktime, :length , work_hours, :to_f, :to_s) %> h <br/><br/>
-      
-      <%= link_to_function "Endzeit manuell eingeben" do |page| 
-            page[:length].hide
-            page[:endtime].show
-            page[:worktime_length].selectedIndex = 0
-          end 
-      %>
-    </p>
-    <p id="endtime" style="display:none">
-      <%= f.label :end_time, "Endzeit" %><br />
-      <%= f.datetime_select :end_time, :order => [:day, :month, :year], :use_month_names => german_months %> <br/><br/>
-      <%= link_to_function "Endzeit berechnen lassen" do |page|
-            page[:length].show
-            page[:endtime].hide
-          end
-      %>
-    </p>
-    <p>
-      <%= f.label :comment, "Kommentar / Beschreibung" %><br />
-      <%= f.text_area :comment %>
-    </p>
+    <table>
+      <tr>
+        <td width="50%" style="padding-right: 5em">
+          <p>
+            <%= f.label :project, "Projekt" %><br/>
+            <%= @worktime.project.name %>
+          </p>
+          <p>
+            <%= f.label :tasks, "Aufgaben" %><br />
+            <% @worktime.project.tasks.each do |task| %>
+              <div>
+              	<%= check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
+              	<%= task.name %>
+              </div>
+            <% end %>
+          </p>
+          <p>
+            <%= f.label :start_time, "Startzeit" %><br />
+            <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months, :default => 1.hour.ago %>
+          </p>
+          <p id="length">
+            <%= f.label :length, "Dauer" %><br />
+            <%= collection_select(:worktime, :length , work_hours, :to_f, :to_s) %> h <br/><br/>
+            
+            <%= link_to_function "Endzeit manuell eingeben" do |page| 
+                  page[:length].hide
+                  page[:endtime].show
+                  page[:worktime_length].selectedIndex = 0
+                end 
+            %>
+          </p>
+          <p id="endtime" style="display:none">
+            <%= f.label :end_time, "Endzeit" %><br />
+            <%= f.datetime_select :end_time, :order => [:day, :month, :year], :use_month_names => german_months %> <br/><br/>
+            <%= link_to_function "Endzeit berechnen lassen" do |page|
+                  page[:length].show
+                  page[:endtime].hide
+                end
+            %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= f.label :comment, "Kommentar / Beschreibung" %><br />
+            <%= f.text_area :comment, :rows => 11 %>
+          </p>
+        </td>
+      </tr>
+    </table>
     <p>
       <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
     </p>

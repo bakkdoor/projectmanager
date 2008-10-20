@@ -1,0 +1,3 @@
+page[:add_worktime_div].replace_html :partial => "edit_form", :object => @worktime
+page[:new_worktime_link].hide
+page.visual_effect :appear, :add_worktime_div

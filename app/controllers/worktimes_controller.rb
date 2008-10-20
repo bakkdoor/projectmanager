@@ -49,6 +49,7 @@ class WorktimesController < ApplicationController
       respond_to do |format|
         format.html # new.html.erb
         format.xml  { render :xml => @worktime }
+        format.js
       end
     else
       flash[:error] = "Projekt wurde beendet. Ist derzeit nicht aktiv."

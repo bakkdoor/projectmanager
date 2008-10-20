@@ -57,9 +57,10 @@ module ApplicationHelper
     hours += (1.0..10.0).step(0.5).to_a
   end
   
-  def icon_tag(icon_name)
+  def icon_tag(icon_name, options = {})
     icon_name += icon_name.include?('png') ? "" : ".png"
-    image_tag("icons/#{icon_name}", :border => 0)
+    options[:border] ||= 0
+    image_tag("icons/#{icon_name}", options)
   end
 end
 

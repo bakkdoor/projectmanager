@@ -3,7 +3,12 @@
 </div>
 
 <div class="action_links">
-  <%= link_to 'Neue Aufgabe anlegen', new_project_task_path %>
+  <%= link_to_remote icon_tag('table_add'),
+    :url => new_project_task_path(:project_id => @project.id),
+    :method => :get, :html => {:id => "new_task_link", :title => "Neue Aufgabe eintragen" } %>
+</div>
+
+<div id="add_task_div" style="display:none">
 </div>
 
 <%= render :partial => "tasks_list", :locals => {:tasks => @tasks} %>
