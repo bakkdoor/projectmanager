@@ -21,7 +21,7 @@
             <%= f.label :start_time, "Startzeit" %><br />
             <%= f.datetime_select :start_time, :order => [:day, :month, :year], :use_month_names => german_months, :default => 1.hour.ago %>
           </p>
-          <p id="length">
+          <p id="length" style="<%= "display:none" if (@worktime.start_time && @worktime.end_time) && @worktime.start_time < @worktime.end_time %>">
             <%= f.label :length, "Dauer" %><br />
             <%= collection_select(:worktime, :length , work_hours, :to_f, :to_s) %> h <br/><br/>
             
@@ -32,7 +32,7 @@
                 end 
             %>
           </p>
-          <p id="endtime" style="display:none">
+          <p id="endtime" style="<%= "display:none" if @worktime.start_time == @worktime.end_time %>">
             <%= f.label :end_time, "Endzeit" %><br />
             <span id="endtime_select">
               <%= f.datetime_select :end_time, 
