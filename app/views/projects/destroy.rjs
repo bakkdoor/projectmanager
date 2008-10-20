@@ -1,4 +1,1 @@
-page.visual_effect :fade, "project_#{@project.id}"
-page[:flash_notice].replace_html flash[:notice]
-page.visual_effect :highlight, :flash_notice
-flash.discard
+rjs_for_destroy_for(page, :project)

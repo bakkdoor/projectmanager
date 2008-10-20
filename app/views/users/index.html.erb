@@ -3,7 +3,10 @@
 </div>
 
 <div class="submenu">
-  <%= link_to "Neuen Mitarbeiter eintragen", new_user_path %>
+  <%= link_to "#{icon_tag('user_add')} Neuen Mitarbeiter eintragen",
+              new_user_path,
+              :class => "action_link"
+  %>
 </div>
 
 <div class="content_table">
@@ -12,10 +15,19 @@
     <th><%= icon_tag 'email' %> Email</th>
     <th><%= icon_tag 'user_red' %> Admin?</th>
     <% @users.each do |user| %>
-      <tr>
+      <tr id="<%= "user_#{user.id}" %>">
         <td><%= link_to h(user.name), user %></td>
         <td><%= mail_to h(user.email), user.email %></td>
         <td><%= user.is_admin ? icon_tag('tick') : icon_tag('cross') %></td>
+        <td><%= link_to icon_tag('user_edit'), edit_user_path(user) %></td>
+       <% if current_user.is_admin %>
+         <td>
+         <%= link_to_remote icon_tag('delete'), 
+             :url => user_path(user), 
+             :confirm => "Sind Sie sicher, dass der Mitarbeiter '#{user.name}' gelöscht werden soll?",
+             :method => :delete %>
+         </td>
+       <% end %>
       </tr>
     <% end %>
   </table>

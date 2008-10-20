@@ -1,7 +1,10 @@
 <h1>Kunden</h1>
 
 <div class="action_links">
-  <%= link_to 'Neuen Kunden anlegen', new_customer_path %>
+  <%= link_to "#{icon_tag('user_add')} Neuen Kunden anlegen",
+              new_customer_path,
+              :class => "action_link"
+  %>
 </div>
 
 <div class="content_table">
@@ -16,7 +19,7 @@
     </tr>
 
   <% for customer in @customers %>
-    <tr>
+    <tr id="<%= "customer_#{customer.id}" %>">
       <td><%= link_to h(customer.name), customer %></td>
       <td><%=h customer.contact %></td>
       <td><%= mail_to h(customer.email), customer.email %></td>
@@ -27,7 +30,10 @@
       <td><%=h customer.telephone %></td>
       <td><%= customer.projects.collect{|p| link_to h(p.name), p}.join(",<br>") %></td>
       <td><%= link_to icon_tag('user_edit'), edit_customer_path(customer) %></td>
-      <td><%= link_to icon_tag('delete'), customer, :confirm => "Sind Sie sicher, dass Sie den Kunden '#{customer.name}' löschen wollen?", :method => :delete %></td>
+      <td><%= link_to_remote icon_tag('delete'),
+              :url => customer_path(customer),
+              :confirm => "Sind Sie sicher, dass Sie den Kunden '#{customer.name}' löschen wollen?",
+              :method => :delete %></td>
     </tr>
   <% end %>
   </table>

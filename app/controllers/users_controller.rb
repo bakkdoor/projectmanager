@@ -90,10 +90,12 @@ class UsersController < ApplicationController
     
     if current_user.can_edit?(@user)
       @user.destroy
-
+      flash[:notice] = "Mitarbeiter erfolgreich gelöscht."
+      
       respond_to do |format|
         format.html { redirect_to(users_url) }
         format.xml  { head :ok }
+        format.js
       end
     else
       not_authorized

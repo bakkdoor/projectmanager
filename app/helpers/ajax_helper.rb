@@ -21,4 +21,11 @@ module AjaxHelper
     page.visual_effect :appear, "#{prefix}_#{object}_div"
     page.visual_effect :appear, "cancel_#{prefix}_#{object}_link"
   end
+  
+  def rjs_for_destroy_for(page, object)
+    page.visual_effect :fade, "#{object}_#{instance_variable_get("@#{object}").id}"
+    page[:flash_notice].replace_html flash[:notice]
+    page.visual_effect :highlight, :flash_notice
+    flash.discard
+  end
 end

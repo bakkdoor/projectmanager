@@ -78,10 +78,12 @@ class CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
+    flash[:notice] = "Kunde erfolgreich gelöscht."
 
     respond_to do |format|
       format.html { redirect_to(customers_url) }
       format.xml  { head :ok }
+      format.js
     end
   end
 end
