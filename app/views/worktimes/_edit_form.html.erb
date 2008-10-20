@@ -34,7 +34,11 @@
           </p>
           <p id="endtime" style="display:none">
             <%= f.label :end_time, "Endzeit" %><br />
-            <%= f.datetime_select :end_time, :order => [:day, :month, :year], :use_month_names => german_months %> <br/><br/>
+            <span id="endtime_select">
+              <%= f.datetime_select :end_time, 
+                                    :order => [:day, :month, :year], 
+                                    :use_month_names => german_months %>
+            </span><br/><br/>
             <%= link_to_function "Endzeit berechnen lassen" do |page|
                   page[:length].show
                   page[:endtime].hide

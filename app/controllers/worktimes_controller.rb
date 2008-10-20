@@ -206,6 +206,7 @@ class WorktimesController < ApplicationController
     length = params[:worktime][:length].to_f
     if(length > 0.0)
       @worktime.length = length
+      @worktime.save
     end
   end
   
