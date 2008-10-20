@@ -1,0 +1,10 @@
+page[:flash_notice].replace_html flash[:notice]
+page[:flash_error].replace_html flash[:error]
+page[:play_pause_button].replace_html play_pause_button_remote(@project)
+
+# falls stoppen geklappt oder nicht...
+if flash[:notice]
+  rjs_for_edit_form_for(page, :worktime, :add)
+end
+
+flash.discard

@@ -17,8 +17,8 @@
   <%= render :partial => "users/user_bar" %>
 </div>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:error] %></p>
+<p id="flash_notice" style="color: green"><%= flash[:notice] %></p>
+<p id="flash_error" style="color: red"><%= flash[:error] %></p>
 
 <% if current_project # nur falls projekt vorhanden und in db gespeichert %>
   <div class="title">

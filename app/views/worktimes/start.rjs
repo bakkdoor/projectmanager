@@ -1,0 +1,4 @@
+page[:flash_notice].replace_html flash[:notice]
+page[:flash_error].replace_html flash[:error]
+page[:play_pause_button].replace_html play_pause_button_remote(@project)
+flash.discard

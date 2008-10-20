@@ -132,7 +132,10 @@ class WorktimesController < ApplicationController
       end
     end
     
-    redirect_to project_worktimes_path(@project)
+    respond_to do |format|
+      format.html { redirect_to project_worktimes_path(@project) }
+      format.js
+    end
   end
   
   def stop
@@ -140,17 +143,27 @@ class WorktimesController < ApplicationController
       if session[:new_worktime_id]
         if Worktime.exists?(session[:new_worktime_id])
           wt = Worktime.find(session[:new_worktime_id])
+          @worktime = wt
+          @project = @worktime.project
           if wt
             clear_session(:new_worktime_id)
             wt.end_time = Time.now # aktuelle zeit als endzeit setzen
             wt.save
             flash[:notice] = "Arbeitszeit wurde beendet. Bitte eine Beschreibung angeben."
-            redirect_to edit_project_worktime_url(wt.project, wt)
+            
+            respond_to do |format|
+              format.html { redirect_to edit_project_worktime_url(wt.project, wt) }
+              format.js
+            end
           end
         else
           clear_session(:new_worktime_id)
           flash[:error] = "Es scheint keine Arbeitszeit am laufen zu sein."
-          redirect_to project_worktimes_path(current_project)
+          
+          respond_to do |format|
+            format.html { redirect_to project_worktimes_path(current_project) }
+            format.js
+          end
         end
       end
     end
