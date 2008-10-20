@@ -62,6 +62,10 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     @customers = Customer.find(:all)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /projects

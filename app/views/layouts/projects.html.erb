@@ -24,12 +24,20 @@
   <div class="title">
     <h1>
       Projekt: <%= link_to h(current_project.name), current_project %>
-      <%= link_to icon_tag('layout_edit'), edit_project_path(current_project) %>
+      <%= link_to_remote icon_tag('layout_edit'),
+                         :url => edit_project_path(current_project),
+                         :method => :get,
+                         :html => { :id => "edit_project_link", :title => "Projekt bearbeiten" } %>
+      <% link_to icon_tag('layout_edit'), edit_project_path(current_project) %>
       <%= link_to icon_tag('delete'), current_project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{current_project.name}' löschen wollen?", :method => :delete %>
     </h1>  
   </div>
   
   <%= render :partial => "projects/sub_menu" %>
+  
+  <div id="edit_project_div" style="display:none">
+  </div>
+  <%= cancel_link_for('project', "edit") %>
 <% end %>
 
 <%= yield  %>
