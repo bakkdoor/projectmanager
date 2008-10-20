@@ -1,5 +1,7 @@
 page[:flash_notice].replace_html flash[:notice]
+page.visual_effect :highlight, :flash_notice
 page[:flash_error].replace_html flash[:error]
+page.visual_effect :highlight, :flash_error
 page[:play_pause_button].replace_html play_pause_button_remote(@project)
 
 # falls stoppen geklappt oder nicht...

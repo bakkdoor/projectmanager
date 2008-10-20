@@ -9,14 +9,19 @@
     </tr>
 
   <% for project in @projects %>
-    <tr>
+    <tr id="<%= "project_#{project.id}" %>">
       <td><%= link_to h(project.name), project %></td>
       <td><%= link_to h(project.customer.name), project.customer %></td>
       <td><%=h project.due_date %></td>
       <td style="text-align:center"><%= project.finished ? icon_tag('tick') : icon_tag('cross') %></td>
       <td><%= project.tasks.collect{|t| link_to h(t.name), project_task_path(t.project, t)}.join(",<br>") %></td>
       <td style="text-align:center"><%= link_to icon_tag('layout_edit'), edit_project_path(project) %></td>
-      <td style="text-align:center"><%= link_to icon_tag('delete'), project, :confirm => "Sind Sie sicher, dass Sie das Projekt '#{project.name}' löschen wollen?", :method => :delete %></td>
+      <td style="text-align:center">
+        <%= link_to_remote icon_tag('delete'),
+            :url => project_path(project), 
+            :confirm => "Sind Sie sicher, dass Sie das Projekt '#{project.name}' löschen wollen?", 
+            :method => :delete %>
+      </td>
     </tr>
   <% end %>
   </table>

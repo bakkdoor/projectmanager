@@ -107,10 +107,12 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-
+    flash[:notice] = "Project erfolgreich gelöscht."
+    
     respond_to do |format|
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
+      format.js
     end
   end
 end

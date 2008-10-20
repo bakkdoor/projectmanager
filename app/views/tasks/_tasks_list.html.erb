@@ -14,7 +14,7 @@
     amount_children = task.children.size
     children_info = amount_children > 0 ? "(#{amount_children})" : "" 
   %>
-    <tr>
+    <tr id="<%= "task_#{task.id}" %>">
       <td><%= link_to h("#{task.name} #{children_info}"), project_task_path(task.project, task) %></td>
       <td><%= link_to h(task.project.name), task.project %></td>
       <td><%=h task.comment %></td>
@@ -22,7 +22,11 @@
       <td style="text-align:center"><%=h Status.find(task.status) %></td>
       <td><%=h task.due_date %></td>
       <td style="text-align:center"><%= link_to icon_tag('table_edit'), edit_project_task_path(task.project, task) %></td>
-      <td style="text-align:center"><%= link_to icon_tag('delete'), project_task_path(task.project, task), :confirm => "Sind Sie sicher, dass Sie die Aufgabe '#{task.name}' löschen wollen?", :method => :delete %></td>
+      <td style="text-align:center">
+        <%= link_to_remote icon_tag('delete'),    
+            :url => project_task_path(task.project, task), 
+            :confirm => "Sind Sie sicher, dass Sie die Aufgabe '#{task.name}' löschen wollen?", 
+            :method => :delete %></td>
     </tr>
   <% end %>
   </table>

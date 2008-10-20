@@ -107,10 +107,13 @@ class WorktimesController < ApplicationController
   def destroy
     @worktime = Worktime.find(params[:id])
     @worktime.destroy
+    
+    flash[:notice] = "Arbeitszeit erfolgreich gelöscht."
 
     respond_to do |format|
       format.html { redirect_to(project_worktimes_path(@worktime.project)) }
       format.xml  { head :ok }
+      format.js
     end
   end
   

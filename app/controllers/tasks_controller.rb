@@ -94,10 +94,12 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-
+    flash[:notice] = "Aufgabe erfolgreich gelöscht"
+    
     respond_to do |format|
       format.html { redirect_to(project_tasks_url(@task.project)) }
       format.xml  { head :ok }
+      format.js
     end
   end
   

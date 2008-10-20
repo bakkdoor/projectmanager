@@ -10,7 +10,7 @@
     </tr>
 
   <% for worktime in worktimes %>
-    <tr>
+    <tr id="<%= "worktime_#{worktime.id}" %>">
       <td><%= link_to h(worktime.comment.words(10)), project_worktime_path(worktime.project, worktime) %></td>
       <td><%= worktime.tasks.collect{|t| link_to h(t.name), project_task_path(t.project, t)}.join(",<br>") %></td>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
@@ -25,8 +25,8 @@
           <%= link_to icon_tag('clock_edit'), edit_project_worktime_path(worktime.project, worktime) %>
         </td>
         <td>
-          <%= link_to icon_tag('delete'), 
-                      project_worktime_path(worktime.project, worktime), 
+          <%= link_to_remote icon_tag('delete'), 
+                      :url => project_worktime_path(worktime.project, worktime), 
                       :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?",
                       :method => :delete %>
         </td>
