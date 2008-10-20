@@ -33,11 +33,9 @@
     </h1>  
   </div>
   
-  <%= render :partial => "projects/sub_menu" %>
+  <%= edit_form_container_for(:project, :edit) %>
   
-  <div id="edit_project_div" style="display:none">
-  </div>
-  <%= cancel_link_for('project', "edit") %>
+  <%= render :partial => "projects/sub_menu" %>
 <% end %>
 
 <%= yield  %>

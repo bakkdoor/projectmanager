@@ -5,17 +5,17 @@
 </div>
 
 <div class="action_links">
-  <%= link_to_remote icon_tag('clock_add'),
+  <%= link_to_remote "#{icon_tag('clock_add')} Neue Arbeitszeit",
     :url => new_project_worktime_path(:project_id => @project.id),
-    :method => :get, :html => {:id => "add_worktime_link", :title => "Neue Arbeitszeit eintragen" } %>
+    :method => :get, 
+    :html => { :id => "add_worktime_link", :title => "Neue Arbeitszeit eintragen", :class => "action_link" } 
+  %>
   <span id="play_pause_button">
     <%= play_pause_button(@project) %>
   </span>
 </div>
 
-<div id="add_worktime_div" style="display:none">
-</div>
-<%= cancel_link_for('worktime') %>
+<%= edit_form_container_for(:worktime, :add) %>
 
 <%= render :partial => "worktimes_list", :locals => {:worktimes => @project.worktimes} %>
 <br />

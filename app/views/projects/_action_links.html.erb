@@ -2,7 +2,7 @@
   <%= link_to_remote "#{icon_tag('layout_add')} Neues Projekt anlegen", 
                      :url => new_project_path,
                      :method => :get,
-                     :html => { :id => "new_project_link", :title => "Neue Aufgabe eintragen" } %> |
+                     :html => { :id => "add_project_link", :title => "Neue Aufgabe eintragen" } %> |
   <%= link_to 'Aktive', active_projects_path %> |
   <%= link_to 'Beendete', finished_projects_path %>
 </div>

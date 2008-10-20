@@ -3,14 +3,12 @@
 </div>
 
 <div class="action_links">
-  <%= link_to_remote icon_tag('table_add'),
+  <%= link_to_remote "#{icon_tag('table_add')} Neue Aufgabe",
     :url => new_project_task_path(:project_id => @project.id),
-    :method => :get, :html => {:id => "add_task_link", :title => "Neue Aufgabe eintragen" } %>
+    :method => :get, 
+    :html => {:id => "add_task_link", :title => "Neue Aufgabe eintragen", :class => "action_link" } %>
 </div>
 
-<div id="add_task_div" style="display:none">
-</div>
-
-<%= cancel_link_for('task') %>
+<%= edit_form_container_for(:task, :add) %>
 
 <%= render :partial => "tasks_list", :locals => {:tasks => @tasks} %>

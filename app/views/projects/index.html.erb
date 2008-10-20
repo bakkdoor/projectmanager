@@ -4,8 +4,6 @@
 
 <%= render :partial => "action_links" %>
 
-<div id="add_project_div" style="display:none">
-</div>
-<%= cancel_link_for("project") %>
+<%= edit_form_container_for(:project, :add) %>
 
 <%= render :partial => "list", :object => @projects %>

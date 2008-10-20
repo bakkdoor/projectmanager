@@ -62,17 +62,6 @@ module ApplicationHelper
     options[:border] ||= 0
     image_tag("icons/#{icon_name}", options)
   end
-  
-  def cancel_link_for(object, prefix = "add")
-    "<div id='cancel_#{prefix}_#{object}_link' style='display:none'>
-      #{icon_tag 'cancel'}
-      #{link_to_function 'Abbrechen' do |page| 
-                  page.visual_effect :fade, "cancel_#{prefix}_#{object}_link"
-                  page.visual_effect :fade, "#{prefix}_#{object}_div"
-                  page.visual_effect :appear, "#{prefix}_#{object}_link"
-                end}
-    </div>"
-  end
 end
 
 # mixing in RubyEnhancements-module
