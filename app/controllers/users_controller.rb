@@ -79,8 +79,12 @@ class UsersController < ApplicationController
     if current_user.can_edit?(@user)
       respond_to do |format|
         if @user.update_attributes(params[:user])
+          if(is_admin = params[:user][:is_admin])
+            @user.is_admin = is_admin
+            @user.save
+          end
           flash[:notice] = 'Profildaten wurden erfolgreich aktualisiert.'
-          format.html { redirect_to(@user) }
+          format.html { redirect_to users_path }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }

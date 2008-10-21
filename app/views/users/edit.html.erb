@@ -6,6 +6,16 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :login, "Benutzername" %><br />
+    <%= f.text_field :login %>
+  </p>
+  <% if current_user.is_admin %>
+    <p>
+      <%= check_box :user, :is_admin %>
+      <%= f.label :is_admin, "Admin?" %><br />
+    </p>
+  <% end %>
+  <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>

@@ -1,8 +1,10 @@
 <div class="action_links">
-  <%= link_to_remote "#{icon_tag('layout_add')} Neues Projekt anlegen", 
-                     :url => new_project_path,
-                     :method => :get,
-                     :html => { :id => "add_project_link", :title => "Neue Aufgabe eintragen" } %> |
+  <% if current_user.is_admin %> 
+    <%= link_to_remote "#{icon_tag('layout_add')} Neues Projekt anlegen", 
+                       :url => new_project_path,
+                       :method => :get,
+                       :html => { :id => "add_project_link", :title => "Neue Aufgabe eintragen" } %> |
+  <% end %>
   <%= link_to 'Aktive', active_projects_path %> |
   <%= link_to 'Beendete', finished_projects_path %>
 </div>
