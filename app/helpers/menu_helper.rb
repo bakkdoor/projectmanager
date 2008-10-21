@@ -24,12 +24,11 @@ module MenuHelper
                         :icon => "time", 
                         :url => all_worktimes_path, 
                         :controller => :worktimes }
-                        
-        menu_items << { :title => "Mitarbeiter", 
-                        :icon => "group", 
-                        :url => users_path, 
-                        :controller => :users }
       end
+      menu_items << { :title => "Mitarbeiter", 
+                      :icon => "group", 
+                      :url => users_path, 
+                      :controller => :users }
     end
     
     menu_items
