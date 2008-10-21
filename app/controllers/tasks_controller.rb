@@ -24,6 +24,11 @@ class TasksController < ApplicationController
   def all
     @tasks = Task.all
   end
+  
+  def tagged
+    @tag = params[:tag]
+    @tasks = Task.find_tagged_with(@tag, :match_all => true)
+  end
 
   # GET /tasks/1
   # GET /tasks/1.xml
@@ -41,6 +46,7 @@ class TasksController < ApplicationController
   def new
     @project = current_project
     @task = Task.new(:project_id => @project.id)
+    @tags = Task.tag_counts
     
     respond_to do |format|
       format.html # new.html.erb
@@ -53,6 +59,7 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     @projects = Project.active
+    @tags = Task.tag_counts
   end
 
   # POST /tasks

@@ -114,3 +114,7 @@ a:hover { color: #fff; background-color:#000; }
   padding-top: 3em;
 }
 
+.tags1 { font-size: 1.0em; font-weight: bold; }
+.tags2 { font-size: 1.2em; font-weight: bold; }
+.tags3 { font-size: 1.4em; font-weight: bold; }
+.tags4 { font-size: 1.6em; font-weight: bold; }

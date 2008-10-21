@@ -2,11 +2,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.all_tasks "/tasks/all", :controller => "tasks", :action => "all"
   map.all_worktimes "/worktimes/all", :controller => "worktimes", :action => "all"
-
+  
   map.resources :projects,
                 :shallow => true,
                 :collection => { :active => :get, :finished => :get } do |project|
-    project.resources :tasks  
+    project.resources :tasks, :collection => { :tagged => :get }
     project.resources :worktimes, :collection => { :all => :get, :start => :post, :stop => :post }
   end
   

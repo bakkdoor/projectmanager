@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081015192933) do
+ActiveRecord::Schema.define(:version => 20081021142203) do
 
   create_table "customers", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(:version => 20081015192933) do
   create_table "projects_users", :id => false, :force => true do |t|
     t.integer "project_id", :null => false
     t.integer "user_id",    :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "tasks", :force => true do |t|
@@ -85,13 +99,13 @@ ActiveRecord::Schema.define(:version => 20081015192933) do
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "worktimes", :force => true do |t|
-    t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
 end

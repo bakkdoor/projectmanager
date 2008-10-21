@@ -7,6 +7,10 @@ class Task < ActiveRecord::Base
   named_scope :finished, :conditions => {:status => 100}
   named_scope :parents, :conditions => {:parent_id => nil}
   
+  # tasks können 'getagged' werden / kategorien angehören,
+  # nach denen gesucht / sortiert etc. werden kann.
+  acts_as_taggable
+  
   # gibt alle kinder-tasks zurück (tasks ohne eigene kinder)
   # (entspricht den blättern in einem baum)
   def self.children

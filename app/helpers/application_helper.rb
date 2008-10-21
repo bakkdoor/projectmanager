@@ -1,6 +1,9 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  # helper-methods von acts_as_taggable-plugin.
+  include TagsHelper
+
   # gibt das aktuelle projekt oder (falls nicht vorhanden) nil zurück.
   def current_project
     if params[:project_id]

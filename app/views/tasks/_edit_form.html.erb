@@ -23,11 +23,26 @@
           </p>
           <p>
             <%= f.label :due_date, "Fällig am" %><br />
-            <%= f.date_select :due_date, :order => [:day, :month, :year], :use_month_names => german_months %>
+            <%= f.date_select :due_date, 
+                              :order => [:day, :month, :year], :use_month_names => german_months %>
           </p>
         </td>
           
         <td>
+          <p>
+            <fieldset>
+              <legend>Tags</legend>  
+              <%= f.text_field :tag_list, :id => "tags_text_field" %>
+              <div id="tag_cloud" style="padding-top:1em">
+                <% tag_cloud @tags, %w(tags1 tags2 tags3 tags4) do |tag, css_class| %>
+                  <%= link_to_function tag.name, :class => css_class  do |page| 
+                        page << "$('tags_text_field').value = $('tags_text_field').value + ' #{tag.name}'"
+                      end
+                  %>
+                <% end %>
+              </div>
+          	</fieldset>
+          </p>
           <p>
             <fieldset>
               <legend>Zuständige Mitarbeiter</legend>  
