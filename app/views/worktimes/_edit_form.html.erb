@@ -3,19 +3,10 @@
     <%= f.error_messages %>
     <table>
       <tr>
-        <td width="50%" style="padding-right: 5em">
+        <td width="55%" style="padding-right: 5em">
           <p>
             <%= f.label :project, "Projekt" %><br/>
             <%= @worktime.project.name %>
-          </p>
-          <p>
-            <%= f.label :tasks, "Aufgaben" %><br />
-            <% @worktime.project.tasks.each do |task| %>
-              <div>
-              	<%= check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
-              	<%= task.name %>
-              </div>
-            <% end %>
           </p>
           <p>
             <%= f.label :start_time, "Startzeit" %><br />
@@ -48,8 +39,19 @@
         </td>
         <td>
           <p>
+            <fieldset>
+              <legend>Aufgaben</legend>  
+              <% @worktime.project.tasks.each do |task| %>
+                <div>
+                  <%= check_box_tag "worktime[task_ids][]", task.id, @worktime.tasks.include?(task) %>
+                  <%= task.name %>
+                </div>
+              <% end %>
+          	</fieldset>
+          </p>
+          <p>
             <%= f.label :comment, "Kommentar / Beschreibung" %><br />
-            <%= f.text_area :comment, :rows => 11 %>
+            <%= f.text_area :comment, :rows => 13%>
           </p>
         </td>
       </tr>

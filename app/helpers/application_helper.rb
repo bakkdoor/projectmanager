@@ -54,7 +54,7 @@ module ApplicationHelper
     #(0..10).to_a
     hours = []
     hours << 0.0
-    hours += (1.0..10.0).step(0.5).to_a
+    hours += (0.5..10.0).step(0.5).to_a
   end
   
   def icon_tag(icon_name, options = {})
