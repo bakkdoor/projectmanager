@@ -120,7 +120,7 @@ a:hover { color: #fff; background-color:#000; }
 .tags4 { font-size: 1.6em; font-weight: bold; }
 
 #tag_bar{
-  background-color: #cec;
   padding: 0.5em;
   margin-bottom: 0.5em;
+  background-color: #cec;
 }

@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     if params[:project_id]
       @project = current_project
       @tasks = @project.tasks
-      @tags = @project.tasks.tag_counts
+      @tags = @project.tasks.tag_counts.sort_by(&:name)
 
       respond_to do |format|
         format.html # index.html.erb
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     @tag = params[:tag]
     @tasks = Task.find_tagged_with(@tag, :match_all => true)
     @project = Project.find(params[:project_id])
-    @tags = @project.tasks.tag_counts
+    @tags = @project.tasks.tag_counts.sort_by(&:name)
   end
 
   # GET /tasks/1
@@ -49,7 +49,11 @@ class TasksController < ApplicationController
   def new
     @project = current_project
     @task = Task.new(:project_id => @project.id)
-    @tags = Task.tag_counts
+    @tags = Task.tag_counts.sort_by(&:name)
+    
+    if(@tag = params[:tag]) # tag wurde mitübergeben => schon mal setzen
+      @task.tag_list.add(@tag)
+    end
     
     respond_to do |format|
       format.html # new.html.erb

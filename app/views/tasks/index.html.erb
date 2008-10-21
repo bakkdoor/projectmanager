@@ -3,13 +3,7 @@
 </div>
 
 <%= render :partial => "tag_bar" %>
-
-<div class="action_links">
-  <%= link_to_remote "#{icon_tag('table_add')} Neue Aufgabe",
-    :url => new_project_task_path(:project_id => @project.id),
-    :method => :get, 
-    :html => {:id => "add_task_link", :title => "Neue Aufgabe eintragen", :class => "action_link" } %>
-</div>
+<%= render :partial => "action_links" %>
 
 <%= edit_form_container_for(:task, :add) %>
 

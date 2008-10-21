@@ -1,0 +1,12 @@
+<div class="action_links">
+  <% url = new_project_task_path(:project_id => @project.id) %>
+  <% 
+    if @tag
+      url = new_project_task_path(:project_id => @project.id, :tag => @tag)
+    end 
+  %>
+  <%= link_to_remote "#{icon_tag('table_add')} Neue Aufgabe",
+    :url => url,
+    :method => :get, 
+    :html => {:id => "add_task_link", :title => "Neue Aufgabe eintragen", :class => "action_link" } %>
+</div>
