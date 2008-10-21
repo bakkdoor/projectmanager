@@ -49,7 +49,7 @@
           <%= 
             project.users.collect do |u|
               "#{link_to u.short_name, u} : #{u.worktimes_by_project(project).size} AZ"
-            end
+            end.join("<br/>")
            %>
         <% end %>
         
