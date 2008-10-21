@@ -1,3 +1,5 @@
 <h2>Alle Aufgaben für Tag '<%= @tag %>'</h2>
 
+<%= render :partial => "tag_bar" %>
+
 <%= render :partial => "tasks_list", :locals => {:tasks => @tasks} %>

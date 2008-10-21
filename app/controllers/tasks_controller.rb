@@ -11,6 +11,7 @@ class TasksController < ApplicationController
     if params[:project_id]
       @project = current_project
       @tasks = @project.tasks
+      @tags = @project.tasks.tag_counts
 
       respond_to do |format|
         format.html # index.html.erb
@@ -28,6 +29,8 @@ class TasksController < ApplicationController
   def tagged
     @tag = params[:tag]
     @tasks = Task.find_tagged_with(@tag, :match_all => true)
+    @project = Project.find(params[:project_id])
+    @tags = @project.tasks.tag_counts
   end
 
   # GET /tasks/1
