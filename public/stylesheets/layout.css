@@ -88,7 +88,7 @@ a:hover { color: #fff; background-color:#000; }
 .sub_menu{
   background-color: #cfc;
   text-align: left;
-  padding-left: 0.5em;
+  padding: 0.5em;
   margin-top:1.5em;
   font-size: 14px;
   font-weight: bold;
@@ -118,3 +118,9 @@ a:hover { color: #fff; background-color:#000; }
 .tags2 { font-size: 1.2em; font-weight: bold; }
 .tags3 { font-size: 1.4em; font-weight: bold; }
 .tags4 { font-size: 1.6em; font-weight: bold; }
+
+#tag_bar{
+  background-color: #cec;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
