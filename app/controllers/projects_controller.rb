@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_filter :login_required
-  before_filter :admin_required, :except => [:index, :show]
+  before_filter :admin_required, :except => [:show]
   before_filter :customer_required, :only => [:new, :create]
+  before_filter :has_access
   
   # GET /projects
   # GET /projects.xml
@@ -113,6 +114,21 @@ class ProjectsController < ApplicationController
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
       format.js
+    end
+  end
+  
+  protected
+  
+  # gibt an ob der aktuelle user zugriff hat
+  # falls kein admin, nur zugriff, falls dem aktuellen projekt zugewiesen
+  def has_access
+    unless current_user.is_admin
+      @project = Project.find(params[:id])
+      if @project
+        not_authorized unless current_user.assigned_to? @project
+      else
+        not_authorized
+      end
     end
   end
 end

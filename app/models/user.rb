@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
     user == self || user.is_admin
   end
   
+  def assigned_to?(project)
+    project.users.include?(self)
+  end
+  
   def first_name
     self.name.words[0]
   end
