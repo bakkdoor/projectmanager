@@ -24,8 +24,12 @@ class ApplicationController < ActionController::Base
   end
   
   def not_authorized(message = nil)
-    flash[:error] = message || "Sie haben leider keine Zugriffsrechte."
-    redirect_back_or_default("/")
+    respond_to do |format|
+      format.html do 
+        flash[:error] = message || "Sie haben leider keine Zugriffsrechte."
+        redirect_back_or_default("/")
+      end
+    end
   end
   
   def project_required

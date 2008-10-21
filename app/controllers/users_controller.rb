@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
-  before_filter :admin_required, :only => [:index] # muss später geändert werden
+  before_filter :login_required
+  before_filter :admin_required, :only => [:new, :create, :destroy]
   
   def index
     @users = User.all
@@ -34,6 +34,8 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
+    
+    not_authorized unless current_user.is_admin
   end
   
   def edit
@@ -62,7 +64,8 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       #self.current_user = @user # !! now logged in
-      redirect_back_or_default('/')
+      #redirect_back_or_default('/')
+      redirect_to users_path
       flash[:notice] = "Neuer Mitarbeiter mit namen '#{@user.name}' angelegt."
     else
       flash[:error]  = "Nutzer-registrierung fehlgeschlagen. Bitte nochmal versuchen oder ggf. Admin kontaktieren."
@@ -72,16 +75,20 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        flash[:notice] = 'Profildaten wurden erfolgreich aktualisiert.'
-        format.html { redirect_to(@user) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+    
+    if current_user.can_edit?(@user)
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          flash[:notice] = 'Profildaten wurden erfolgreich aktualisiert.'
+          format.html { redirect_to(@user) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      not_authorized
     end
   end
   

@@ -3,10 +3,12 @@
 </div>
 
 <div class="submenu">
-  <%= link_to "#{icon_tag('user_add')} Neuen Mitarbeiter eintragen",
-              new_user_path,
-              :class => "action_link"
-  %>
+  <% if current_user.is_admin %>
+    <%= link_to "#{icon_tag('user_add')} Neuen Mitarbeiter eintragen",
+                new_user_path,
+                :class => "action_link"
+    %>
+  <% end %>
 </div>
 
 <div class="content_table">
@@ -19,7 +21,9 @@
         <td><%= link_to h(user.name), user %></td>
         <td><%= mail_to h(user.email), user.email %></td>
         <td><%= user.is_admin ? icon_tag('tick') : icon_tag('cross') %></td>
+      <% if current_user.can_edit?(user) %>
         <td><%= link_to icon_tag('user_edit'), edit_user_path(user) %></td>
+      <% end %>
        <% if current_user.is_admin %>
          <td>
          <%= link_to_remote icon_tag('delete'), 
