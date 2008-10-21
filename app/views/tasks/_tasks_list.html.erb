@@ -20,7 +20,7 @@
       <td><%=h task.comment %></td>
       <td style="text-align:center"><%= task.total_worktime %> h (<%= task.worktimes.size %>)</td>
       <td style="text-align:center"><%=h Status.find(task.status) %></td>
-      <td><%=h task.due_date %></td>
+      <td><%=h task.due_date.german_time %></td>
       <td style="text-align:center"><%= link_to icon_tag('table_edit'), edit_project_task_path(task.project, task) %></td>
       <td style="text-align:center">
         <%= link_to_remote icon_tag('delete'),    
