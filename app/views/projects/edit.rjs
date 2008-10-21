@@ -1,5 +1,1 @@
-page[:edit_project_div].replace_html :partial => "edit_form", :object => @project
-page[:edit_project_link].hide
-page.visual_effect :appear, :edit_project_div
-page.visual_effect :appear, :cancel_edit_project_link
 rjs_for_edit_form_for(page, :project, :edit)
