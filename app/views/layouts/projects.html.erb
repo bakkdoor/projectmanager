@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -30,16 +31,16 @@
                            :method => :get,
                            :html => { :id => "edit_project_link", :title => "Projekt bearbeiten" } %>
         <%= link_to icon_tag('delete'),
-            current_project, 
-            :confirm => "Sind Sie sicher, dass Sie das Projekt '#{current_project.name}' löschen wollen?", 
-            :method => :delete 
+            current_project,
+            :confirm => "Sind Sie sicher, dass Sie das Projekt '#{current_project.name}' löschen wollen?",
+            :method => :delete
         %>
       <% end %>
-    </h1>  
+    </h1>
   </div>
-  
+
   <%= edit_form_container_for(:project, :edit) %>
-  
+
   <%= render :partial => "projects/sub_menu" %>
 <% end %>
 
@@ -47,8 +48,8 @@
 
 <div class="footer">
   <center>
-    &copy; 2008 Christopher Bertels, Waldemar Smirnow<br>
-    Icons &copy; Mark James (<a href="http://www.famfamfam.com" target="_blank">famfamfam.com</a>) 
+    &copy; 2008 Christopher Bertels<br>
+    Icons &copy; Mark James (<a href="http://www.famfamfam.com" target="_blank">famfamfam.com</a>)
   </center>
 </div>
 </body>
