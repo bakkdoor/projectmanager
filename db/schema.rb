@@ -99,13 +99,13 @@ ActiveRecord::Schema.define(:version => 20081021142203) do
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "worktimes", :force => true do |t|
+    t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
   end
 
 end

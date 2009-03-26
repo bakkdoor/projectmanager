@@ -10,23 +10,31 @@ class CreateUsers < ActiveRecord::Migration
       t.column :updated_at,                :datetime
       t.column :remember_token,            :string, :limit => 40
       t.column :remember_token_expires_at, :datetime
-      
+
       # custom settings
       t.column :icq_im, :string
       t.column :jabber, :string
-      
+
       t.column :telephone, :string
       t.column :street, :string
       t.column :house_nr, :string
       t.column :zip_code, :integer
       t.column :city, :string
-      
+
       t.column :birthdate, :date
       t.column :comment, :text
-      t.column :is_admin, :boolean, :default => false      
+      t.column :is_admin, :boolean, :default => false
 
     end
     add_index :users, :login, :unique => true
+
+    # create standard admin user
+    User.create!(:name => "Adminis Trator",
+                 :login => "admin",
+                 :password => "password",
+                 :password_confirmation => "password",
+                 :email => "admin@localhost.com",
+                 :is_admin => true)
   end
 
   def self.down
