@@ -16,6 +16,9 @@ There's more planned and help is always appreciated :)
 If you want to help out, simply fork my repository and/or send me an email: bakkdoor@flasht.de
 
 Theres a running sample at: http://projectmanager.flasht.de
+A sample account you can use:
+  login: test
+  password: testing
 Check it out to see a somewhat current version of it.
 
 Currently the Display is german only, but I've planned to add some kind of localization to it, to
