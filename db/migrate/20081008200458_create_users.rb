@@ -29,12 +29,13 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :login, :unique => true
 
     # create standard admin user
-    User.create!(:name => "Adminis Trator",
+    u = User.create!(:name => "Adminis Trator",
                  :login => "admin",
                  :password => "password",
                  :password_confirmation => "password",
-                 :email => "admin@localhost.com",
-                 :is_admin => true)
+                 :email => "admin@localhost.com")
+    u.is_admin = true
+    u.save!
   end
 
   def self.down
