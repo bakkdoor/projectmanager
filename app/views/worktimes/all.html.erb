@@ -4,7 +4,7 @@
   </h1>
 </div>
 
-<select id="project_selection" onChange="load_worktimes()">
+<select id="project_selection" onChange="show_correct_worktime()" onload="show_correct_worktime()">
   <% Project.sorted.each do |project| %>
     <option value="<%= project.id -%>"><%= project.name -%></option>
   <% end %>
@@ -14,8 +14,6 @@
 <br>
 <div id="worktime_listings">
   <% Project.sorted.each do |project| %>
-
-    <% display = project == Project.sorted.first ? "style='display:none'" : "" %>
     <div id="worktimes_project_<%=project.id -%>" class="worktimes_project_listing" <%= display -%>>
       <div class="subtitle">
 	<strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
@@ -25,3 +23,10 @@
   <% end %>
 </div>
 <br />
+
+<!-- this is to make sure, that the correct worktime list
+     gets displayed when the page is first loaded
+  -->
+<script language="JavaScript">
+  show_correct_worktime();
+</script>
