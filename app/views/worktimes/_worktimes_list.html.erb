@@ -9,6 +9,7 @@
       <th width="10%"><%= icon_tag 'time' %> Dauer</th>
     </tr>
 
+<div id="worktime_rows">
   <% for worktime in worktimes %>
     <tr id="<%= "worktime_#{worktime.id}" %>">
       <td><%= link_to h(worktime.comment.words(10)), project_worktime_path(worktime.project, worktime) %></td>
@@ -59,5 +60,6 @@
       <td><%=h worktimes.collect{|wt| wt.length}.sum %> h</td>
     </tr>
   <% end %>
+  </div>
   </table>
 </div>

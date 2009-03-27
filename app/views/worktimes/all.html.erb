@@ -4,11 +4,24 @@
   </h1>
 </div>
 
-<% Project.all.each do |project| %>
-  <div class="subtitle">
-    <strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
-  </div>
-  <%= render :partial => "worktimes_list", :locals => {:worktimes => project.worktimes, :project => project} %>
-  <br/>
-<% end %>
+<select id="project_selection" onChange="load_worktimes()">
+  <% Project.sorted.each do |project| %>
+    <option value="<%= project.id -%>"><%= project.name -%></option>
+  <% end %>
+</select>
+
+<br>
+<br>
+<div id="worktime_listings">
+  <% Project.sorted.each do |project| %>
+
+    <% display = project == Project.all.first ? "style='display:none'" : "" %>
+    <div id="worktimes_project_<%=project.id -%>" class="worktimes_project_listing" <%= display -%>>
+      <div class="subtitle">
+	<strong>Arbeitszeiten für Projekt: <%= project.name %></strong>
+      </div>
+      <%= render :partial => "worktimes_list", :locals => {:worktimes => project.worktimes, :project => project} %>
+    </div>
+  <% end %>
+</div>
 <br />

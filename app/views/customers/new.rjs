@@ -1,0 +1,1 @@
+rjs_for_edit_form_for(page, :customer, :add)

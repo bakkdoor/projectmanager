@@ -1,0 +1,31 @@
+<div class="content_table">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th><%= icon_tag 'user_suit' %> Kontaktperson</th>
+      <th><%= icon_tag 'email' %> Email</th>
+      <th><%= icon_tag 'book_open' %> Adresse</th>
+      <th><%= icon_tag 'telephone' %> Tel.</th>
+      <th><%= icon_tag 'layout_content' %> Projekte</th>
+    </tr>
+
+  <% for customer in @customers %>
+    <tr id="<%= "customer_#{customer.id}" %>">
+      <td><%= link_to h(customer.name), customer %></td>
+      <td><%=h customer.contact %></td>
+      <td><%= mail_to h(customer.email), customer.email %></td>
+      <td>
+        <%=h customer.street %> <%=h customer.house_nr %><br/>
+        <%=h customer.zip_code %> <%=h customer.city %>
+      </td>
+      <td><%=h customer.telephone %></td>
+      <td><%= customer.projects.collect{|p| link_to h(p.name), p}.join(",<br>") %></td>
+      <td><%= link_to icon_tag('user_edit'), edit_customer_path(customer) %></td>
+      <td><%= link_to_remote icon_tag('delete'),
+              :url => customer_path(customer),
+              :confirm => "Sind Sie sicher, dass Sie den Kunden '#{customer.name}' löschen wollen?",
+              :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
