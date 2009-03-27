@@ -1,7 +1,26 @@
 == Projectmanager -- Simple web-based project management written with Ruby on Rails.
 Projectmanager is (C) 2008, 2009  Christopher Bertels (bakkdoor@flasht.de)
+It is licensed under the terms of the GNU GPL version 3.
+For more information, take a look at the LICENSE file.
 
-==========================
+
+==============================================================================
+
+Projectmanager is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Projectmanager is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+==============================================================================
+
 
 Projectmanager is a simple web-based project management software. It's still in development.
 Basically, I started working on it in october 2008 and didn't have time until now to continue development.
