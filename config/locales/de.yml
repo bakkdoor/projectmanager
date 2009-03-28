@@ -1,3 +1,49 @@
 de:
   user:
     language: "Sprache"
+  
+  words:
+    project: "Projekt"
+    projects: "Projekte"
+    customer: "Kunde"
+    customers: "Kunden"
+    task: "Aufgabe"
+    tasks: "Aufgaben"
+    worktime: "Arbeitszeit"
+    worktimes: "Arbeitszeiten"
+    employee: "Mitarbeiter"
+    employees: "Mitarbeiter"
+    comment: "Kommentar / Beschreibung"
+    save: "Speicher"
+    show: "Anzeigen"
+    back: "Zur&uuml;ck"
+    name: "Name"
+    due_on: "Fällig am"
+
+  project:
+    is_finished: "Projekt beendet?"
+    active: "Aktive"
+    finished: "Beendete"
+    add: "Neues Projekt anlegen"
+    edit: "Projekt bearbeiten"
+    delete_question: "Sind Sie sicher, dass Sie das folgende Projekt löschen wollen?"
+
+  customer:
+    adress: "Adresse"
+    street: "Straße"
+    house_nr: "Hausnr"
+    zip_code: "PLZ"
+    city: "Stadt"
+    telephone: "Tel."
+    contact: "Kontaktperson"
+    
+    new: "Neuer Kunde"
+    add: "Neuen Kunden anlegen"
+    edit: "Kunde bearbeiten"
+    delete_question: "Sind Sie sicher, dass Sie den folgenden Kunden l&ouml;schen wollen?"
+
+  home:
+    welcome_message: "Willkommen beim Projectmanager."
+    your_overview: "Deine aktuelle &Uuml;bersicht"
+    your_tasks: "Deine Aufgaben"
+    last_worked_on: "Zuletzt gearbeitet an"

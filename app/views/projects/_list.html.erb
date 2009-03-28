@@ -1,11 +1,11 @@
 <div class="content_table">
   <table>
     <tr>
-      <th>Name</th>
-      <th><%= icon_tag 'user_suit' %> Kunde</th>
-      <th><%= icon_tag 'clock_red' %> Fällig am</th>
-      <th><%= icon_tag 'tick' %> Beendet?</th>
-      <th><%= icon_tag 'table' %> Aufgaben</th>
+      <th><%= t('words.name') -%></th>
+      <th><%= icon_tag 'user_suit' %> <%= t('words.customer') -%></th>
+      <th><%= icon_tag 'clock_red' %> <%= t('words.due_on') -%></th>
+      <th><%= icon_tag 'tick' %> <%= t('project.is_finished') -%></th>
+      <th><%= icon_tag 'table' %> <%= t('words.tasks') -%></th>
     </tr>
 
   <% for project in @projects %>
@@ -19,7 +19,7 @@
       <td style="text-align:center">
         <%= link_to_remote icon_tag('delete'),
             :url => project_path(project), 
-            :confirm => "Sind Sie sicher, dass Sie das Projekt '#{project.name}' löschen wollen?", 
+            :confirm => "#{t('project.delete_question')} \n '#{project.name}'", 
             :method => :delete %>
       </td>
     </tr>

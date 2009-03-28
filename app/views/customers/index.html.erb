@@ -1,10 +1,10 @@
-<h1>Kunden</h1>
+<h1><%= t('words.customers') -%></h1>
 
 <div class="action_links">
-  <%= link_to_remote "#{icon_tag('user_add')} Neuen Kunden anlegen",
+  <%= link_to_remote "#{icon_tag('user_add')} #{t('customer.add')}",
       :url => new_customer_path,
       :method => :get,
-      :html => { :id => "add_customer_link", :title => "Neuen Kunden anlegen" } %>
+      :html => { :id => "add_customer_link", :title => t('customer.add') } %>
 </div>
 
 <%= edit_form_container_for(:customer, :add) -%>

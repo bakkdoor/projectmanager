@@ -1,37 +1,37 @@
 <div class="title">
   <h1>
-    Kunde: <%= @customer.name %>
+    <%= t('words.customer') -%>: <%= @customer.name %>
     <%= link_to icon_tag('user_edit'), edit_customer_path(@customer) %>
-    <%= link_to icon_tag('delete'), @customer, :confirm => "Sind Sie sicher, dass Sie den Kunden '#{@customer.name}' löschen wollen?", :method => :delete %>
+    <%= link_to icon_tag('delete'), @customer, :confirm => "#{t('customer.delete_question')} \n '#{@customer.name}'", :method => :delete %>
   </h1>
 </div>
 <p>
-  <b>Name:</b>
+  <b><%= t('words.name') -%>:</b>
   <%=h @customer.name %>
 </p>
 
 <p>
-  <b>Street:</b>
+  <b><%= t('customer.street') -%>:</b>
   <%=h @customer.street %>
 </p>
 
 <p>
-  <b>House nr:</b>
+  <b><%= t('customer.house_nr') -%>:</b>
   <%=h @customer.house_nr %>
 </p>
 
 <p>
-  <b>Zip code:</b>
+  <b><%= t('customer.zip_code') -%>:</b>
   <%=h @customer.zip_code %>
 </p>
 
 <p>
-  <b>City:</b>
+  <b><%= t('customer.city') -%>:</b>
   <%=h @customer.city %>
 </p>
 
 <p>
-  <b>Telephone:</b>
+  <b><%= t('customer.telephone') -%>:</b>
   <%=h @customer.telephone %>
 </p>
 
@@ -41,18 +41,18 @@
 </p>
 
 <p>
-  <b>Contact:</b>
+  <b><%= t('customer.contact') -%>:</b>
   <%=h @customer.contact %>
 </p>
 
 <p>
-  <b>Comment:</b>
+  <b><%= t('words.comment') -%>:</b>
   <%=h @customer.comment %>
 </p>
 
 <p>
-  <b>Projekte (<%= @customer.projects.size %>):</b>
+  <b><%= t('words.projects') -%> (<%= @customer.projects.size %>):</b>
   <%= @customer.projects.collect{|p| (link_to p.name, p) }.join(", ") %>
 </p>
 
-<%= link_to 'Zur&uuml;ck', :back %>
+<%= link_to t('words.back'), :back %>

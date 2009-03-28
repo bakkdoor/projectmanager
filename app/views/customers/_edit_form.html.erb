@@ -9,23 +9,23 @@
              <%= f.text_field :name, :class => "data_form" %>
            </p>
            <p>
-             <%= f.label :street, "Straße" %><br />
+             <%= f.label :street, t('customer.street') %><br />
              <%= f.text_field :street %>
            </p>
            <p>
-             <%= f.label :house_nr, "Hausnr." %><br />
+             <%= f.label :house_nr, t('customer.house_nr') %><br />
              <%= f.text_field :house_nr %>
            </p>
            <p>
-             <%= f.label :zip_code, "PLZ" %><br />
+             <%= f.label :zip_code, t('customer.zip_code') %><br />
              <%= f.text_field :zip_code %>
            </p>
            <p>
-             <%= f.label :city, "Stadt" %><br />
+             <%= f.label :city, t('customer.city') %><br />
              <%= f.text_field :city %>
            </p>
            <p>
-              <%= f.label :telephone, "Tel." %><br />
+              <%= f.label :telephone, t('customer.telephone') %><br />
               <%= f.text_field :telephone %>
             </p>
             <p>
@@ -33,20 +33,20 @@
               <%= f.text_field :email %>
             </p>
              <p>
-               <%= f.label :contact, "Kontaktperson" %><br />
+               <%= f.label :contact, t('customer.contact') %><br />
                <%= f.text_field :contact %>
              </p>
         </td>
         <td valign="top">
            <p>
-             <%= f.label :comment, "Kommentar / Beschreibung" %><br />
+             <%= f.label :comment, t('words.comment') %><br />
              <%= f.text_area :comment, :rows => 20, :cols => 40 %>
            </p>
         </td>
       <tr>
     </table>
     <p>
-      <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
+      <%= icon_tag 'disk' %> <%= f.submit t('words.save') %>
     </p>
   <% end %>
 </div>

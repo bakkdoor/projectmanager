@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>ProjectManager <%= controller.action_name %></title>
+  <title>Projectmanager: <%= controller.controller_name.capitalize %></title>
   <%= stylesheet_link_tag 'layout' %>
   <%= stylesheet_link_tag 'table' %>
   <%= stylesheet_link_tag 'forms' %>
@@ -18,7 +18,6 @@
 </div>
 
 <p>
-  Current Language: <%= logged_in? ? current_user.language : "en" -%>
 
 <p id="flash_notice" style="color: green"><%= flash[:notice] %></p>
 <p id="flash_error" style="color: red"><%= flash[:error] %></p>

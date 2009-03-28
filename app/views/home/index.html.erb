@@ -1,20 +1,20 @@
 <div class="title">
-  <h1>Willkommen beim ProjectManager.</h1>
+  <h1><%= t('home.welcome_message') -%></h1>
 </div>
 <p>Aktuell in der Version 0.1.1 alpha.</p>
 
 <% if logged_in? %>
   <div id="dashboard">
     <div class="subtitle">
-      <h2>Deine aktuelle Übersicht:</h2>
+      <h2><%&= t('home.your_overview') -%>:</h2>
     </div>
   
     <div class="info_table">
       <table>
         <tr class="table_header">
-          <th>Projekt</th>
-          <th>Deine Aufgaben</th>
-          <th>Zuletzt gearbeitet an</th>
+          <th><%= t('words.project') -%></th>
+          <th><%= t('home.your_tasks') -%></th>
+          <th><%= t('home.last_worked_on') -%> -%></th>
         </tr>
         <%= render :partial => "info_table_content", :locals => {:projects => @user.projects.active} %> 
         <%= render :partial => "info_table_content", :locals => {:projects => @user.projects.finished} %>

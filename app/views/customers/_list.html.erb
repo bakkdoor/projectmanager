@@ -1,12 +1,12 @@
 <div class="content_table">
   <table>
     <tr>
-      <th>Name</th>
-      <th><%= icon_tag 'user_suit' %> Kontaktperson</th>
+      <th><%= t('words.name') -%></th>
+      <th><%= icon_tag 'user_suit' %> <%= t('customer.contact') -%></th>
       <th><%= icon_tag 'email' %> Email</th>
-      <th><%= icon_tag 'book_open' %> Adresse</th>
-      <th><%= icon_tag 'telephone' %> Tel.</th>
-      <th><%= icon_tag 'layout_content' %> Projekte</th>
+      <th><%= icon_tag 'book_open' %> <%= t('customer.adress') -%></th>
+      <th><%= icon_tag 'telephone' %> <%= t('customer.telephone') -%></th>
+      <th><%= icon_tag 'layout_content' %> <%= t('words.projects') -%></th>
     </tr>
 
   <% for customer in @customers %>
@@ -23,7 +23,7 @@
       <td><%= link_to icon_tag('user_edit'), edit_customer_path(customer) %></td>
       <td><%= link_to_remote icon_tag('delete'),
               :url => customer_path(customer),
-              :confirm => "Sind Sie sicher, dass Sie den Kunden '#{customer.name}' löschen wollen?",
+              :confirm => "#{t('customer.delete_question')} \n '#{customer.name}'",
               :method => :delete %></td>
     </tr>
   <% end %>

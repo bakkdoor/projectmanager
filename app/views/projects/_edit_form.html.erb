@@ -5,20 +5,20 @@
       <tr>
         <td width="50%" style="padding-right: 5em">
           <p>
-            <%= f.label :customer_id, "Kunde" %><br />
+            <%= f.label :customer_id, t('words.customer') %><br />
             <%= collection_select(:project, :customer_id , @customers, :id, :name) %>
           </p>
 
           <p>
-            <%= f.label :name %><br />
+            <%= f.label :name, t('words.name') %><br />
             <%= f.text_field :name %>
           </p>
           <p>
-            <%= f.label :due_date, "Fällig am" %><br />
+            <%= f.label :due_date, t('words.due_on') %><br />
             <%= f.date_select :due_date, :start_year => Time.now.year, :end_year => Time.now.year + 10, :order => [:day, :month, :year], :use_month_names => german_months %>
           </p>
           <p>
-            <%= f.label :finished, "Projekt beendet?" %><br />
+            <%= f.label :finished, "#{t('words.project')} #{t('project.finished').lowercase}?" %><br />
             <%= f.check_box :finished %>
           </p>
         </td>

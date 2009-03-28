@@ -1,4 +1,4 @@
-<h1>Kunde bearbeiten</h1>
+<h1><%= t('customer.edit') -%></h1>
 <%= render :partial => "edit_form", :object => @customer %>
-<%= link_to 'Anzeigen', @customer %> |
-<%= link_to 'Zur&uuml;ck', :back %>
+<%= link_to t('words.show'), @customer %> |
+<%= link_to t('words.back'), :back %>

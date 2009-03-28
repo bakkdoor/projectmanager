@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>ProjectManager <%= controller.action_name %></title>
+  <title>Projectmanager: <%= controller.controller_name.capitalize %></title>
   <%= stylesheet_link_tag 'layout' %>
   <%= stylesheet_link_tag 'table' %>
   <%= stylesheet_link_tag 'forms' %>
@@ -23,15 +23,15 @@
 <% if current_project # nur falls projekt vorhanden und in db gespeichert %>
   <div class="title">
     <h1>
-      Projekt: <%= link_to h(current_project.name), current_project %>
+      <%= t('words.project') -%>: <%= link_to h(current_project.name), current_project %>
       <% if current_user.is_admin %>
         <%= link_to_remote icon_tag('layout_edit'),
                            :url => edit_project_path(current_project),
                            :method => :get,
-                           :html => { :id => "edit_project_link", :title => "Projekt bearbeiten" } %>
+                           :html => { :id => "edit_project_link", :title => t('project.edit') } %>
         <%= link_to icon_tag('delete'),
             current_project,
-            :confirm => "Sind Sie sicher, dass Sie das Projekt '#{current_project.name}' löschen wollen?",
+            :confirm => "#{t('project.delete_question')} \n '#{current_project.name}'",
             :method => :delete
         %>
       <% end %>
