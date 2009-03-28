@@ -76,6 +76,10 @@ A helper is included to assist with generating tag clouds. Include it in your he
   module ApplicationHelper
     include TagsHelper
   end
+  
+You can also use the <tt>counts</tt> method on <tt>Tag</tt> to get the counts for all tags in the database.
+
+  Tag.counts
 
 Here is an example that generates a tag cloud.
 
@@ -129,12 +133,6 @@ If you want to change the delimiter used to parse and present tags, set TagList.
 For example, to use spaces instead of commas, add the following to config/environment.rb:
 
   TagList.delimiter = " "
-  
-You can also use a regexp as delimiter:
-
-  TagList.delimiter = /,|;/
-  
-The above code would parse the string and use ',' and ';' as delimiters.
 
 === Unused tags
 

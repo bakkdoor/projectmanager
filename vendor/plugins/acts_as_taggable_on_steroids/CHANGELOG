@@ -1,11 +1,36 @@
-[13 March 08]
+[17 Sep 08]
 
-* Added helper methods for will_paginate compatibility (Clinton R. Nixon)
-* Fixed :conditions in tag_counts to accept array to sanitize (Clinton R. Nixon)
+* Sanitize scope conditions in find_options_for_tag_counts [Rémy-Christophe Schermesser]
 
-[07 March 08]
+[23 Aug 08]
 
-* Added support for regexp delimiter (Matt Aimonetti)
+* Fix tag_counts instance method when no tags are present.
+
+* Make tag_counts instance_method merge any :conditions passed to it.
+
+[30 Mar 08]
+
+* Make TagList.from accept array arguments.
+
+[29 Mar 08]
+
+* Improve parsing of quotes inside tags [Arturas Slajus].
+
+* Add Tag.counts method.
+
+[28 Mar 08]
+
+* Make Tag#taggings :dependent => :destroy.
+
+[27 Mar 08]
+
+* Fix documentation for tag_counts.
+
+[18 Mar 08]
+
+* Add TagList#toggle [Pete Yandell].
+
+# Add find_related_tags method [Austin Foncaier].
 
 [30 Jan 08]
 
@@ -78,7 +103,7 @@
 
 * Add TagList#include? and TagList#empty?
 
-[26 August 2006]
+[26 August 2007]
 
 * Remove deprecated Tag.delimiter. Use TagList.delimiter instead.
 

@@ -2,7 +2,24 @@ require File.dirname(__FILE__) + '/abstract_unit'
 
 class ActsAsTaggableOnSteroidsTest < Test::Unit::TestCase
   fixtures :tags, :taggings, :posts, :users, :photos, :subscriptions, :magazines
+
+  def test_find_related_tags_with
+    assert_equivalent [tags(:good), tags(:bad), tags(:question)], Post.find_related_tags("nature")
+    assert_equivalent [tags(:nature)], Post.find_related_tags([tags(:good)])
+    assert_equivalent [tags(:bad), tags(:question)], Post.find_related_tags(["Very Good", "Nature"])        
+    assert_equivalent [tags(:bad), tags(:question)], Post.find_related_tags([tags(:good), tags(:nature)])
+  end
   
+  def test_find_related_tags_with_non_existent_tags
+    assert_equal [], Post.find_related_tags("ABCDEFG")
+    assert_equal [], Post.find_related_tags(['HIJKLM'])
+  end
+  
+  def test_find_related_tags_with_nothing
+    assert_equal [], Post.find_related_tags("")
+    assert_equal [], Post.find_related_tags([])    
+  end
+    
   def test_find_tagged_with
     assert_equivalent [posts(:jonathan_sky), posts(:sam_flowers)], Post.find_tagged_with('"Very good"')
     assert_equal Post.find_tagged_with('"Very good"'), Post.find_tagged_with(['Very good'])
@@ -135,6 +152,26 @@ class ActsAsTaggableOnSteroidsTest < Test::Unit::TestCase
   
   def test_tag_counts_on_has_many_through
     assert_tag_counts users(:jonathan).magazines.tag_counts, :good => 1
+  end
+  
+  def test_tag_counts_on_model_instance
+    assert_tag_counts photos(:jonathan_dog).tag_counts, :animal => 3, :nature => 3
+  end
+  
+  def test_tag_counts_on_model_instance_merges_conditions
+    assert_tag_counts photos(:jonathan_dog).tag_counts(:conditions => "tags.name = 'Crazy animal'"), :animal => 3
+  end
+  
+  def test_tag_counts_on_model_instance_with_no_tags
+    photo = Photo.create!
+    
+    assert_tag_counts photo.tag_counts, {}
+  end
+  
+  def test_tag_counts_should_sanitize_scope_conditions
+    Photo.send :with_scope, :find => { :conditions => ["tags.id = ?", tags(:animal).id] } do
+      assert_tag_counts Photo.tag_counts, :animal => 3
+    end
   end
   
   def test_tag_counts_respects_custom_table_names
