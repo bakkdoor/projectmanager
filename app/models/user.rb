@@ -26,24 +26,24 @@ class User < ActiveRecord::Base
   #validates_presence_of     :city
   #validates_presence_of     :birthdate
   #validates_presence_of     :is_admin
-  
-  
+
+
   has_and_belongs_to_many :tasks
   has_and_belongs_to_many :projects
   has_many :worktimes
-  
+
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation,
                   :telephone, :street, :house_nr, :zip_code, :city, :birthdate,
-                  :icq_im, :jabber, :comment
+                  :icq_im, :jabber, :comment, :language
 
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
-  # uff.  this is really an authorization, not authentication routine.  
+  # uff.  this is really an authorization, not authentication routine.
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
@@ -60,47 +60,47 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-  
+
   def admin?()
     self.is_admin
   end
-  
+
   def can_view?(entry)
     entry.viewable_by?(self)
   end
-  
+
   def can_edit?(entry)
     entry.editable_by?(self)
   end
-  
+
   def editable_by?(user)
     user == self || user.is_admin
   end
-  
+
   def assigned_to?(project)
     project.users.include?(self)
   end
-  
+
   def first_name
     self.name.words[0]
   end
-  
+
   def last_name
     self.name.gsub(self.first_name, "")
   end
-  
+
   def short_name
     "#{self.first_name[0..0]}. #{self.last_name}"
   end
-  
+
   def tasks_by_project(project)
     self.tasks.select{|t| t.project == project}.sort_by(&:due_date)
   end
-  
+
   def worktimes_by_project(project)
     self.worktimes.select{|wt| wt.project == project}
   end
-  
+
   protected
 
 end

@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include ApplicationHelper # u.a. für current_project
 
+  before_filter :set_user_language
+
   def admin_required
     unless current_user.is_admin
       not_authorized
@@ -44,6 +46,11 @@ class ApplicationController < ActionController::Base
       flash[:error] = "Keine Kunden vorhanden. Bitte erst einen Kunden anlegen."
       redirect_to new_customer_path
     end
+  end
+
+  private
+  def set_user_language
+    I18n.locale = current_user.language if logged_in?
   end
 
 end

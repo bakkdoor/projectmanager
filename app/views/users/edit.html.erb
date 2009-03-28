@@ -4,7 +4,11 @@
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
-
+  
+  <p>
+    <%= f.label :language, t('user.language') %><br />
+    <%= f.select :language, [['English', 'en'], ['Deutsch', 'de']] %>
+  </p>
   <p>
     <%= f.label :login, "Benutzername" %><br />
     <%= f.text_field :login %>
