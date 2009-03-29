@@ -18,7 +18,7 @@
             <%= f.date_select :due_date, :start_year => Time.now.year, :end_year => Time.now.year + 10, :order => [:day, :month, :year], :use_month_names => german_months %>
           </p>
           <p>
-            <%= f.label :finished, "#{t('words.project')} #{t('project.finished').lowercase}?" %><br />
+            <%= f.label :finished, t('project.is_finished') %><br />
             <%= f.check_box :finished %>
           </p>
         </td>
