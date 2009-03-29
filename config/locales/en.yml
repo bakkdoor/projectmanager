@@ -15,6 +15,7 @@ en:
     employees: "Employees"
     comment: "Comment / Description"
     save: "Save"
+    cancel: "Cancel"
     show: "Show"
     back: "Back"
     name: "Name"
@@ -48,3 +49,10 @@ en:
     your_overview: "Your current overview"
     your_tasks: "Your tasks"
     last_worked_on: "Last worked on"
+
+  worktime:
+    start: "Starttime"
+    end: "Endtime"
+    length: "Length"
+    enter_endtime_manually: "Enter endtime manually"
+    calc_endtime: "Calculate endtime"

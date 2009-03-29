@@ -14,7 +14,8 @@ de:
     employee: "Mitarbeiter"
     employees: "Mitarbeiter"
     comment: "Kommentar / Beschreibung"
-    save: "Speicher"
+    save: "Speichern"
+    cancel: "Abbrechen"
     show: "Anzeigen"
     back: "Zur&uuml;ck"
     name: "Name"
@@ -47,3 +48,10 @@ de:
     your_overview: "Deine aktuelle &Uuml;bersicht"
     your_tasks: "Deine Aufgaben"
     last_worked_on: "Zuletzt gearbeitet an"
+
+  worktime:
+    start: "Startzeit"
+    end: "Endzeit"
+    length: "Dauer"
+    enter_endtime_manually: "Endzeit manuell eingeben"
+    calc_endtime: "Endzeit berechnen lassen"
