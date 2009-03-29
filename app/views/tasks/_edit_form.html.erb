@@ -1,5 +1,5 @@
 <div class="edit_form">
-  <% form_for(@task, :url => project_task_path(@task.project, @task)) do |f| %>
+  <% form_for([@task.project, @task]) do |f| %>
     <%= f.error_messages %>
     <table>
       <tr>

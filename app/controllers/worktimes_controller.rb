@@ -3,25 +3,25 @@ class WorktimesController < ApplicationController
   before_filter :pre_update, :only => [:update]
   before_filter :pre_create, :only => [:create]
   before_filter :project_required, :only => [:new, :create]
-  
+
   layout 'projects'
-  
+
   # GET /worktimes
   # GET /worktimes.xml
   def index
     if params[:project_id]
       @project = current_project
       @worktimes = @project.worktimes
-      
+
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @worktimes }
       end
     else
-      redirect_to :action => "all"      
+      redirect_to :action => "all"
     end
   end
-  
+
   def all
   end
 
@@ -71,7 +71,7 @@ class WorktimesController < ApplicationController
     @worktime.project = current_project
     #@worktime.tasks += @tasks # ausgewählte tasks zuordnen
     check_length # evtl. laenge anpassen
-    
+
     respond_to do |format|
       if @worktime.save
         flash[:notice] = 'Arbeitszeit erfolgreich erstellt.'
@@ -91,7 +91,7 @@ class WorktimesController < ApplicationController
       if @worktime.update_attributes(params[:worktime])
         #@worktime.tasks += @tasks # ausgewählte tasks zuordnen
         check_length # evtl. laenge anpassen
-        
+
         flash[:notice] = 'Arbeitszeit erfolgreich aktualisiert.'
         format.html { redirect_to(project_worktimes_path(@worktime.project)) }
         format.xml  { head :ok }
@@ -107,7 +107,7 @@ class WorktimesController < ApplicationController
   def destroy
     @worktime = Worktime.find(params[:id])
     @worktime.destroy
-    
+
     flash[:notice] = "Arbeitszeit erfolgreich gelöscht."
 
     respond_to do |format|
@@ -116,7 +116,7 @@ class WorktimesController < ApplicationController
       format.js
     end
   end
-  
+
   # neue arbeitszeit starten (via play-button)
   def start
     @project = current_project
@@ -126,7 +126,7 @@ class WorktimesController < ApplicationController
                                 :comment => "")
       @worktime.project = @project
       @worktime.user = current_user
-      
+
       if @worktime.save
         session[:new_worktime_id] = @worktime.id
         flash[:notice] = "Neue Arbeitszeit wurde gestartet."
@@ -134,13 +134,13 @@ class WorktimesController < ApplicationController
         flash[:error] = "Fehler beim erstellen der Neuen Arbeitszeit."
       end
     end
-    
+
     respond_to do |format|
       format.html { redirect_to project_worktimes_path(@project) }
       format.js
     end
   end
-  
+
   def stop
     if request.post?
       if session[:new_worktime_id]
@@ -153,7 +153,7 @@ class WorktimesController < ApplicationController
             wt.end_time = Time.now # aktuelle zeit als endzeit setzen
             wt.save
             flash[:notice] = "Arbeitszeit wurde beendet. Bitte eine Beschreibung angeben."
-            
+
             respond_to do |format|
               format.html { redirect_to edit_project_worktime_url(wt.project, wt) }
               format.js
@@ -162,7 +162,7 @@ class WorktimesController < ApplicationController
         else
           clear_session(:new_worktime_id)
           flash[:error] = "Es scheint keine Arbeitszeit am laufen zu sein."
-          
+
           respond_to do |format|
             format.html { redirect_to project_worktimes_path(current_project) }
             format.js
@@ -171,23 +171,23 @@ class WorktimesController < ApplicationController
       end
     end
   end
-    
+
   protected
-  
+
   def clear_session(session_key)
     session[session_key] = nil
   end
-  
+
   def pre_update
     @worktime = Worktime.find(params[:id])
-    
+
     check_tasks(@worktime)
   end
-  
+
   def pre_create
     check_tasks
   end
-  
+
   def check_tasks(worktime = nil)
     # gucken ob tasks angegeben wurden, falls ja, diese merken und anschließend eintragen
     @tasks = []
@@ -199,7 +199,7 @@ class WorktimesController < ApplicationController
       params[:worktime][:tasks] = worktime ? worktime.tasks + @tasks : @tasks
     end
   end
-  
+
   # prüft übergebenes length-attribut und setzt es entsprechend, falls gegeben
   def check_length
     # falls länge angegeben, end_date entsprechend überschreiben via @worktime.length=()
@@ -209,5 +209,5 @@ class WorktimesController < ApplicationController
       @worktime.save
     end
   end
-  
+
 end

@@ -1,5 +1,5 @@
 <div class="edit_form">
-  <% form_for(@worktime, :url => project_worktime_path(@worktime.project, @worktime)) do |f| %>
+  <% form_for([@worktime.project, @worktime]) do |f| %>
     <%= f.error_messages %>
     <table>
       <tr>

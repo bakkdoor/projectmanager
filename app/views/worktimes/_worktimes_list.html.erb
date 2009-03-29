@@ -12,8 +12,8 @@
 <div id="worktime_rows">
   <% for worktime in worktimes %>
     <tr id="<%= "worktime_#{worktime.id}" %>">
-      <td><%= link_to h(worktime.comment.words(10)), project_worktime_path(worktime.project, worktime) %></td>
-      <td><%= worktime.tasks.collect{|t| link_to h(t.name), project_task_path(t.project, t)}.join(",<br>") %></td>
+      <td><%= link_to h(worktime.comment.words(10)), project_worktimes_path(worktime.project, worktime) %></td>
+      <td><%= worktime.tasks.collect{|t| link_to h(t.name), project_tasks_path(t.project, t)}.join(",<br>") %></td>
       <td><%= link_to h(worktime.user.name), worktime.user %></td>
       <td><%=h worktime.start_time.german_time(:long) %></td>
       <td><%=h worktime.end_time.german_time(:long) %></td>
@@ -23,13 +23,14 @@
       
       <% if @project %>
         <td>
-          <%= link_to icon_tag('clock_edit'), edit_project_worktime_path(worktime.project, worktime) %>
+          <%= link_to icon_tag('clock_edit'), edit_project_worktime_path(worktime.project, worktime) 
+	      %>
         </td>
         <td>
           <%= link_to_remote icon_tag('delete'), 
-                      :url => project_worktime_path(worktime.project, worktime), 
-                      :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?",
-                      :method => :delete %>
+              :url => project_worktime_path(worktime.project, worktime), 
+              :confirm => "Sind Sie sicher, dass Sie die Arbeitszeit ('#{worktime.comment.words(3)}') löschen wollen?",
+              :method => :delete %>
         </td>
       <% end %>
       

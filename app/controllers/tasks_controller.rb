@@ -2,9 +2,9 @@ class TasksController < ApplicationController
   before_filter :login_required
   before_filter :create_parent_tasks_list, :only => [:new, :edit]
   before_filter :project_required, :only => [:new, :create]
-  
+
   layout 'projects'
-  
+
   # GET /tasks
   # GET /tasks.xml
   def index
@@ -21,11 +21,11 @@ class TasksController < ApplicationController
       redirect_to :action => :all
     end
   end
-  
+
   def all
     @tasks = Task.all
   end
-  
+
   def tagged
     @tag = params[:tag]
     @tasks = Task.find_tagged_with(@tag, :match_all => true)
@@ -50,11 +50,11 @@ class TasksController < ApplicationController
     @project = current_project
     @task = Task.new(:project_id => @project.id)
     @tags = Task.tag_counts.sort_by(&:name)
-    
+
     if(@tag = params[:tag]) # tag wurde mitübergeben => schon mal setzen
       @task.tag_list.add(@tag)
     end
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @task }
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         flash[:notice] = 'Aufgabe wurde erfolgreich erstellt.'
-        format.html { redirect_to(project_tasks_url) }
+        format.html { redirect_to(project_tasks_path(@task.project)) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
@@ -109,20 +109,20 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     flash[:notice] = "Aufgabe erfolgreich gelöscht"
-    
+
     respond_to do |format|
       format.html { redirect_to(project_tasks_url(@task.project)) }
       format.xml  { head :ok }
       format.js
     end
   end
-  
+
   protected
-  
+
   def create_parent_tasks_list
     @tasks = [Task.new(:name => "Keine", :id => nil)]
     @tasks += current_project.tasks
-    
+
     if params[:id]
       @tasks -= [Task.find(params[:id])] # alle tasks ausser aktuellem
     end
