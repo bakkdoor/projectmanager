@@ -8,9 +8,9 @@ module Projectmanager
 
     unless @@version
       # logging
-      puts "\n------------------------"
-      puts "reading version file"
-      puts "------------------------"
+      logger.info "------------------------"
+      logger.info "reading version file"
+      logger.info "------------------------"
       @@version =
         File.open("config/pm_version", "r") do |f|
         f.readline
@@ -18,5 +18,9 @@ module Projectmanager
     end
 
     @@version
+  end
+
+  def self.logger
+    RAILS_DEFAULT_LOGGER
   end
 end
