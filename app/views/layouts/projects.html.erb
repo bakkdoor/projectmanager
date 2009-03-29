@@ -20,10 +20,18 @@
 <p id="flash_notice" style="color: green"><%= flash[:notice] %></p>
 <p id="flash_error" style="color: red"><%= flash[:error] %></p>
 
-<% if current_project # nur falls projekt vorhanden und in db gespeichert %>
+<% if current_project %>
   <div class="title">
-    <h1>
-      <%= t('words.project') -%>: <%= link_to h(current_project.name), current_project %>
+    <h2>
+      <%= t('words.project') -%>: 
+
+      <%= # select tag for project selection
+	  select_tag "project_id", 
+	  options_for_select(Project.sorted.collect(&:for_selectbox), 
+			     current_project.for_selectbox), # selected option is current_project
+	  { :onchange => remote_function(:url => {:controller => :projects, :action => 'get_project_data'},
+					 :with => 'Form.Element.serialize(this)') } %>
+	      
       <% if current_user.is_admin %>
         <%= link_to_remote icon_tag('layout_edit'),
                            :url => edit_project_path(current_project),
@@ -35,7 +43,7 @@
             :method => :delete
         %>
       <% end %>
-    </h1>
+    </h2>
   </div>
 
   <%= edit_form_container_for(:project, :edit) %>

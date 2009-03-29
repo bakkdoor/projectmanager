@@ -28,4 +28,13 @@ class Project < ActiveRecord::Base
   def recent_worktimes_by(user, amount = 3)
      Worktime.find_all_by_project_id_and_user_id(self.id, user.id, :order => "updated_at DESC", :limit => amount)
   end
+
+  def to_s
+    self.name
+  end
+
+  # return array containing name & id for display on <select> comboboxes.
+  def for_selectbox
+    [self.name, self.id]
+  end
 end

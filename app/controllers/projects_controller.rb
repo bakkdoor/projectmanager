@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :admin_required, :except => [:show]
   before_filter :customer_required, :only => [:new, :create]
   before_filter :has_access
-  
+
   # GET /projects
   # GET /projects.xml
   def index
@@ -19,27 +19,27 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project.to_xml(:include => [:tasks, :worktimes]) }
     end
   end
-  
+
   # GET /projects/active
-  # Zeigt alle aktiven Projekte an 
+  # Zeigt alle aktiven Projekte an
   def active
     @projects = Project.active
-    
+
     respond_to do |format|
       format.html # show active.html.erb
       format.xml { render :xml => @projects }
     end
   end
-  
+
   def finished
     @projects = Project.finished
-    
+
     respond_to do |format|
       format.html
       format.xml { render :xml => @project }
@@ -109,16 +109,25 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
     flash[:notice] = "Project erfolgreich gelöscht."
-    
+
     respond_to do |format|
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
       format.js
     end
   end
-  
+
+  def get_project_data
+    @project = Project.find(params[:project_id])
+
+    respond_to do |format|
+      format.html { redirect_to(projects_url(@project)) }
+      format.js
+    end
+  end
+
   protected
-  
+
   # gibt an ob der aktuelle user zugriff hat
   # falls kein admin, nur zugriff, falls dem aktuellen projekt zugewiesen
   def has_access
