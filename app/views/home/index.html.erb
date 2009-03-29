@@ -14,7 +14,7 @@
         <tr class="table_header">
           <th><%= t('words.project') -%></th>
           <th><%= t('home.your_tasks') -%></th>
-          <th><%= t('home.last_worked_on') -%> -%></th>
+          <th><%= t('home.last_worked_on') -%></th>
         </tr>
         <%= render :partial => "info_table_content", :locals => {:projects => @user.projects.active} %> 
         <%= render :partial => "info_table_content", :locals => {:projects => @user.projects.finished} %>
