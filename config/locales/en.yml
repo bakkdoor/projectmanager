@@ -1,4 +1,7 @@
 en:
+  info:
+    current_version: "Currently in version"
+
   user:
     language: "Language"
   

@@ -1,7 +1,7 @@
 <div class="title">
   <h1><%= t('home.welcome_message') -%></h1>
 </div>
-<p>Aktuell in der Version 0.1.1 alpha.</p>
+<p><%= t('info.current_version') -%> <%= Projectmanager.version -%>.</p>
 
 <% if logged_in? %>
   <div id="dashboard">
