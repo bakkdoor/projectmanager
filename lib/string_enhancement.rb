@@ -11,7 +11,11 @@ module StringEnhancement
   end
 
   def to_string_array
-    chars = self.chars.to_a
+#    chars = self.chars.to_a
+    chars = []
+    self.each_char do |c|
+      chars << c
+    end
     chars -= ["["]
     chars -= ["]"]
     array = chars.join().split(/\"\s*,\s*\"/)
