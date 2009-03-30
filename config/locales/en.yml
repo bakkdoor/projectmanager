@@ -1,9 +1,6 @@
 en:
   info:
     current_version: "Currently in version"
-
-  user:
-    language: "Language"
   
   words:
     project: "Project"
@@ -30,6 +27,8 @@ en:
     is_finished: "Project finished?"
     active: "Active"
     finished: "Finished"
+    active_projects: "Active projects"
+    finished_projects: "Finished projects"
     add: "Add new project"
     edit: "Edit project"
     delete_question: "Are you sure, you want to delete the following project?"
@@ -87,6 +86,7 @@ en:
     edit_profile: "Profildaten bearbeiten"
     birthdate: "Birthdate"
     profile_of: "Profile of"
+    your_profile: "Your profile"
 
   flash:  
     notice:

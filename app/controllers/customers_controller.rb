@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_filter :login_required
+  before_filter :admin_required, :except => [:show, :index]
 
   # GET /customers
   # GET /customers.xml

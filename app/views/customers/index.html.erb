@@ -1,12 +1,14 @@
 <h1><%= t('words.customers') -%></h1>
 
-<div class="action_links">
-  <%= link_to_remote "#{icon_tag('user_add')} #{t('customer.add')}",
-      :url => new_customer_path,
-      :method => :get,
-      :html => { :id => "add_customer_link", :title => t('customer.add') } %>
-</div>
+<% if current_user.is_admin? %>
+  <div class="action_links">
+    <%= link_to_remote "#{icon_tag('user_add')} #{t('customer.add')}",
+	:url => new_customer_path,
+	:method => :get,
+	:html => { :id => "add_customer_link", :title => t('customer.add') } %>
+  </div>
 
-<%= edit_form_container_for(:customer, :add) -%>
+  <%= edit_form_container_for(:customer, :add) -%>
+<% end %>
 
 <%= render :partial => "list", :object => @customers -%>

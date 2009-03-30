@@ -1,5 +1,5 @@
 <div class="action_links">
-  <% if current_user.is_admin %> 
+  <% if current_user.is_admin? %> 
     <%= link_to_remote "#{icon_tag('layout_add')} #{t('project.add')}", 
                        :url => new_project_path,
                        :method => :get,

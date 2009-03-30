@@ -20,11 +20,15 @@
       </td>
       <td><%=h customer.telephone %></td>
       <td><%= customer.projects.collect{|p| link_to h(p.name), p}.join(",<br>") %></td>
-      <td><%= link_to icon_tag('user_edit'), edit_customer_path(customer) %></td>
-      <td><%= link_to_remote icon_tag('delete'),
-              :url => customer_path(customer),
-              :confirm => "#{t('customer.delete_question')} \n '#{customer.name}'",
-              :method => :delete %></td>
+
+      <% if current_user.is_admin? -%>
+	<td><%= link_to icon_tag('user_edit'), edit_customer_path(customer) %></td>
+	<td><%= link_to_remote icon_tag('delete'),
+		:url => customer_path(customer),
+		:confirm => "#{t('customer.delete_question')} \n '#{customer.name}'",
+		:method => :delete %></td>
+      <% end %>
+
     </tr>
   <% end %>
   </table>

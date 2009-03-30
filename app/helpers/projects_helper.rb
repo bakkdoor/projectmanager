@@ -41,7 +41,7 @@ module ProjectsHelper
     end
 
     select_tag "project_id",
-               options_for_select(Project.sorted.collect(&:for_selectbox),
+               options_for_select(current_user.accessible_projects.sorted.collect(&:for_selectbox),
                                   # selected option is current_project
                                   current_project.for_selectbox),
                { :onchange => remote_function(:url => {:controller => :projects, :action => 'get_project_data'},

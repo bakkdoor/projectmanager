@@ -7,7 +7,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.find(:all)
+#    @projects = Project.find(:all)
+    @projects = current_user.accessible_projects
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,7 +30,8 @@ class ProjectsController < ApplicationController
   # GET /projects/active
   # Zeigt alle aktiven Projekte an
   def active
-    @projects = Project.active
+ #   @projects = Project.active
+    @projects = current_user.accessible_projects.active
 
     respond_to do |format|
       format.html # show active.html.erb
@@ -38,7 +40,8 @@ class ProjectsController < ApplicationController
   end
 
   def finished
-    @projects = Project.finished
+#    @projects = Project.finished
+    @projects = current_user.accessible_projects.finished
 
     respond_to do |format|
       format.html

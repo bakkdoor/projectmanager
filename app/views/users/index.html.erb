@@ -3,7 +3,7 @@
 </div>
 
 <div class="submenu">
-  <% if current_user.is_admin %>
+  <% if current_user.is_admin? %>
     <%= link_to "#{icon_tag('user_add')} #{t('user.add')}",
                 new_user_path,
                 :class => "action_link"
@@ -24,7 +24,7 @@
       <% if current_user.can_edit?(user) %>
         <td><%= link_to icon_tag('user_edit'), edit_user_path(user) %></td>
       <% end %>
-       <% if current_user.is_admin %>
+       <% if current_user.is_admin? %>
          <td>
          <%= link_to_remote icon_tag('delete'), 
              :url => user_path(user), 

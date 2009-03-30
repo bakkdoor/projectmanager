@@ -1,5 +1,5 @@
 <span id="project_admin_buttons">
-  <% if current_user.is_admin %>
+  <% if current_user.is_admin? %>
     <%= link_to_remote icon_tag('layout_edit'),
                        :url => edit_project_path(@project),
                        :method => :get,

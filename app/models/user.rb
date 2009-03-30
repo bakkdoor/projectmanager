@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     self.is_admin
   end
 
+  def is_admin?
+    self.is_admin
+  end
+
   def can_view?(entry)
     entry.viewable_by?(self)
   end
@@ -99,6 +103,14 @@ class User < ActiveRecord::Base
 
   def worktimes_by_project(project)
     self.worktimes.select{|wt| wt.project == project}
+  end
+
+  def accessible_projects
+    if self.is_admin?
+      Project.sorted
+    else
+      self.projects.sorted
+    end
   end
 
   protected

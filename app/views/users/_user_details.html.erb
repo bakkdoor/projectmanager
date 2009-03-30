@@ -3,7 +3,11 @@
     <tr>
       <td class="content_title"><%= label_tag :login, t('user.login') %>:</td>
       <td class="content_value"><%= @user.login %></td>
-      <td><%= link_to icon_tag('user_edit'), edit_user_path(@user) %></td>
+      
+      <% if current_user.can_edit?(@user) %>
+	<td><%= link_to icon_tag('user_edit'), edit_user_path(@user) %></td>
+      <% end %>
+
     </tr>
     <tr>
       <td class="content_title"><%= label_tag :name %>:</td>

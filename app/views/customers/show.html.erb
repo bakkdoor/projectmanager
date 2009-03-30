@@ -1,8 +1,10 @@
 <div class="title">
   <h1>
     <%= t('words.customer') -%>: <%= @customer.name %>
-    <%= link_to icon_tag('user_edit'), edit_customer_path(@customer) %>
-    <%= link_to icon_tag('delete'), @customer, :confirm => "#{t('customer.delete_question')} \n '#{@customer.name}'", :method => :delete %>
+    <% if current_user.is_admin? %>
+      <%= link_to icon_tag('user_edit'), edit_customer_path(@customer) %>
+      <%= link_to icon_tag('delete'), @customer, :confirm => "#{t('customer.delete_question')} \n '#{@customer.name}'", :method => :delete %>
+    <% end %>
   </h1>
 </div>
 <p>
