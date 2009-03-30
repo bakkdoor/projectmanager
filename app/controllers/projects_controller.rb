@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :login_required
   before_filter :admin_required, :only => [:new, :create, :update, :destroy]
   before_filter :customer_required, :only => [:new, :create]
-  before_filter :has_access
+  before_filter :has_access, :except => [:index, :active, :finished]
 
   # GET /projects
   # GET /projects.xml
@@ -149,6 +149,7 @@ class ProjectsController < ApplicationController
   def has_access
     unless current_user.is_admin
       @project = Project.find(params[:id])
+      @project = Project.find(params[:project_id]) unless @project
       if @project
         not_authorized unless current_user.assigned_to? @project
       else
