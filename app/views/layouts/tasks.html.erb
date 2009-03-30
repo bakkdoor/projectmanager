@@ -1,0 +1,24 @@
+<%= render :partial => "layouts/header" -%>
+
+<% if current_project %>
+  <div class="title">
+    <h2>
+      <%= t('words.project') -%>: 
+
+      <%= project_selection_for :container_ids => ["project_admin_buttons", "project_tasks_data"], 
+	                        :templates => ["projects/project_admin_buttons", "tasks/project_tasks_list"] -%>
+
+      <%= render :partial => "projects/project_admin_buttons", :object => current_project -%>
+    </h2>
+  </div>
+
+  <%= edit_form_container_for(:project, :edit) %>
+
+  <%= render :partial => "projects/sub_menu" %>
+<% end %>
+
+<div id="project_tasks_data">
+  <%= yield  %>
+</div>
+
+<%= render :partial => "layouts/footer" -%>

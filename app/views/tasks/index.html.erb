@@ -1,10 +1,2 @@
-<div class="subtitle">
-  <h2>Aufgaben für '<%= @project.name %>'</h2>
-</div>
-
-<%= render :partial => "tag_bar" %>
-<%= render :partial => "action_links" %>
-
-<%= edit_form_container_for(:task, :add) %>
-
+<%= render :partial => "header", :locals => {:project => @project} -%>
 <%= render :partial => "tasks_list", :locals => {:tasks => @tasks} %>

@@ -2,11 +2,11 @@
   <strong>
     Tags:
     <%= link_to "Alle Aufgaben", 
-                { :action => "index", :project_id => @project.id },
+                { :action => "index", :project_id => project.id },
                 :class => "action_link", :style => "padding-left: 0.5em" %>
-    <% @tags.each do |tag| %>
+    <% tags.each do |tag| %>
         <%= link_to tag, 
-                    { :action => "tagged", :tag => tag.name, :project_id => @project.id },
+                    { :controller => :tasks, :action => "tagged", :tag => tag.name, :project_id => project.id },
                     :class => "action_link", :style => "padding-left: 0.5em" %>
     <% end %>
   </strong>

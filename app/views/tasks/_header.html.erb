@@ -1,0 +1,9 @@
+<div class="subtitle">
+  <h2>Aufgaben für '<%= project.name %>'</h2>
+</div>
+
+<%= render :partial => "tasks/tag_bar", :locals => {:tags => project.tasks.tag_counts.sort_by(&:name),
+                                                    :project => project} %>
+<%= render :partial => "tasks/action_links", :locals => {:project => project} %>
+
+<%= edit_form_container_for(:task, :add) %>

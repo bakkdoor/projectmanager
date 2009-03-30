@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_filter :create_parent_tasks_list, :only => [:new, :edit]
   before_filter :project_required, :only => [:new, :create]
 
-  layout 'projects'
+#  layout 'projects'
 
   # GET /tasks
   # GET /tasks.xml

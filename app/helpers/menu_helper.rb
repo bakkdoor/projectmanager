@@ -17,12 +17,14 @@ module MenuHelper
 
         menu_items << { :title => t('words.tasks'),
                         :icon => "table",
-                        :url => all_tasks_path,
+                        :url => project_tasks_path(Project.sorted.first),
+#                        :url => all_tasks_path,
                         :controller => :tasks }
 
         menu_items << { :title => t('words.worktimes'),
                         :icon => "time",
-                        :url => all_worktimes_path,
+                        :url => project_worktimes_path(Project.sorted.first),
+#                        :url => all_worktimes_path,
                         :controller => :worktimes }
       end
       menu_items << { :title => t('words.employees'),
