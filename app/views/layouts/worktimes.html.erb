@@ -5,8 +5,8 @@
     <h2>
       <%= t('words.project') -%>: 
 
-      <%= project_selection_for :container_ids => ["project_admin_buttons", "project_worktimes_data"], 
-	                        :templates => ["projects/project_admin_buttons", "worktimes/project_worktimes_list"] -%>
+      <%= project_selection_for :container_ids => ["project_sub_menu", "project_admin_buttons", "project_worktimes_data"], 
+	                        :templates => ["projects/sub_menu", "projects/project_admin_buttons", "worktimes/project_worktimes_list"] -%>
 
       <%= render :partial => "projects/project_admin_buttons", :object => current_project -%>
     </h2>
@@ -14,7 +14,9 @@
 
   <%= edit_form_container_for(:project, :edit) %>
 
-  <%= render :partial => "projects/sub_menu" %>
+  <div id="project_sub_menu">
+    <%= render :partial => "projects/sub_menu", :object => current_project %>
+  </div>
 <% end %>
 
 <div id="project_worktimes_data">
