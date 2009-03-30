@@ -1,5 +1,5 @@
 <div class="title">
-  <h1>Neuen Mitarbeiter anmelden</h1>
+  <h1><%= t('user.new') -%></h1>
 </div>
 <% @user.password = @user.password_confirmation = nil %>
 
@@ -14,10 +14,10 @@
 <p><%= label_tag 'email' %><br/>
 <%= f.text_field :email %></p>
 
-<p><%= label_tag 'password', 'Passwort' %><br/>
+<p><%= label_tag 'password', t('words.password') %><br/>
 <%= f.password_field :password %></p>
 
-<p><%= label_tag 'password_confirmation', 'Passwort best&auml;tigen' %><br/>
+<p><%= label_tag 'password_confirmation', t('words.password_confirmation') %><br/>
 <%= f.password_field :password_confirmation %></p>
 
 <p><%= submit_tag 'Sign up' %></p>

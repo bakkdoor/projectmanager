@@ -5,8 +5,8 @@
       url = new_project_task_path(:project_id => @project.id, :tag => @tag)
     end 
   %>
-  <%= link_to_remote "#{icon_tag('table_add')} Neue Aufgabe",
+  <%= link_to_remote "#{icon_tag('table_add')} #{t('task.new')}",
     :url => url,
     :method => :get, 
-    :html => {:id => "add_task_link", :title => "Neue Aufgabe eintragen", :class => "action_link" } %>
+    :html => {:id => "add_task_link", :title => t('task.add'), :class => "action_link" } %>
 </div>

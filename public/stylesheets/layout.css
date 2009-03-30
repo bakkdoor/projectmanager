@@ -94,6 +94,14 @@ a:hover { color: #fff; background-color:#000; }
   font-weight: bold;
 }
 
+.sub_menu a{
+    text-decoration: none;
+}
+
+.sub_menu .active_link{
+    text-decoration: underline;
+}
+
 .action_link{
   text-decoration: none;
 }

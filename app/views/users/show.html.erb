@@ -1,5 +1,5 @@
 <div class="title">
-  <h1>Profil von <%= @user.name %></h1>
+  <h1><%= t('user.profile_of') -%> <%= @user.name %></h1>
 </div>
 
 <%= render :partial => "user_details" %>

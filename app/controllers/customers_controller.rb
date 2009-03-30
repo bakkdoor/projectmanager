@@ -47,7 +47,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        flash[:notice] = 'Kunde wurder erfolgreich erstellt.'
+        flash[:notice] = t('flash.notice.customer_created')
         format.html { redirect_to(@customer) }
         format.xml  { render :xml => @customer, :status => :created, :location => @customer }
       else
@@ -64,7 +64,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        flash[:notice] = 'Kunde wurde erfolgreich aktualisiert.'
+        flash[:notice] = t('flash.notice.customer_updated')
         format.html { redirect_to(@customer) }
         format.xml  { head :ok }
       else
@@ -79,7 +79,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-    flash[:notice] = "Kunde erfolgreich gelöscht."
+    flash[:notice] = t('flash.notice.customer_deleted')
 
     respond_to do |format|
       format.html { redirect_to(customers_url) }

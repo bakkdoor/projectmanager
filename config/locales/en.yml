@@ -23,7 +23,8 @@ en:
     back: "Back"
     name: "Name"
     due_on: "Due date"
-
+    password: "Password"
+    password_confirmation: "Confirm password"
 
   project:
     is_finished: "Project finished?"
@@ -53,9 +54,77 @@ en:
     your_tasks: "Your tasks"
     last_worked_on: "Last worked on"
 
+  task:
+    tasks_for: "Tasks for"
+    all_tasks: "All tasks"
+    new: "New task"
+    add: "Add new task"
+    edit: "Edit task"
+    delete_question: "Are you sure, you want to delete the following task?"
+
   worktime:
     start: "Starttime"
     end: "Endtime"
     length: "Length"
     enter_endtime_manually: "Enter endtime manually"
     calc_endtime: "Calculate endtime"
+    delete_question: "Are you sure, you want to delete the following worktime?"
+    worktimes_for: "Worktimes for"
+    all_worktimes: "All worktimes"
+    new: "New worktime"
+    add: "Add new worktime"
+    edit: "Edit worktime"
+    timer: 
+      start: "Start worktime"
+      end: "End worktime"
+
+  user:
+    new: "Register new employee"
+    add: "Add new employee"
+    login: "Username"
+    language: "Language"
+    logged_in_as: "Logged in as"
+    edit_profile: "Profildaten bearbeiten"
+    birthdate: "Birthdate"
+    profile_of: "Profile of"
+
+  flash:  
+    notice:
+      worktime_created: "Worktime successfully created."
+      worktime_started: "Worktime has started."
+      worktime_ended: "Worktime has ended. Please enter a description."
+      worktime_updated: "Worktime successfully updated."
+      worktime_deleted: "Worktime successfully deleted."
+      
+      profile_updated: "Profile successfully updated."
+
+      project_created: "Project successfully created."
+      project_updated: "Project successfully updated."
+      project_deleted: "Project successfully deleted."
+      
+      task_created: "Task successfully created."
+      task_updated: "Task successfully updated."
+      task_deleted: "Task successfully deleted."
+
+      login_successful: "Logged in successfully."
+      logout_successful: "You have been logged out."
+
+      user_created: "New employee successfully added."
+      user_updated: "Profile data successfully updated."
+      user_deleted: "Employee successfully deleted."
+
+      customer_created: "Customer successfully created."
+      customer_updated: "Customer successfully updated."
+      customer_deleted: "Customer successfully deleted."
+      
+    error:
+      create_worktime: "Error while creating new worktime."
+      no_worktime_active: "It seems there is no worktime started."
+      project_ended: "Project has ended. Currently not active."
+      no_projects_available: "No projects available. Please create one first."
+      no_customers_available: "No customers available. Please add one first."
+      no_access_rights: "You don't have enough access rights."
+
+      login_failed_as: "Login failed as"
+
+      create_user: "User registration failed. Please try again or contact administrator."

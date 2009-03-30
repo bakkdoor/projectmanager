@@ -3,8 +3,8 @@ module ProjectsHelper
   def sub_menu_items(project)
     menu_items
     menu_items = []
-    menu_items << {:title => "Aufgaben", :icon => "table", :url => project_tasks_path(project), :controller => :tasks}
-    menu_items << {:title => "Arbeitszeiten", :icon => "clock", :url => project_worktimes_path(project), :controller => :tasks}
+    menu_items << {:title => t('words.tasks'), :icon => "table", :url => project_tasks_path(project), :controller => :tasks}
+    menu_items << {:title => t('words.worktimes'), :icon => "clock", :url => project_worktimes_path(project), :controller => :worktimes}
 
     menu_items
   end

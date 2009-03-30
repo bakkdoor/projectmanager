@@ -1,10 +1,10 @@
 <div class="title">
-  <h1>Mitarbeiter</h1>
+  <h1><%= t('words.employees') -%></h1>
 </div>
 
 <div class="submenu">
   <% if current_user.is_admin %>
-    <%= link_to "#{icon_tag('user_add')} Neuen Mitarbeiter eintragen",
+    <%= link_to "#{icon_tag('user_add')} #{t('user.add')}",
                 new_user_path,
                 :class => "action_link"
     %>

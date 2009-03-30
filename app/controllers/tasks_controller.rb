@@ -76,7 +76,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        flash[:notice] = 'Aufgabe wurde erfolgreich erstellt.'
+        flash[:notice] = t('flash.notice.task_created')
         format.html { redirect_to(project_tasks_path(@task.project)) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
@@ -93,7 +93,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        flash[:notice] = 'Aufgabe wurde erfolgreich aktualisiert.'
+        flash[:notice] = t('flash.notice.task_updated')
         format.html { redirect_to(project_tasks_url) }
         format.xml  { head :ok }
       else
@@ -108,7 +108,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    flash[:notice] = "Aufgabe erfolgreich gelöscht"
+    flash[:notice] = t('flash.notice.task_deleted')
 
     respond_to do |format|
       format.html { redirect_to(project_tasks_url(@task.project)) }

@@ -23,6 +23,8 @@ de:
     back: "Zur&uuml;ck"
     name: "Name"
     due_on: "Fällig am"
+    password: "Passwort"
+    password_confirmation: "Passwort bestätigen"
 
   project:
     is_finished: "Projekt beendet?"
@@ -30,7 +32,7 @@ de:
     finished: "Beendete"
     add: "Neues Projekt anlegen"
     edit: "Projekt bearbeiten"
-    delete_question: "Sind Sie sicher, dass Sie das folgende Projekt löschen wollen?"
+    delete_question: "Sind Sie sicher, dass Sie das folgende Projekt l&ouml;schen wollen?"
 
   customer:
     adress: "Adresse"
@@ -52,9 +54,77 @@ de:
     your_tasks: "Deine Aufgaben"
     last_worked_on: "Zuletzt gearbeitet an"
 
+  task:
+    tasks_for: "Aufgaben für"
+    all_tasks: "Alle Aufgaben"
+    new: "Neue Aufgabe"
+    add: "Neue Aufgabe eintragen"
+    edit: "Aufgabe bearbeiten"
+    delete_question: "Sind Sie sicher, dass Sie die folgende Aufgabe l&ouml;schen wollen?"
+
   worktime:
     start: "Startzeit"
     end: "Endzeit"
     length: "Dauer"
     enter_endtime_manually: "Endzeit manuell eingeben"
     calc_endtime: "Endzeit berechnen lassen"
+    delete_question: "Sind Sie sicher, dass sie die folgende Arbeitszeit l&ouml;schen wollen?"
+    worktimes_for: "Arbeitszeiten für"
+    all_worktimes: "Alle Arbeitszeiten"
+    new: "Neue Arbeitszeit"
+    add: "Neue Arbeitszeit eintragen"
+    edit: "Arbeitszeit bearbeiten"
+    timer: 
+      start: "Arbeitszeit starten"
+      end: "Arbeitszeit beenden"
+
+  user:
+    new: "Neuen Mitarbeiter anmelden"
+    add: "Neuen Mitarbeiter eintragen"
+    login: "Benutzername"
+    language: "Sprache"
+    logged_in_as: "Eingeloggt als"
+    edit_profile: "Profildaten bearbeiten"
+    birthdate: "Geburtsdatum"
+    profile_of: "Profil von"
+
+  flash:  
+    notice:
+      worktime_created: "Arbeitszeit erfolgreich erstellt."
+      worktime_started: "Neue Arbeitszeit wurde gestartet."
+      worktime_ended: "Arbeitszeit wurde beendet. Bitte eine Beschreibung angeben."
+      worktime_updated: "Arbeitszeit erfolgreich aktualisiert."
+      worktime_deleted: "Arbeitszeit erfolgreich gelöscht."
+      
+      profile_updated: "Profil erfolgreich aktualisiert."
+
+      project_created: "Projekt wurde erfolgreich erstellt."
+      project_updated: "Projekt wurde erfolgreich aktualisiert."
+      project_deleted: "Projekt erfolgreich gelöscht."
+      
+      task_created: "Aufgabe wurde erfolgreich erstellt."
+      task_updated: "Aufgabe wurde erfolgreich aktualisiert."
+      task_deleted: "Aufgabe erfolgreich gelöscht"
+
+      login_successful: "Erfolgreich eingeloggt."
+      logout_successful: "Sie wurden erfolgreich ausgeloggt."
+
+      user_created: "Neuer Mitarbeiter angelegt:"
+      user_updated: "Profildaten wurden erfolgreich aktualisiert."
+      user_deleted: "Mitarbeiter erfolgreich gelöscht."
+
+      customer_created: "Kunde wurde erfolgreich erstellt."
+      customer_updated: "Kunde wurde erfolgreich aktualisiert."
+      customer_deleted: "Kunde erfolgreich gelöscht."
+      
+    error:
+      create_worktime: "Fehler beim Erstellen der neuen Arbeitszeit."
+      no_worktime_active: "Es scheint keine Arbeitszeit am laufen zu sein."
+      project_ended: "Projekt wurde beendet. Ist derzeit nicht aktiv."
+      no_projects_available: "Keine Projekte vorhanden. Bitte erst eins anlegen."
+      no_customers_available: "Keine Kunden vorhanden. Bitte erst einen Kunden anlegen."
+      no_access_rights: "Sie haben leider keine Zugriffsrechte."
+
+      login_failed_as: "Fehler beim einloggen als"
+
+      create_user: "Nutzer-registrierung fehlgeschlagen. Bitte nochmal versuchen oder ggf. Admin kontaktieren."

@@ -1,7 +1,7 @@
 <div class="content_table">
   <table class="profile_table">
     <tr>
-      <td class="content_title"><%= label_tag :login, "Username" %>:</td>
+      <td class="content_title"><%= label_tag :login, t('user.login') %>:</td>
       <td class="content_value"><%= @user.login %></td>
       <td><%= link_to icon_tag('user_edit'), edit_user_path(@user) %></td>
     </tr>
@@ -14,27 +14,27 @@
       <td class="content_value"><%= mail_to @user.email, @user.email %></td>
     </tr>                                            
     <tr>                                               
-      <td class="content_title"><%= label_tag "Geburtsdatum" %>:</td>
+      <td class="content_title"><%= label_tag t('user.birthdate') %>:</td>
       <td class="content_value"><%= @user.birthdate %></td>
     </tr>  
     <tr>                                               
-      <td class="content_title"><%= label_tag "Tel." %>:</td>
+      <td class="content_title"><%= label_tag t('customer.telephone') %>:</td>
       <td class="content_value"><%= @user.telephone %></td>
     </tr>                                              
     <tr>                                               
-      <td class="content_title"><%= label_tag "Straße" %>:</td>
+      <td class="content_title"><%= label_tag t('customer.street') %>:</td>
       <td class="content_value"><%= @user.street %></td>
     </tr>
     <tr>                                               
-      <td class="content_title"><%= label_tag "Hausnr." %>:</td>
+      <td class="content_title"><%= label_tag t('customer.house_nr') %>:</td>
       <td class="content_value"><%= @user.house_nr %></td>
     </tr>
     <tr>                                               
-      <td class="content_title"><%= label_tag "PLZ" %>:</td>
+      <td class="content_title"><%= label_tag t('customer.zip_code') %>:</td>
       <td class="content_value"><%= @user.zip_code %></td>
     </tr>
     <tr>                                               
-      <td class="content_title"><%= label_tag "Stadt" %>:</td>
+      <td class="content_title"><%= label_tag t('customer.city') %>:</td>
       <td class="content_value"><%= @user.city %></td>
     </tr>
     <tr>                                               
@@ -46,7 +46,7 @@
       <td class="content_value"><%= @user.jabber %></td>
     </tr>
     <tr>                                               
-      <td class="content_title"><%= label_tag "Kommentar / Beschreibung" %>:</td>
+      <td class="content_title"><%= label_tag t('words.comment') %>:</td>
       <td class="content_value"><%= @user.comment %></td>
     </tr>
   </table>

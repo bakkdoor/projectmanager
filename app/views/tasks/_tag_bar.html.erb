@@ -1,7 +1,7 @@
 <div id="tag_bar">
   <strong>
     Tags:
-    <%= link_to "Alle Aufgaben", 
+    <%= link_to t('task.all_tasks'), 
                 { :action => "index", :project_id => project.id },
                 :class => "action_link", :style => "padding-left: 0.5em" %>
     <% tags.each do |tag| %>

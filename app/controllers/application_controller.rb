@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def not_authorized(message = nil)
     respond_to do |format|
       format.html do
-        flash[:error] = message || "Sie haben leider keine Zugriffsrechte."
+        flash[:error] = message || t('flash.error.no_access_rights')
         redirect_back_or_default("/")
       end
     end
@@ -36,14 +36,14 @@ class ApplicationController < ActionController::Base
 
   def project_required
     unless Project.count > 0
-      flash[:error] = "Keine Projekte vorhanden. Bitte erst eins anlegen."
+      flash[:error] = t('flash.error.no_projects_available')
       redirect_to new_project_path
     end
   end
 
   def customer_required
     unless Customer.count > 0
-      flash[:error] = "Keine Kunden vorhanden. Bitte erst einen Kunden anlegen."
+      flash[:error] = t('flash.error.no_customers_available')
       redirect_to new_customer_path
     end
   end

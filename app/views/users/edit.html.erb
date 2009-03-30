@@ -1,5 +1,5 @@
 <div class="title">
-  <h1>Profildaten bearbeiten</h1>
+  <h1><%= t('user.edit_profile') -%></h1>
 </div>
 
 <% form_for(@user) do |f| %>
@@ -10,7 +10,7 @@
     <%= f.select :language, [['English', 'en'], ['Deutsch', 'de']] %>
   </p>
   <p>
-    <%= f.label :login, "Benutzername" %><br />
+    <%= f.label :login, t('user.login') %><br />
     <%= f.text_field :login %>
   </p>
   <% if current_user.is_admin %>
@@ -28,28 +28,28 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :birthdate, "Geburtsdatum" %><br />
+    <%= f.label :birthdate, t('user.birthdate') %><br />
     <%= f.date_select :birthdate, :order => [:day, :month, :year], :use_month_names => german_months,
                       :start_year => 1900, :end_year => Time.now.year, :default => Date.civil(1900,1,1) %>
   </p>
   <p>
-    <%= f.label :street, "Straße" %><br />
+    <%= f.label :street, t('customer.street') %><br />
     <%= f.text_field :street %>
   </p>
   <p>
-    <%= f.label :house_nr, "Hausnr." %><br />
+    <%= f.label :house_nr, t('customer.house_nr') %><br />
     <%= f.text_field :house_nr %>
   </p>
   <p>
-    <%= f.label :zip_code, "PLZ" %><br />
+    <%= f.label :zip_code, t('customer.zip_code') %><br />
     <%= f.text_field :zip_code %>
   </p>
   <p>
-    <%= f.label :city, "Stadt" %><br />
+    <%= f.label :city, t('customer.city') %><br />
     <%= f.text_field :city %>
   </p>
   <p>
-    <%= f.label :telephone, "Tel." %><br />
+    <%= f.label :telephone, t('customer.telephone') %><br />
     <%= f.text_field :telephone %>
   </p>
   <p>
@@ -61,18 +61,18 @@
     <%= f.text_field :jabber %>
   </p>
   <p>
-    <%= f.label :comment, "Kommentar / Beschreibung" %><br />
+    <%= f.label :comment, t('words.comment') %><br />
     <%= f.text_area :comment %>
   </p>
   <p>
-    <%= label_tag 'password', "Passwort" %><br/>
+    <%= label_tag 'password', t('words.password') %><br/>
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= label_tag 'password_confirmation', 'Passwort bestätigen' %><br/>
+    <%= label_tag 'password_confirmation', t('words.password_confirmation') %><br/>
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= icon_tag 'disk' %> <%= f.submit "Speichern" %>
+    <%= icon_tag 'disk' %> <%= f.submit t('words.save') %>
   </p>
 <% end %>

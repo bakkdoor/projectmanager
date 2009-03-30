@@ -52,13 +52,14 @@ class WorktimesController < ApplicationController
         format.js
       end
     else
-      flash[:error] = "Projekt wurde beendet. Ist derzeit nicht aktiv."
+      flash[:error] = t('flash.error.project_ended')
       redirect_to project_worktimes_path(@project)
     end
   end
 
   # GET /worktimes/1/edit
   def edit
+    @project = current_project
     @worktime = Worktime.find(params[:id])
     @tasks = Task.children - @worktime.tasks
   end
@@ -74,7 +75,7 @@ class WorktimesController < ApplicationController
 
     respond_to do |format|
       if @worktime.save
-        flash[:notice] = 'Arbeitszeit erfolgreich erstellt.'
+        flash[:notice] = t('flash.notice.worktime_created')
         format.html { redirect_to(project_worktimes_path(@worktime.project)) }
         format.xml  { render :xml => @worktime, :status => :created, :location => @worktime }
       else
@@ -92,7 +93,7 @@ class WorktimesController < ApplicationController
         #@worktime.tasks += @tasks # ausgewählte tasks zuordnen
         check_length # evtl. laenge anpassen
 
-        flash[:notice] = 'Arbeitszeit erfolgreich aktualisiert.'
+        flash[:notice] = t('flash.notice.worktime_updated')
         format.html { redirect_to(project_worktimes_path(@worktime.project)) }
         format.xml  { head :ok }
       else
@@ -108,7 +109,7 @@ class WorktimesController < ApplicationController
     @worktime = Worktime.find(params[:id])
     @worktime.destroy
 
-    flash[:notice] = "Arbeitszeit erfolgreich gelöscht."
+    flash[:notice] = t('flash.notice.worktime_deleted')
 
     respond_to do |format|
       format.html { redirect_to(project_worktimes_path(@worktime.project)) }
@@ -129,9 +130,9 @@ class WorktimesController < ApplicationController
 
       if @worktime.save
         session[:new_worktime_id] = @worktime.id
-        flash[:notice] = "Neue Arbeitszeit wurde gestartet."
+        flash[:notice] = t('flash.notice.worktime_started')
       else
-        flash[:error] = "Fehler beim erstellen der Neuen Arbeitszeit."
+        flash[:error] = t('flash.error.create_worktime')
       end
     end
 
@@ -152,7 +153,7 @@ class WorktimesController < ApplicationController
             clear_session(:new_worktime_id)
             wt.end_time = Time.now # aktuelle zeit als endzeit setzen
             wt.save
-            flash[:notice] = "Arbeitszeit wurde beendet. Bitte eine Beschreibung angeben."
+            flash[:notice] = t('flash.notice.worktime_ended')
 
             respond_to do |format|
               format.html { redirect_to edit_project_worktime_url(wt.project, wt) }
@@ -161,7 +162,7 @@ class WorktimesController < ApplicationController
           end
         else
           clear_session(:new_worktime_id)
-          flash[:error] = "Es scheint keine Arbeitszeit am laufen zu sein."
+          flash[:error] = t('flash.error.no_worktime_active')
 
           respond_to do |format|
             format.html { redirect_to project_worktimes_path(current_project) }

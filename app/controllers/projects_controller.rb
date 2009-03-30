@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        flash[:notice] = 'Projekt wurde erfolgreich erstellt.'
+        flash[:notice] = t('flash.notice.project_created')
         format.html { redirect_to(@project) }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        flash[:notice] = 'Project wurde erfolgreich aktualisiert.'
+        flash[:notice] = t('flash.notice.project_updated')
         format.html { redirect_to(@project) }
         format.xml  { head :ok }
       else
@@ -108,7 +108,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    flash[:notice] = "Project erfolgreich gelöscht."
+    flash[:notice] = t('flash.notice.project_deleted')
 
     respond_to do |format|
       format.html { redirect_to(projects_url) }
