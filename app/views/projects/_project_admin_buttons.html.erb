@@ -1,12 +1,12 @@
 <span id="project_admin_buttons">
   <% if current_user.is_admin? %>
     <%= link_to_remote icon_tag('layout_edit'),
-                       :url => edit_project_path(@project),
+                       :url => edit_project_path(project),
                        :method => :get,
                        :html => { :id => "edit_project_link", :title => t('project.edit') } %>
     <%= link_to icon_tag('delete'),
-                @project,
-                :confirm => "#{t('project.delete_question')} \n '#{@project.name}'",
+                project,
+                :confirm => "#{t('project.delete_question')} \n '#{project.name}'",
                 :method => :delete %>
   <% end %>
 </span>

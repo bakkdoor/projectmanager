@@ -8,7 +8,7 @@
       <%= project_selection_for :container_ids => ["project_admin_buttons", "project_tasks_data"], 
 	                        :templates => ["projects/project_admin_buttons", "tasks/project_tasks_list"] -%>
 
-      <%= render :partial => "projects/project_admin_buttons", :object => current_project -%>
+      <%= render :partial => "projects/project_admin_buttons", :locals => {:project => current_project} -%>
     </h2>
   </div>
 
