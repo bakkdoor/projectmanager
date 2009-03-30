@@ -121,8 +121,18 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:project_id])
 
     respond_to do |format|
-      format.html { redirect_to(projects_url(@project)) }
-      format.js
+      format.html { redirect_to(projects_path(@project)) }
+      format.js {
+        render :update do |page|
+          if params[:container_id] and params[:template]
+            page[params[:container_id]].hide
+            page[params[:container_id]].replace_html :partial => params[:template], :object => @project
+            page[params[:container_id]].visual_effect :appear
+          else
+            page.redirect_to @project
+          end
+        end
+      }
     end
   end
 

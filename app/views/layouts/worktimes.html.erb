@@ -5,7 +5,8 @@
     <h2>
       <%= t('words.project') -%>: 
 
-      <%= project_selection_for :container_id => nil, :template => nil -%>
+      <%= project_selection_for :container_id => "project_worktimes_data", 
+	                        :template => "worktimes/project_worktimes_list" -%>
       
       <% if current_user.is_admin %>
         <%= link_to_remote icon_tag('layout_edit'),
@@ -26,6 +27,8 @@
   <%= render :partial => "projects/sub_menu" %>
 <% end %>
 
-<%= yield  %>
+<div id="project_worktimes_data">
+  <%= yield  %>
+</div>
 
 <%= render :partial => "layouts/footer" -%>

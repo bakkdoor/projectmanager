@@ -1,21 +1,3 @@
-<div class="subtitle">
-  <h2>
-    Arbeitszeiten für '<%= @project.name %>'
-  </h2>
-</div>
-
-<div class="action_links">
-  <%= link_to_remote "#{icon_tag('clock_add')} Neue Arbeitszeit",
-    :url => new_project_worktime_path(:project_id => @project.id),
-    :method => :get, 
-    :html => { :id => "add_worktime_link", :title => "Neue Arbeitszeit eintragen", :class => "action_link" } 
-  %>
-  <span id="play_pause_button">
-    <%= play_pause_button_remote(@project) %>
-  </span>
-</div>
-
-<%= edit_form_container_for(:worktime, :add) %>
-
+<%= render :partial => "header" -%>
 <%= render :partial => "worktimes_list", :locals => {:worktimes => @project.worktimes} %>
 <br />

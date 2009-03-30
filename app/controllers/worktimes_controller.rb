@@ -4,7 +4,7 @@ class WorktimesController < ApplicationController
   before_filter :pre_create, :only => [:create]
   before_filter :project_required, :only => [:new, :create]
 
-  layout 'projects'
+#  layout 'projects'
 
   # GET /worktimes
   # GET /worktimes.xml
