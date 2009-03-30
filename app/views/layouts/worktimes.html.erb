@@ -5,20 +5,10 @@
     <h2>
       <%= t('words.project') -%>: 
 
-      <%= project_selection_for :container_id => "project_worktimes_data", 
-	                        :template => "worktimes/project_worktimes_list" -%>
-      
-      <% if current_user.is_admin %>
-        <%= link_to_remote icon_tag('layout_edit'),
-                           :url => edit_project_path(current_project),
-                           :method => :get,
-                           :html => { :id => "edit_project_link", :title => t('project.edit') } %>
-        <%= link_to icon_tag('delete'),
-            current_project,
-            :confirm => "#{t('project.delete_question')} \n '#{current_project.name}'",
-            :method => :delete
-        %>
-      <% end %>
+      <%= project_selection_for :container_ids => ["project_admin_buttons", "project_worktimes_data"], 
+	                        :templates => ["projects/project_admin_buttons", "worktimes/project_worktimes_list"] -%>
+
+      <%= render :partial => "projects/project_admin_buttons", :object => current_project -%>
     </h2>
   </div>
 

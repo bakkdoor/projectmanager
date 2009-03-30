@@ -30,14 +30,14 @@ module ProjectsHelper
   # the content of that container will be replaced
   # by the given template/partial via options[:template]
   def project_selection_for(options = {})
-    container_id = options[:container_id] || nil
-    template = options[:template] || nil
+    container_ids = options[:container_ids] || []
+    templates = options[:templates] || []
 
     with = 'Form.Element.serialize(this)'
 
     # if container_id and template specified, also send this with the request
-    if container_id and template
-      with = "Form.Element.serialize(this) + " + "'&container_id=" + container_id + "&template=" + template + "'"
+    unless container_ids.empty? and templates.empty?
+      with = "Form.Element.serialize(this) + " + "'&container_ids=" + container_ids.to_array_string + "&templates=" + templates.to_array_string + "'"
     end
 
     select_tag "project_id",

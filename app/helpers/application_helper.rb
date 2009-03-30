@@ -53,3 +53,7 @@ end
 class Float
   include FloatEnhancement # see /lib
 end
+
+class Array
+  include ArrayEnhancement # see /lib
+end

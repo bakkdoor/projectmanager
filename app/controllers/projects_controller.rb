@@ -124,10 +124,13 @@ class ProjectsController < ApplicationController
       format.html { redirect_to(projects_path(@project)) }
       format.js {
         render :update do |page|
-          if params[:container_id] and params[:template]
-            page[params[:container_id]].hide
-            page[params[:container_id]].replace_html :partial => params[:template], :object => @project
-            page[params[:container_id]].visual_effect :appear
+          if params[:container_ids] and params[:templates]
+            puts params[:container_ids].to_string_array
+            params[:container_ids].to_string_array.each_with_index do |container_id, index|
+              page[container_id].hide
+              page[container_id].replace_html :partial => params[:templates].to_string_array[index], :object => @project
+              page[container_id].visual_effect :appear
+            end
           else
             page.redirect_to @project
           end
