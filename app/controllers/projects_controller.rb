@@ -148,8 +148,12 @@ class ProjectsController < ApplicationController
   # falls kein admin, nur zugriff, falls dem aktuellen projekt zugewiesen
   def has_access
     unless current_user.is_admin
-      @project = Project.find(params[:id])
-      @project = Project.find(params[:project_id]) unless @project
+      if params[:id]
+        @project = Project.find(params[:id])
+      else
+        @project = Project.find(params[:project_id])
+      end
+
       if @project
         not_authorized unless current_user.assigned_to? @project
       else
