@@ -131,7 +131,8 @@ class ProjectsController < ApplicationController
             puts params[:container_ids].to_string_array
             params[:container_ids].to_string_array.each_with_index do |container_id, index|
               page[container_id].hide
-              page[container_id].replace_html :partial => params[:templates].to_string_array[index], :object => @project
+              page[container_id].replace_html :partial => params[:templates].to_string_array[index], :object => @project,
+                                              :locals => {:project => @project}
               page[container_id].visual_effect :appear
             end
           else
