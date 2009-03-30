@@ -40,7 +40,5 @@ A sample account you can use:
   password: testing
 Check it out to see a somewhat current version of it.
 
-Currently the Display is german only, but I've planned to add some kind of localization to it, to
-make it easy to support different languages.
-The code however is mostly in english, especially all variable, methods and classes are in english, so
-even if you don't understand the interface yet, you should be able to read the code pretty easily.
+Currently (as of version 0.2.0) the interface supports german and english, but since its using rails' I18n, adding additional languages should be easy. If you feel like helping out with translating into additional languages, feel free to contact me or start your own fork.
+The code however is almost completely in english (except for some comments i haven't translated into english yet - I'll do that soon!), so it should be pretty easy to get along with the code. Any questions? Feel free to ask me :)
