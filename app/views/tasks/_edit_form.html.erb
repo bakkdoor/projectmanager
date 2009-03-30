@@ -36,7 +36,7 @@
               <div id="tag_cloud" style="padding-top:1em">
                 <% tag_cloud @tags, %w(tags1 tags2 tags3 tags4) do |tag, css_class| %>
                   <%= link_to_function tag.name, :class => css_class  do |page| 
-                        page << "$('tags_text_field').value = $('tags_text_field').value + ' #{tag.name} '"
+                        page << "$('tags_text_field').value = $('tags_text_field').value + ', #{tag.name}'"
                       end
                   %>
                 <% end %>
