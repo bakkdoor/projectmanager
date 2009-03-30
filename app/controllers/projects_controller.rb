@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :login_required
-  before_filter :admin_required, :except => [:show]
+  before_filter :admin_required, :only => [:new, :create, :update, :destroy]
   before_filter :customer_required, :only => [:new, :create]
   before_filter :has_access
 
