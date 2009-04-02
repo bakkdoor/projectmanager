@@ -1,5 +1,25 @@
 <%= render :partial => "layouts/header" -%>
 
-<%= yield  %>
+<div id="content-area" class="span-24 bg3">
+  
+  <div id="sidebar" class="span-6">
+    <div id="menu-items" class="bg prepend-top prepend-1">
+      <span class="large">Your Projects:</span>
+      <ul>
+	<li>Project1</li>
+	<li>Project2</li>
+	<li>Project3</li>
+      </ul>
+    </div>
+  </div>
+  
+  
+  <div id="outer-main" class="span-16 last append-1">
+    <div id="main" class="span-16 prepend-top prepend-1">
+      <%= yield -%>
+    </div>
+  </div>
+  
+</div> <!-- end content-area div -->
 
 <%= render :partial => "layouts/footer" -%>

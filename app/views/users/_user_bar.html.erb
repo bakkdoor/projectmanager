@@ -1,10 +1,18 @@
 <% link_style = params[:controller].to_s == "profile" ? "active_link" : "" %>
 
-| 
-<% if logged_in? -%>
-  <% user_icon = current_user.is_admin ? "user_red" : "user" %>
-  <%= t('user.logged_in_as') -%> <%= link_to "#{icon_tag(user_icon)} #{current_user.login}", profile_url, {:class => link_style} %>
-  (<%= link_to "#{icon_tag('door_out')} Log out", logout_path, { :title => "Log out" }    %>)
-<% else -%>
-  <%= link_to "#{icon_tag('door_in')} Log in",  login_path,  { :title => "Log in" } %>
-<% end -%>
+<ul class="tabs right">
+  <% if logged_in? -%>
+    <% user_icon = current_user.is_admin ? "user_red" : "user" %>
+    <li>
+      <%= link_to "#{t('user.logged_in_as')} #{icon_tag(user_icon)} #{current_user.login}", 
+	  profile_url, {:class => link_style} %>
+    </li>
+    <li>
+      <%= link_to "#{icon_tag('door_out')} Log out", logout_path, { :title => "Log out" } %>
+    </li>
+  <% else -%>
+    <li>
+      <%= link_to "#{icon_tag('door_in')} Log in",  login_path,  { :title => "Log in" } %>
+    </li>
+  <% end -%>
+</ul>

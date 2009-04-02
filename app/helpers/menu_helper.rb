@@ -51,7 +51,7 @@ module MenuHelper
   def menu_links
     @output = []
     menu_items.each do |item|
-      link_style =  params[:controller].to_s == item[:controller].to_s ? "active_link" : ""
+      link_style =  params[:controller].to_s == item[:controller].to_s ? "selected" : ""
 
       title = item[:title]
       if(item[:icon])
@@ -60,8 +60,6 @@ module MenuHelper
       end
 
       @output << (link_to title, item[:url], {:class => link_style})
-      #@output << " | "
     end
-    @output.join(" | ")
   end
 end
