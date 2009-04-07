@@ -31,6 +31,12 @@ module ApplicationHelper
     options[:border] ||= 0
     image_tag("icons/#{icon_name}", options)
   end
+
+  def render_sidebar
+    content_for :sidebar do
+      render :partial => "sidebar"
+    end
+  end
 end
 
 # mixing in RubyEnhancements-module

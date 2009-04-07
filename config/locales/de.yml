@@ -88,6 +88,9 @@ de:
     profile_of: "Profil von"
     your_profile: "Dein Profil"
 
+  login:
+    info_text: "Anmeldung wird benötigt. Bitte geben Sie ihre Logindaten ein."
+
   flash:  
     notice:
       worktime_created: "Arbeitszeit erfolgreich erstellt."

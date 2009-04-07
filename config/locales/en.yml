@@ -88,6 +88,9 @@ en:
     profile_of: "Profile of"
     your_profile: "Your profile"
 
+  login:
+    info_text: "Login required. Please enter your login data."
+
   flash:  
     notice:
       worktime_created: "Worktime successfully created."

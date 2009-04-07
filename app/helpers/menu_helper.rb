@@ -2,7 +2,7 @@ module MenuHelper
 
   def menu_items
     menu_items = []
-    menu_items << {:title => "Home", :icon => "house", :url => root_path}
+    menu_items << {:title => "Home", :icon => "house", :url => root_path, :controller => :home}
     if logged_in?
       menu_items << { :title => t('words.customers'),
                       :icon => "user_suit",
@@ -45,7 +45,13 @@ module MenuHelper
                       :controller => :users }
     end
 
-    menu_items
+    menu_items.each do |item|
+      if item[:controller].to_s == params[:controller].to_s
+        item[:selected] = true
+      else
+        item[:selected] = false
+      end
+    end
   end
 
   def menu_links

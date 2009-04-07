@@ -1,4 +1,4 @@
-<% link_style = params[:controller].to_s == "profile" ? "active_link" : "" %>
+<% link_style = params[:controller].to_s == "profile" ? "selected" : "" %>
 
 <ul class="tabs right">
   <% if logged_in? -%>
@@ -8,11 +8,13 @@
 	  profile_url, {:class => link_style} %>
     </li>
     <li>
-      <%= link_to "#{icon_tag('door_out')} Log out", logout_path, { :title => "Log out" } %>
+      <%= link_to "#{icon_tag('door_out')} Log out", logout_path, { :title => "Log out"} %>
     </li>
   <% else -%>
     <li>
-      <%= link_to "#{icon_tag('door_in')} Log in",  login_path,  { :title => "Log in" } %>
+      <%= link_to "#{icon_tag('door_in')} Log in",  login_path,
+	  { :title => "Log in",
+	    :class => params[:controller].to_s == "sessions" ? "selected" : "" } %>
     </li>
   <% end -%>
 </ul>

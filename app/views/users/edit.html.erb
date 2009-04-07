@@ -4,7 +4,8 @@
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
-  
+
+<div class="span-8">  
   <p>
     <%= f.label :language, t('user.language') %><br />
     <%= f.select :language, [['English', 'en'], ['Deutsch', 'de']] %>
@@ -32,6 +33,8 @@
     <%= f.date_select :birthdate, :order => [:day, :month, :year], :use_month_names => german_months,
                       :start_year => 1900, :end_year => Time.now.year, :default => Date.civil(1900,1,1) %>
   </p>
+</div>
+<div class="span-8 last">
   <p>
     <%= f.label :street, t('customer.street') %><br />
     <%= f.text_field :street %>
@@ -60,6 +63,8 @@
     <%= f.label :jabber, "Jabber" %><br />
     <%= f.text_field :jabber %>
   </p>
+</div>
+<div class ="span-16">
   <p>
     <%= f.label :comment, t('words.comment') %><br />
     <%= f.text_area :comment %>
@@ -75,4 +80,5 @@
   <p>
     <%= icon_tag 'disk' %> <%= f.submit t('words.save') %>
   </p>
+</div>
 <% end %>

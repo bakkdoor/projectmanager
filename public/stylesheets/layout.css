@@ -45,6 +45,18 @@ body {
     text-align: center;
 }
 
+.blockquote{
+    margin:1.5em;
+    color:#666;
+    font-style:italic;
+}
+
+.info{
+    color: #666;
+    font-style: italic;
+}
+
+
 a{
     color: #000;
     text-decoration: underline;
@@ -60,7 +72,7 @@ a:hover{
 }
 
 #header{
-    padding-top: 0.5em;
+    padding-top: 1.0em;
 }
 
 #header a{
@@ -95,11 +107,11 @@ a:hover{
 }
 
 #header .tabs li a.selected { 
-  background:#c4d7ed;
-  border:1px solid #666;
-  border-bottom:none;
-  color:#000;
-  cursor:default;
+    background:#c4d7ed;
+    border:1px solid #666;
+    border-bottom:none;
+    color:#000;
+    cursor:default;
 }
 
 #flash_notice{
